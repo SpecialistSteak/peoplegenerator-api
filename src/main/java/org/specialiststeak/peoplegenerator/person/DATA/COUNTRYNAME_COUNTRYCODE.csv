@@ -1,0 +1,192 @@
+"Afghanistan","AF",93,9
+"Albania","AL",355,9
+"Algeria","DZ",213,9
+"Andorra","AD",376,6
+"Angola","AO",244,9
+"Antigua and Barbuda","AG",1268,10
+"Argentina","AR",54,10
+"Armenia","AM",374,8
+"Australia","AU",61,10
+"Austria","AT",43,10
+"Azerbaijan","AZ",994,9
+"Bahamas","BS",1242,10
+"Bahrain","BH",973,8
+"Bangladesh","BD",880,10
+"Barbados","BB",1246,10
+"Belarus","BY",375,9
+"Belgium","BE",32,9
+"Belize","BZ",501,7
+"Benin","BJ",229,8
+"Bhutan","BT",975,8
+"Bolivia","BO",591,8
+"Bosnia and Herzegovina","BA",387,9
+"Botswana","BW",267,8
+"Brazil","BR",55,11
+"Brunei","BN",673,7
+"Bulgaria","BG",359,9
+"Burkina Faso","BF",226,8
+"Burundi","BI",257,8
+"Cambodia","KH",855,9
+"Cameroon","CM",237,9
+"Canada","CA",1,11
+"Cape Verde","CV",238,8
+"Central African Republic","CF",236,8
+"Chad","TD",235,8
+"Chile","CL",56,9
+"China","CN",86,11
+"Colombia","CO",57,10
+"Comoros","KM",269,7
+"Congo","CG",242,9
+"Congo","CD",243,9
+"Costa Rica","CR",506,8
+"Cote d'Ivoire","CI",225,9
+"Croatia","HR",385,9
+"Cuba","CU",53,8
+"Cyprus","CY",357,9
+"Czech Republic","CZ",420,9
+"Denmark","DK",45,8
+"Djibouti","DJ",253,8
+"Dominica","DM",1767,10
+"Dominican Republic","DO",1809,10
+"East Timor","TL",670,8
+"Ecuador","EC",593,9
+"Egypt","EG",20,11
+"El Salvador","SV",503,8
+"Equatorial Guinea","GQ",240,8
+"Eritrea","ER",291,7
+"Estonia","EE",372,8
+"Ethiopia","ET",251,9
+"Fiji","FJ",679,7
+"Finland","FI",358,9
+"France","FR",33,9
+"Gabon","GA",241,8
+"Gambia","GM",220,8
+"Georgia","GE",995,9
+"Germany","DE",49,10
+"Ghana","GH",233,9
+"Greece","GR",30,10
+"Grenada","GD",1473,10
+"Guatemala","GT",502,8
+"Guinea","GN",224,8
+"Guinea-Bissau","GW",245,8
+"Guyana","GY",592,9
+"Haiti","HT",509,8
+"Honduras","HN",504,8
+"Hungary","HU",36,9
+"Iceland","IS",354,9
+"India","IN",91,10
+"Indonesia","ID",62,10
+"Iran","IR",98,10
+"Iraq","IQ",964,10
+"Jamaica","JM",1876,10
+"Japan","JP",81,10
+"Jordan","JO",962,9
+"Kazakhstan","KZ",7,10
+"Kenya","KE",254,9
+"Kiribati","KI",686,7
+"North Korea","KP",850,10
+"South Korea","KR",82,10
+"Kosovo","XK",383,9
+"Kuwait","KW",965,8
+"Kyrgyzstan","KG",996,9
+"Laos","LA",856,9
+"Latvia","LV",371,8
+"Lebanon","LB",961,8
+"Lesotho","LS",266,8
+"Liberia","LR",231,8
+"Libya","LY",218,8
+"Liechtenstein","LI",423,9
+"Lithuania","LT",370,8
+"Luxembourg","LU",352,9
+"Macedonia","MK",389,8
+"Madagascar","MG",261,9
+"Malawi","MW",265,9
+"Malaysia","MY",60,9
+"Maldives","MV",960,8
+"Mali","ML",223,8
+"Malta","MT",356,8
+"Marshall Islands","MH",692,7
+"Mauritania","MR",222,8
+"Mauritius","MU",230,9
+"Mexico","MX",52,10
+"Micronesia","FM",691,7
+"Moldova","MD",373,8
+"Monaco","MC",377,9
+"Mongolia","MN",976,8
+"Montenegro","ME",382,8
+"Morocco","MA",212,9
+"Mozambique","MZ",258,9
+"Myanmar","MM",95,9
+"Namibia","NA",264,9
+"Nauru","NR",674,7
+"Nepal","NP",977,10
+"Netherlands","NL",31,9
+"New Zealand","NZ",64,9
+"Nicaragua","NI",505,8
+"Niger","NE",227,8
+"Nigeria","NG",234,10
+"Norway","NO",47,8
+"Oman","OM",968,8
+"Pakistan","PK",92,10
+"Palau","PW",680,7
+"Panama","PA",507,8
+"Papua New Guinea","PG",675,8
+"Paraguay","PY",595,9
+"Peru","PE",51,9
+"Philippines","PH",63,10
+"Poland","PL",48,9
+"Portugal","PT",351,9
+"Qatar","QA",974,8
+"Romania","RO",40,10
+"Russia","RU",7,10
+"Rwanda","RW",250,9
+"Saint Kitts and Nevis","KN",1869,10
+"Saint Lucia","LC",1758,10
+"Saint Vincent and the Grenadines","VC",1784,10
+"Samoa","WS",685,7
+"San Marino","SM",378,9
+"Sao Tome and Principe","ST",239,8
+"Saudi Arabia","SA",966,9
+"Senegal","SN",221,8
+"Serbia","RS",381,9
+"Seychelles","SC",248,8
+"Sierra Leone","SL",232,8
+"Singapore","SG",65,8
+"Slovakia","SK",421,9
+"Slovenia","SI",386,8
+"Solomon Islands","SB",677,7
+"Somalia","SO",252,8
+"South Africa","ZA",27,10
+"Spain","ES",34,9
+"Sri Lanka","LK",94,10
+"Sudan","SD",249,9
+"Suriname","SR",597,9
+"Swaziland","SZ",268,8
+"Sweden","SE",46,9
+"Switzerland","CH",41,9
+"Syria","SY",963,9
+"Taiwan","TW",886,9
+"Tajikistan","TJ",992,9
+"Tanzania","TZ",255,9
+"Thailand","TH",66,9
+"Togo","TG",228,8
+"Tonga","TO",676,7
+"Trinidad and Tobago","TT",1868,10
+"Tunisia","TN",216,8
+"Turkey","TR",90,10
+"Turkmenistan","TM",993,9
+"Tuvalu","TV",688,7
+"Uganda","UG",256,9
+"Ukraine","UA",380,9
+"United Arab Emirates","AE",971,9
+"United Kingdom","GB",44,10
+"United States","US",1,11
+"Uruguay","UY",598,9
+"Uzbekistan","UZ",998,9
+"Vanuatu","VU",678,7
+"Vatican City","VA",39,9
+"Venezuela","VE",58,10
+"Vietnam","VN",84,10
+"Yemen","YE",967,9
+"Zambia","ZM",260,9
+"Zimbabwe","ZW",263,9

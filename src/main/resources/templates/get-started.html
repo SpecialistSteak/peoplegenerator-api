@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles2.css">
+    <link rel="icon" href ="../static/Logo.svg">
+</head>
+<body class="fullpage">
+<header style="padding-bottom: 20px">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/">Overview</a></li>
+            <li><a href="http://localhost:8080/get-started">Get Started</a></li>
+            <li><a href="http://localhost:8080/endpoints">Endpoints</a></li>
+            <li><a href="http://localhost:8080/fields">Fields</a></li>
+            <li><a href="http://localhost:8080/about">About</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="get-started" style="padding-left: 20px">
+        <h1 style="text-align: left;" class="title">Get-Started</h1>
+        <p>Below are the first steps you can take to access and start using the API.</p>
+        <hr class="separator">
+        <br>
+        <h3>Request One Person:</h3>
+        <p class="get-started">
+            To see a single example user, send a GET request to <code>/person/</code>.
+        </p>
+        <br>
+        <h3>Example API Response:</h3>
+        <p style="padding-bottom:5px">
+            Below are some examples you might see when requesting a response from the API.
+            If there are multiple people, it will instead come in the form of an array of people.
+        </p>
+        <br>
+        <h3>Person Object</h3>
+        <br>
+        <code class="codeblock">{
+    "name": "Randy Brown",
+    "age": 45,
+    "job": "Insurance Agent",
+    "dateOfBirth": "Sun Mar 21 07:42:45 IST 1976",
+    "incomeInUSD": 69297,
+    "creditScore": 573,
+    "creditCardNumber": "3683-795657-5024",
+    "married": false,
+    "hasChildren": false,
+    "height": 180,
+    "weight": 50.6,
+    "eyeColor": "BROWN",
+    "address": "40343 Art Tunnel, Bartonton, Missouri, Kyrgyz Republic, 31054",
+    "phoneNumber": "+231 19507587",
+    "email": "brown@hotmail.com",
+    "gender": "Male",
+    "hasDegree": true,
+    "nationality": "Liberia",
+    "countryCode": "LR",
+    "bloodType": "O+",
+    "username": "randy31",
+    "religion": "Christian",
+    "politicalAffiliation": 0.56,
+    "gpa": 3.3,
+    "ipaddress": "67.112.210.205"
+}</code>
+        <br>
+        <h3>Address Object:</h3>
+        <br>
+        <code class="codeblock">{
+    "address" : "21856 Travis Way, North Lanetteborough, South Carolina, Guinea-Bissau, 51661",
+    "nationality" : "Haiti",
+    "countryCode" : "HT",
+    "phoneNumber" : "+509 50624249",
+    "ipaddress" : "77.185.207.105"
+}</code>
+    </section>
+    <br>
+</main>
+<footer>
+    <p><span>&copy;</span> 2023 SpecialistSteak</p>
+    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
+    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+</footer>
+</body>
+</html>

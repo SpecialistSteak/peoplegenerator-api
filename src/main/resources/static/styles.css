@@ -1,0 +1,241 @@
+/* Catpuccin, my beloved <3 */
+:root {
+    --white : #ffffff;
+    --background: #171723;
+    --footer: #1d1d2c;
+    /*--background: #1e1e2e; (Original Catpuccin bg)*/
+    --surface-1: #2E2F3FFF;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --surface2: #585b70;
+    --overlay0: #6c7086;
+    --overlay1: #7f849c;
+    --overlay2: #9399b2;
+    --subtext0: #a6adc8;
+    --subtext1: #bac2de;
+    --text: #cdd6f4;
+    --lavender: #b4befe;
+    --blue: #89b4fa;
+    --sapphire: #74c7ec;
+    --sky: #89dceb;
+    --teal: #94e2d5;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --peach: #fab387;
+    --maroon: #eba0ac;
+    --red: #f38ba8;
+    --mauve: #cba6f7;
+    --pink: #f5c2e7;
+    --flamingo: #f2cdcd;
+    --rosewater: #f5e0dc;
+}
+
+/* Apply a universal box-sizing value for consistency */
+
+
+/* Style the header */
+header {
+    background: var(--background);
+    padding: 20px 20px 0 20px;
+}
+
+.normallink{
+    text-decoration: underline;
+    color: var(--text);
+}
+
+/* Style the title */
+.title {
+    color: var(--lavender);
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the author */
+.author {
+    color: var(--subtext1);
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* Style the version */
+.version {
+    color: var(--subtext0);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Style the main content area */
+main {
+    padding: 20px;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+h2 {
+    color: var(--lavender);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+}
+
+code {
+    background-color: #3e4052;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: var(--text);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the navigation */
+nav {
+    background-color: var(--surface0);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: var(--text);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: var(--surface1);
+    border-radius: 5px;
+    text-decoration: underline;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: var(--surface0);
+    color: var(--text);
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: var(--surface0);
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--surface2);
+}
+
+.separator {
+    border: none;
+    height: 1px;
+    padding: 0;
+    background-color: var(--lavender);
+    margin: 0 0 0.5rem;
+}
+
+footer {
+    background-color: var(--footer);
+    color: var(--overlay1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    font-size: 1.2rem;
+}
+
+footer a {
+    color: var(--overlay1);
+    text-decoration: none;
+    border-bottom: 2px solid var(--overlay1);
+    transition: border-bottom 0.2s ease;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer .current-year {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.middleelement {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#features ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#features li {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+#features li:before {
+    content: "\2023";
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+body.fullpage {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}

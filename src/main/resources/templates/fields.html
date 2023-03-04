@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles2.css">
+    <link rel="icon" href ="../static/Logo.svg">
+</head>
+<body class="fullpage">
+<header>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/">Overview</a></li>
+            <li><a href="http://localhost:8080/get-started">Get Started</a></li>
+            <li><a href="http://localhost:8080/endpoints">Endpoints</a></li>
+            <li><a href="http://localhost:8080/fields">Fields</a></li>
+            <li><a href="http://localhost:8080/about">About</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="fields">
+        <h1 style="text-align: left;" class="title">Fields</h1>
+        <p>Below are the different types of objects this API can return.</p>
+        <hr class="separator">
+        <br>
+        <h3>Person:</h3>
+        <table class="content-table">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+                <th>Return Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Name</td>
+                <td>The person's name. It may contain a middle name.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>The person's age in years.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>Job</td>
+                <td>The person's job title.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>The person's date of birth in the standard date format.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Income in USD</td>
+                <td>The person's income in US dollars.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>Credit score</td>
+                <td>The person's credit score as a number.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>Credit Card Number</td>
+                <td>The person's credit card number.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>The person's address.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>The person's phone number.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>The person's email address.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>The person's gender, can be "Male", "Female", or "Other".</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Has Degree</td>
+                <td>Whether or not the person has a degree.</td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>Nationality</td>
+                <td>The name of the country the person is from.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Country Code</td>
+                <td>The ISO 3166-1 alpha-2 country code of the country the person is from.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Blood Type</td>
+                <td>The person's blood type.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>The person's username.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Religion</td>
+                <td>The person's religion.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Political Leaning</td>
+                <td>The person's leaning, with -1 being 100% left leaning, and 1 being 100% right leaning.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>GPA (Grade Point Average)</td>
+                <td>The person's GPA on a 4 point scale.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>IPv4 Address</td>
+                <td>The person's IPv4 address</td>
+                <td>string</td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Address (Object):</h3>
+        <table class="content-table">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+                <th>Return Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Address</td>
+                <td>The address of person as a string.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>Nationality</td>
+                <td>The name of the country the location is in.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Country Code</td>
+                <td>The ISO 3166-1 alpha-2 country code of the country the location is in.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>The phone number of the location.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>IPv4 Address</td>
+                <td>The IPv4 address of the location.</td>
+                <td>string</td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Location (String):</h3>
+        <table class="content-table">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Street Address</td>
+                <td>The street address of the person.</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>The city the person lives in.</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>The state the person lives in.</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>The country the person lives in.</td>
+            </tr>
+            <tr>
+                <td>Zip Code</td>
+                <td>The zip code of the person's location.</td>
+            </tr>
+        </table>
+    </section>
+</main>
+<footer>
+    <p><span>&copy;</span> 2023 SpecialistSteak</p>
+    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
+    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+</footer>
+</body>
+</html>

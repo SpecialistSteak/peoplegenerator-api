@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles2.css">
+    <link rel="icon" href ="../static/Logo.svg">
+</head>
+<body class="fullpage">
+<header>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/">Overview</a></li>
+            <li><a href="http://localhost:8080/get-started">Get Started</a></li>
+            <li><a href="http://localhost:8080/endpoints">Endpoints</a></li>
+            <li><a href="http://localhost:8080/fields">Fields</a></li>
+            <li><a href="http://localhost:8080/about">About</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="endpoints">
+        <h1 style="text-align: left;" class="title">Endpoints</h1>
+        <p>Below is a table with each type of endpoint, with columns signifying the type of request, the endpoint address, a description of the endpoint, as well as the type of object it will return.</p>
+        <hr class="separator">
+        <table class="content-table">
+            <thead>
+            <tr>
+                <th>Type of Request</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+                <th>Return Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/</code></td>
+                <td>Returns a single person.</td>
+                <td>JSON Object</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/{NumberPeople}</code></td>
+                <td>Returns a list of up to 50,000 people. Note that generating 50,000 people may take up to 7000ms before returning a response.</td>
+                <td>Array of JSON Objects</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/gender/</code></td>
+                <td>Returns the gender of a person, with the possible values being "Male", "Female", and "Other".</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/name/</code></td>
+                <td>Returns the name of a person. It is generally in the format "firstname lastname" but may also include no more than one middle name.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/email/</code></td>
+                <td>Returns the email address of a person. There are a variety of formats and email providers this will pick from.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/age/</code></td>
+                <td>Returns the age of a person.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/job/</code></td>
+                <td>Returns the job of a person.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/dateofbirth/</code></td>
+                <td>Returns the date of birth of a person.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/income/</code></td>
+                <td>Returns the income of a person in USD.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/creditscore/</code></td>
+                <td>Returns the credit score of a person.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/creditcardnumber/</code></td>
+                <td>Returns the credit card number of a person. Can be null depending on the person's age.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/maritalstatus/</code></td>
+                <td>Returns the marital status of a person.</td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/haschildren/</code></td>
+                <td>Returns whether a person has children or not.</td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/height/</code></td>
+                <td>Returns the height of a person in centimeters.</td>
+                <td>integer</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/weight/</code></td>
+                <td>Returns the weight of a person in kilograms.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/eyecolor/</code></td>
+                <td>Returns the eye color of a person.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/hasdegree/</code></td>
+                <td>Returns whether a person has a degree.</td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/gpa/</code></td>
+                <td>Returns a person's GPA on a 4.0 scale.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/bloodtype/</code></td>
+                <td>Returns a person's blood type.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/username/</code></td>
+                <td>Returns a person's generated username.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/religion/</code></td>
+                <td>Returns a person's religion.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/person/politicalleaning/</code></td>
+                <td>Returns a person's political leaning.</td>
+                <td>double</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><code>/api/location/</code></td>
+                <td>Returns a random address object. See more information at <a href="http://localhost:8080/fields">fields</a>.</td>
+                <td>Address Object</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td><code>/api/feedback/</code></td>
+                <td>Submits feedback about the API to me, the developer. Make sure that the form is set to " feedback "
+                    and the value of it is set to what your feedback is.
+                </td>
+                <td>none</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p><span>&copy;</span> 2023 SpecialistSteak</p>
+    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
+    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+</footer>
+</body>
+</html>

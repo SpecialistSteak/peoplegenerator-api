@@ -1,0 +1,452 @@
+package org.specialiststeak.peoplegenerator.person.peoplelist;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.github.javafaker.Address;
+import com.github.javafaker.Faker;
+import com.github.javafaker.PhoneNumber;
+import com.opencsv.exceptions.CsvValidationException;
+import lombok.Data;
+import org.json.JSONException;
+import org.specialiststeak.peoplegenerator.person.utils.AddressGenerator;
+import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.*;
+
+import static org.specialiststeak.peoplegenerator.person.TEMP.TimeTester.runCode;
+import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
+import static org.specialiststeak.peoplegenerator.person.utils.AddressGenerator.loadLists;
+import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
+import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
+
+@Data
+public class Person {
+    private String name;
+    private int age;
+    private String job;
+    private String dateOfBirth;
+    private int incomeInUSD;
+    private int creditScore;
+    private String creditCardNumber;
+    private boolean married;
+    private boolean hasChildren;
+    private double height;
+    private double weight;
+    private String eyeColor;
+    private String address;
+    private String phoneNumber;
+    private String email;
+    private String gender;
+    private boolean hasDegree;
+    private String nationality;
+    private double GPA;
+    private String countryCode;
+    private String IPAddress;
+    private String bloodType;
+    private String username;
+    private double politicalLeaning;
+    private String religion;
+
+    //useragent ex: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0
+    //zodiac sign (based on date of birth)
+    //MAC address (based on IP address)
+    //credit card expiration date (within 5 years, 5% chance of being expired)
+
+    public Person() {
+        generateLine();
+        generateLine2();
+        this.gender = generateGender();
+        this.name = generateName();
+        this.email = generateEmail();
+        this.age = generateAge();
+        this.job = generateJob();
+        this.dateOfBirth = generateDateOfBirth();
+        this.incomeInUSD = generateIncome();
+        this.creditScore = generateCreditScore();
+        this.creditCardNumber = generateCreditCardNumber();
+        this.married = generateMarried();
+        this.hasChildren = generateHasChildren();
+        this.height = generateHeight();
+        this.weight = generateWeight();
+        this.eyeColor = generateEyeColor();
+        this.hasDegree = generateHasDegree();
+        this.GPA = generateGPA();
+        this.countryCode = generateCountryCode();
+        this.nationality = generateNationality();
+        this.phoneNumber = generatePhoneNumber();
+        this.IPAddress = generateIPAddress();
+        this.address = generateAddress();
+        this.bloodType = generateBloodType();
+        this.username = generateUsername();
+        this.politicalLeaning = generatePoliticalLeaning();
+        this.religion = generateReligion();
+    }
+
+    //TODO: Somethign odd is happening with this program...
+    public static void main(String[] args) throws IOException, JSONException, ParseException, CsvValidationException {
+        startup();
+        personTimeTest();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        startup();
+        System.out.println("0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0");
+        personTimeTest();
+        for(int i = 0; i< 1000; ++i){
+            System.out.println(new Person());
+        }
+    }
+
+    public static void personTimeTest() {
+        Person p1;
+        long startTime = System.nanoTime();
+        p1 = new Person();
+        System.out.println("Time taken: " + (System.nanoTime() - startTime) + "ns");
+        System.out.println("Gender:             " + runCode(Person::generateGender));
+        System.out.println("Name:               " + runCode(p1::generateName));
+        System.out.println("Email:              " + runCode(p1::generateEmail));
+        System.out.println("Age:                " + runCode(Person::generateAge));
+        System.out.println("Job:                " + runCode(p1::generateJob));
+        System.out.println("Date of Birth:      " + runCode(p1::generateDateOfBirth));
+        System.out.println("Income:             " + runCode(p1::generateIncome));
+        System.out.println("Credit Score:       " + runCode(p1::generateCreditScore));
+        System.out.println("Credit Card Number: " + runCode(p1::generateCreditCardNumber));
+        System.out.println("Married:            " + runCode(p1::generateMarried));
+        System.out.println("Has Children:       " + runCode(p1::generateHasChildren));
+        System.out.println("Height:             " + runCode(p1::generateHeight));
+        System.out.println("Weight:             " + runCode(p1::generateWeight));
+        System.out.println("Eye Color:          " + runCode(Person::generateEyeColor));
+        System.out.println("Has Degree:         " + runCode(Person::generateHasDegree));
+        System.out.println("GPA:                " + runCode(Person::generateGPA));
+        System.out.println("Country Code:       " + runCode(Person::generateCountryCode));
+        System.out.println("Nationality:        " + runCode(Person::generateNationality));
+        System.out.println("Phone Number:       " + runCode(Person::generatePhoneNumber));
+        System.out.println("IP Address:         " + runCode(Person::generateIPAddress));
+        System.out.println("Address:            " + runCode(Person::generateAddress));
+        System.out.println("Blood Type:         " + runCode(Person::generateBloodType));
+        System.out.println("Username:           " + runCode(p1::generateUsername));
+        System.out.println("Political Leaning:  " + runCode(Person::generatePoliticalLeaning));
+        System.out.println("Religion:           " + runCode(p1::generateReligion));
+    }
+
+    public String generateName() {
+        StringBuilder name = new StringBuilder();
+        switch (getGender()) {
+            case "Male" ->{
+                name.append(maleFirstNames[random.nextInt(maleFirstNames.length)]);
+            }
+            case "Female" -> {
+                name.append(femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
+            }
+            default -> {
+                name.append(random.nextDouble() > 0.5 ?
+                        maleFirstNames[random.nextInt(maleFirstNames.length)] :
+                        femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
+            }
+        }
+        name.append(" ");
+        name.append(lastNames[random.nextInt(lastNames.length)]);
+        return name.toString();
+    }
+
+    public static String generateBloodType() {
+        return bloodTypes[getRandomIndexBasedOnProbabilities(bloodTypeProbabilities)];
+    }
+
+    public static int generateAge() {
+        AgeRange ageRange = ageRanges[getRandomIndexBasedOnProbabilities(ageDistribution)];
+        return random.nextInt(ageRange.getHigh() - ageRange.getLow()) + ageRange.getLow();
+    }
+
+    public String generateDateOfBirth() {
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.YEAR, -getAge());
+        calendar.add(Calendar.MONTH, random.nextInt(12));
+        calendar.add(Calendar.DAY_OF_MONTH, random.nextInt(365));
+        calendar.add(Calendar.HOUR_OF_DAY, random.nextInt(24));
+        calendar.add(Calendar.MINUTE, random.nextInt(60));
+        calendar.add(Calendar.SECOND, random.nextInt(60));
+        return String.valueOf(calendar.getTime());
+    }
+
+    public String generateJob() {
+        if (getAge() < 18) {
+            return "Student";
+        } else if (getAge() > 69) {
+            return "Retired";
+        } else {
+            return jobs[selectedLine];
+        }
+    }
+
+    public int generateIncome() {
+        return getAge() < 20 ? 0 : salaries[selectedLine] + random.nextInt(10000);
+    }
+
+    public int generateCreditScore() {
+        if(getAge() < 18) {
+            return 0;
+        }
+        int salary = salaries[random.nextInt(salaries.length)];
+
+        if(salary >= 100000) {
+            return 800 + randomNegativify(random.nextInt(50));
+        } else if(salary >= 80000) {
+            return 750 + randomNegativify(random.nextInt(50));
+        } else if(salary >= 60000) {
+            return 600 + randomNegativify(random.nextInt(50));
+        } else if(salary >= 40000) {
+            return 500 + randomNegativify(random.nextInt(50));
+        } else if(salary >= 20000) {
+            return 400 + randomNegativify(random.nextInt(50));
+        } else {
+            return 550 + randomNegativify(random.nextInt(50));
+        }
+    }
+
+    public String generateCreditCardNumber() {
+        return getAge() >= 18 ? faker.finance().creditCard() : null;
+    }
+
+    public boolean generateMarried() {
+        if (age < 16) {
+            return false;
+        }
+        if (age <= 18) {
+            return random.nextDouble() < 0.05;
+        }
+        return random.nextDouble() < 0.5;
+    }
+
+    public boolean generateHasChildren() {
+        int randomNumber = random.nextInt(100);
+
+        if (age < 20) {
+            return randomNumber < 1;
+        } else if (age < 40) {
+            if (married) {
+                return randomNumber < 70;
+            }
+            return randomNumber < 10;
+        }
+        return randomNumber < 60;
+    }
+
+    public double generateHeight() {
+        int[][] heights;
+        if (gender.equals("Male")) {
+            heights = MALE_HEIGHTS;
+        } else if (gender.equals("Female")) {
+            heights = FEMALE_HEIGHTS;
+        } else {
+            heights = OTHER_HEIGHTS;
+        }
+        int randomValue = random.nextInt(100);
+        int cumulativeProb = 0;
+        for (int[] height : heights) {
+            cumulativeProb += height[1];
+            if (randomValue < cumulativeProb) {
+                return Math.round(((height[0] + random.nextDouble()) * 10) / 10);
+            }
+        }
+        return 0;
+    }
+
+    public double generateWeight() {
+        int[][] weights;
+        if (gender.equals("Male")) {
+            weights = MALE_WEIGHTS;
+        } else if (gender.equals("Female")) {
+            weights = FEMALE_WEIGHTS;
+        } else {
+            weights = OTHER_WEIGHTS;
+        }
+        int randomValue = random.nextInt(100);
+        int cumulativeProb = 0;
+        for (int[] weight : weights) {
+            cumulativeProb += weight[1];
+            if (randomValue < cumulativeProb) {
+                return Math.round((weight[0] + (random.nextDouble() - 0.49) * 2) * 10.0) / 10.0;
+            }
+        }
+        return 0;
+    }
+
+    public  static String generateEyeColor() {
+        return eyeColors[getRandomIndexBasedOnProbabilities(eyeColorProbabilities)];
+    }
+
+    public String generateEmail() {
+        String[] nameArray = getName().split(" ");
+        try {
+            return makeEmail(nameArray[0], nameArray[1]);
+        } catch (Exception e) {
+            return makeEmail("John", "Doe");
+        }
+    }
+
+    public static String generateGender() {
+        int rand = random.nextInt(100);
+        return switch (rand / 49) {
+            case 0 -> "Male";
+            case 1 -> "Female";
+            default -> "Other";
+        };
+    }
+
+    public static boolean generateHasDegree() {
+        double rand = random.nextDouble();
+        double averagePercentageOfPeopleWithDegrees = 0.65;
+        double gpa = generateGPA();
+        if (gpa >= 2.0) {
+            return rand < averagePercentageOfPeopleWithDegrees;
+        } else {
+            return rand < averagePercentageOfPeopleWithDegrees / 2.0;
+        }
+    }
+
+    public static double generateGPA() {
+        int rand = random.nextInt(100);
+        double gpa;
+        if (rand < 5) {
+            gpa = plusOrMinus(4.0);
+        } else if (rand < 10) {
+            gpa = plusOrMinus(3.8);
+        } else if (rand < 16) {
+            gpa = plusOrMinus(3.6);
+        } else if (rand < 25) {
+            gpa = plusOrMinus(3.2);
+        } else if (rand < 40) {
+            gpa = plusOrMinus(3.0);
+        } else if (rand < 60) {
+            gpa = plusOrMinus(2.8);
+        } else if (rand < 85) {
+            gpa = plusOrMinus(2.0);
+        } else if (rand < 90) {
+            gpa = plusOrMinus(1.0);
+        } else if (rand < 98) {
+            gpa = 0.0;
+        } else {
+            gpa = random.nextDouble() * 4.0;
+        }
+        gpa = Math.round(gpa * 10.0) / 10.0;
+        if (gpa > 4.0) {
+            gpa = 4.0;
+        } else if (gpa < 0.0) {
+            gpa = 0.0;
+        }
+        return gpa;
+    }
+
+    public static String generatePhoneNumber() {
+        int countryNumLength = countryNumberLength[selectedLine2];
+        StringBuilder phoneNumber = new StringBuilder();
+        phoneNumber.append("+");
+        phoneNumber.append(countryNumber[selectedLine2]);
+        phoneNumber.append(" ");
+
+        for (int i = 0; i < countryNumLength; i++) {
+            phoneNumber.append(random.nextInt(10));
+        }
+
+        return phoneNumber.toString();
+    }
+
+    public static String generatePhoneNumber(Locale locale) {
+        PhoneNumber phoneNumber = new Faker(locale).phoneNumber();
+        return phoneNumber.cellPhone();
+    }
+    
+    public static String generateAddress() {
+        return new AddressGenerator().toString();
+    }
+
+    public static String generateIPAddress() {
+        return random.nextInt(256) + "." +
+                random.nextInt(256) + "." +
+                random.nextInt(256) + "." +
+                random.nextInt(256);
+    }
+
+    public static String generateNationality() {
+        return countries[selectedLine2];
+    }
+
+    public static String generateCountryCode() {
+        return countryCodes[selectedLine2];
+    }
+
+    public String generateUsername() {
+        return name.substring(0, name.indexOf(" ")).toLowerCase().trim() + random.nextInt(100);
+    }
+
+    public static double generatePoliticalLeaning() {
+        double leaning = random.nextGaussian() * STANDARD_DEVIATION + AVERAGE_LEANING;
+        if (leaning > 1.0) {
+            leaning = 1.0;
+        } else if (leaning < -1.0) {
+            leaning = -1.0;
+        }
+        return Math.round(leaning * 100.0) / 100.0;
+    }
+
+    public String generateReligion() {
+        int rand = random.nextInt(100);
+
+        switch (getNationality()) {
+            case "United States", "Mexico", "Brazil", "Canada", "Italy", "France", "Spain",
+                    "United Kingdom", "Poland", "Argentina", "Australia", "Germany", "Colombia",
+                    "South Africa", "Philippines", "Russia", "Chile", "Peru", "Ukraine",
+                    "Netherlands", "Belgium", "Switzerland", "Portugal", "Sweden", "Austria",
+                    "Norway", "Ireland", "Denmark", "Finland", "Greece", "Czech Republic",
+                    "Romania", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia", "Slovenia",
+                    "Latvia", "Estonia", "Lithuania", "Iceland" -> {
+                if (rand < 37) {
+                    return "Christian";
+                }
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+            case "Israel" -> {
+                if (rand < 74) {
+                    return "Jewish";
+                }
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+            case "Indonesia", "Pakistan", "Bangladesh", "Nigeria", "Egypt" -> {
+                if (rand < 85) {
+                    return "Muslim";
+                }
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+            case "India", "Sri Lanka", "Nepal", "Bhutan" -> {
+                if (rand < 75) {
+                    return "Hindu";
+                }
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+            case "Iran" -> {
+                if (rand < 95) {
+                    return "Muslim";
+                }
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+            default -> {
+                return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

@@ -1,0 +1,1209 @@
+Construction Worker,45000
+Teacher,55000
+Nurse,65000
+Doctor,115000
+Software Engineer,105000
+Police Officer,65000
+Firefighter,70000
+Lawyer,115000
+Accountant,75000
+Marketing Manager,90000
+Human Resources Manager,85000
+IT Manager,105000
+Engineer,95000
+Graphic Designer,75000
+Journalist,65000
+Web Developer,85000
+Social Media Manager,80000
+Content Creator,65000
+Event Planner,75000
+Copywriter,70000
+Photographer,60000
+Videographer,65000
+Bartender,30000
+Waiter,25000
+Chef,55000
+Delivery Driver,35000
+Truck Driver,50000
+Taxi Driver,35000
+Uber Driver,30000
+Lyft Driver,30000
+Store Manager,50000
+Cashier,25000
+Stock Clerk,28000
+Customer Service Representative,35000
+Sales Associate,35000
+Real Estate Agent,65000
+Broker,100000
+Investment Banker,120000
+Financial Advisor,80000
+Insurance Agent,65000
+Bookkeeper,45000
+CPA,85000
+Auditor,75000
+Cost Estimator,65000
+Product Manager,95000
+Project Manager,85000
+Operations Manager,80000
+Quality Control Manager,75000
+Supply Chain Manager,80000
+Procurement Manager,75000
+Production Manager,75000
+Facilities Manager,65000
+Maintenance Manager,65000
+Environmental Health and Safety Manager,75000
+Human Resources Specialist,60000
+Recruiter,65000
+Talent Acquisition Specialist,70000
+Training and Development Specialist,65000
+Compensation and Benefits Specialist,60000
+Employee Relations Specialist,65000
+Workforce Management Specialist,65000
+Dental Hygienist,70000
+Dental Assistant,35000
+Physical Therapist,85000
+Physical Therapy Assistant,55000
+Occupational Therapist,80000
+Occupational Therapy Assistant,55000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Radiation Therapist,75000
+Diagnostic Medical Sonographer,65000
+MRI Technologist,70000
+Radiologic Technologist,60000
+Nuclear Medicine Technologist,75000
+Medical Laboratory Technician,50000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinary Technician,35000
+Veterinarian,85000
+Office Manager,60000
+Receptionist,30000
+Personal Assistant,45000
+Executive Assistant,55000
+Data Entry Clerk,28000
+File Clerk,25000
+Medical Assistant,35000
+Yoga Instructor,35000
+Fitness Trainer,45000
+Youtube Star,1000000
+Instagram Influencer,1000000
+Movie Star,10000000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Unemployed,10000
+Retired,10000
+Priest,50000
+Athletic Coach,60000
+Sports Broadcaster,75000
+Sports Agent,100000
+Professional Athlete,1000000
+Music Teacher,50000
+Music Producer,75000
+Music Composer,80000
+Singer,100000
+Musician,50000
+DJ,50000
+Dance Teacher,50000
+Choreographer,75000
+Dancer,50000
+Actor,100000
+Director,200000
+Screenwriter,75000
+Cinematographer,60000
+Film Editor,65000
+Art Director,75000
+Set Designer,60000
+Costume Designer,60000
+Makeup Artist,50000
+Hair Stylist,50000
+Photoshop Expert,65000
+Illustrator,65000
+Animator,75000
+Game Designer,85000
+Game Programmer,95000
+Game Artist,75000
+E-Sports Player,500000
+E-Sports Coach,75000
+E-Sports Commentator,75000
+Librarian,50000
+Archivist,55000
+Museum Curator,65000
+Tour Guide,30000
+Travel Agent,40000
+Pilot,100000
+Air Traffic Controller,70000
+Astronaut,200000
+Mechanic,50000
+Automotive Technician,35000
+Aircraft Mechanic,65000
+Marine Mechanic,60000
+Electrician,50000
+Plumber,50000
+Carpenter,50000
+Roofer,50000
+Landscaper,35000
+Gardener,30000
+Arborist,50000
+Fisherman,35000
+Farmer,35000
+Rancher,50000
+Veterinarian Technician,35000
+Zookeeper,40000
+Animal Trainer,50000
+Wildlife Biologist,60000
+Marine Biologist,65000
+Ecologist,65000
+Geologist,75000
+Meteorologist,75000
+Oceanographer,80000
+Astronomer,85000
+Chemist,75000
+Biochemist,85000
+Physicist,95000
+Mathematician,100000
+Statistician,75000
+Actuary,90000
+Computer Scientist,100000
+Data Scientist,100000
+Artificial Intelligence Expert,120000
+Machine Learning Engineer,110000
+Neuroscientist,100000
+Geneticist,100000
+Microbiologist,80000
+Epidemiologist,85000
+Medical Researcher,100000
+Pharmacist,85000
+Pharmaceutical Sales Representative,75000
+Paramedic,45000
+Emergency Medical Technician (EMT),40000
+Fire Marshal,65000
+Search and Rescue Worker,50000
+Military Officer,75000
+Military Enlisted Member,45000
+Construction Manager,95000
+Civil Engineer,95000
+Mechanical Engineer,95000
+Electrical Engineer,95000
+Chemical Engineer,95000
+Environmental Engineer,95000
+Industrial Engineer,85000
+Architect,95000
+Landscape Architect,75000
+Urban Planner,75000
+Geologist,75000
+Meteorologist,75000
+Astronomer,75000
+Biomedical Engineer,100000
+Aerospace Engineer,100000
+Naval Architect,85000
+Mining Engineer,85000
+Petroleum Engineer,100000
+Computer Hardware Engineer,100000
+Computer Network Architect,85000
+Database Administrator,85000
+Systems Analyst,85000
+Network and Computer Systems Administrator,85000
+Cybersecurity Specialist,90000
+Mobile Application Developer,85000
+Game Developer,85000
+Computer Support Specialist,65000
+Computer Systems Manager,95000
+Telecommunications Specialist,65000
+Telecommunications Manager,85000
+Actuary,95000
+Mathematician,85000
+Statistician,75000
+Data Scientist,100000
+Business Intelligence Analyst,80000
+Data Analyst,75000
+Operations Research Analyst,80000
+Market Research Analyst,75000
+Research and Development Manager,95000
+Science Teacher,65000
+Math Teacher,65000
+English Teacher,65000
+History Teacher,65000
+Special Education Teacher,65000
+Physical Education Teacher,65000
+Music Teacher,65000
+Art Teacher,65000
+Dance Teacher,65000
+Librarian,55000
+School Counselor,65000
+School Psychologist,75000
+College Professor,85000
+University Professor,100000
+Preschool Teacher,35000
+Childcare Provider,30000
+Babysitter,15000
+Social Worker,65000
+Psychologist,85000
+Therapist,75000
+Psychiatrist,115000
+Mental Health Counselor,65000
+Marriage and Family Therapist,65000
+Rehabilitation Counselor,65000
+Substance Abuse Counselor,65000
+Chaplain,50000
+Minister,50000
+Rabbi,50000
+Imam,50000
+Pastor,50000
+Hindu Priest,50000
+Buddhist Monk,50000
+Fashion Designer,75000
+Interior Designer,75000
+Land Surveyor,65000
+Cartographer,65000
+GIS Specialist,65000
+Geographic Information Systems Manager,75000
+Survey Researcher,65000
+Pollster,65000
+Demographer,65000
+Market Survey Director,85000
+Marketing Research Director,95000
+Advertising Manager,85000
+Public Relations Manager,85000
+Media Planner,65000
+Media Buyer,65000
+Event Marketing Manager,75000
+Product Marketing Manager,85000
+Brand Manager,85000
+Promotions Manager,75000
+Market Segmentation Manager,85000
+Customer Relationship Manager,75000
+Customer Service Manager,65000
+Call Center Manager,65000
+Collections Manager,65000
+Sales Manager,95000
+Wedding Planner,75000
+Interior Designer,75000
+Landscape Designer,65000
+Architect,95000
+Urban Planner,75000
+Surveyor,65000
+Civil Engineer,85000
+Environmental Engineer,85000
+Mechanical Engineer,95000
+Electrical Engineer,95000
+Chemical Engineer,105000
+Petroleum Engineer,120000
+Aerospace Engineer,110000
+Biomedical Engineer,105000
+Agricultural Engineer,75000
+Industrial Designer,75000
+Automotive Engineer,95000
+Marine Engineer,90000
+Naval Architect,85000
+Environmental Scientist,65000
+Geologist,75000
+Meteorologist,75000
+Astronomer,85000
+Zoologist,65000
+Biochemist,85000
+Botanist,65000
+Microbiologist,75000
+Neuroscientist,85000
+Psychologist,75000
+Sociologist,65000
+Anthropologist,65000
+Archaeologist,65000
+Economist,85000
+Statistician,75000
+Actuary,90000
+Mathematician,85000
+Computer Scientist,105000
+Information Systems Manager,95000
+Database Administrator,85000
+Network and Computer Systems Administrator,75000
+Computer Support Specialist,65000
+Cybersecurity Specialist,85000
+Artificial Intelligence Developer,120000
+Robotics Engineer,105000
+Big Data Analyst,85000
+Data Scientist,95000
+Business Intelligence Analyst,85000
+Data Analyst,75000
+Machine Learning Engineer,105000
+Data Engineer,85000
+Data Warehouse Specialist,75000
+Business System Analyst,75000
+Business Process Analyst,75000
+Management Consultant,125000
+Supply Chain Analyst,65000
+Logistics Analyst,65000
+Market Research Analyst,65000
+Operations Research Analyst,75000
+Risk Management Specialist,75000
+Financial Analyst,75000
+Quantitative Analyst,85000
+Credit Analyst,65000
+Budget Analyst,65000
+Investment Analyst,75000
+Actuary,90000
+Credit Manager,75000
+Risk Manager,80000
+Compliance Manager,75000
+Audit Manager,80000
+Tax Manager,85000
+Treasury Manager,80000
+Payroll Manager,65000
+Procurement Manager,75000
+Supply Chain Manager,80000
+Project Manager,85000
+Operations Manager,80000
+Manufacturing Manager,80000
+Quality Control Manager,75000
+Facilities Manager,65000
+Maintenance Manager,65000
+Environmental Health and Safety Manager,75000
+Human Resources Manager,85000
+Training and Development Manager,75000
+Compensation and Benefits Manager,75000
+Employee Relations Manager,75000
+Talent Management Manager,75000
+Diversity and Inclusion Manager,75000
+Recruiting Manager,75000
+Employee Engagement Manager,75000
+Performance Management Manager,75000
+Organizational Development Manager,75000
+Succession Planning Manager,75000
+Workforce Planning Manager,75000
+Construction Worker,45000
+Teacher,55000
+Nurse,65000
+Doctor,115000
+Software Engineer,105000
+Police Officer,65000
+Firefighter,70000
+Lawyer,115000
+Accountant,75000
+Marketing Manager,90000
+Human Resources Manager,85000
+IT Manager,105000
+Engineer,95000
+Graphic Designer,75000
+Journalist,65000
+Web Developer,85000
+Social Media Manager,80000
+Content Creator,65000
+Event Planner,75000
+Copywriter,70000
+Photographer,60000
+Videographer,65000
+Bartender,30000
+Waiter,25000
+Chef,55000
+Delivery Driver,35000
+Truck Driver,50000
+Taxi Driver,35000
+Uber Driver,30000
+Lyft Driver,30000
+Store Manager,50000
+Cashier,25000
+Stock Clerk,28000
+Customer Service Representative,35000
+Sales Associate,35000
+Real Estate Agent,65000
+Broker,100000
+Investment Banker,120000
+Financial Advisor,80000
+Insurance Agent,65000
+Bookkeeper,45000
+CPA,85000
+Auditor,75000
+Cost Estimator,65000
+Product Manager,95000
+Project Manager,85000
+Operations Manager,80000
+Quality Control Manager,75000
+Supply Chain Manager,80000
+Procurement Manager,75000
+Production Manager,75000
+Facilities Manager,65000
+Maintenance Manager,65000
+Environmental Health and Safety Manager,75000
+Human Resources Specialist,60000
+Recruiter,65000
+Talent Acquisition Specialist,70000
+Training and Development Specialist,65000
+Compensation and Benefits Specialist,60000
+Employee Relations Specialist,65000
+Workforce Management Specialist,65000
+Dental Hygienist,70000
+Dental Assistant,35000
+Physical Therapist,85000
+Physical Therapy Assistant,55000
+Occupational Therapist,80000
+Occupational Therapy Assistant,55000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Radiation Therapist,75000
+Diagnostic Medical Sonographer,65000
+MRI Technologist,70000
+Radiologic Technologist,60000
+Nuclear Medicine Technologist,75000
+Medical Laboratory Technician,50000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinary Technician,35000
+Veterinarian,85000
+Office Manager,60000
+Receptionist,30000
+Personal Assistant,45000
+Executive Assistant,55000
+Data Entry Clerk,28000
+File Clerk,25000
+Medical Assistant,35000
+Yoga Instructor,35000
+Fitness Trainer,45000
+Unemployed,10000
+Retired,10000
+Priest,50000
+Factory Worker,35000
+Janitor,25000
+Maid,25000
+Maintenance Technician,40000
+Construction Worker,45000
+Roofer,55000
+Plumber,65000
+Electrician,75000
+Carpenter,60000
+Painter,45000
+Mason,50000
+Welder,55000
+Landscaper,35000
+Groundskeeper,30000
+Janitor,30000
+Housekeeper,30000
+Maid,30000
+Food Service Worker,25000
+Dishwasher,22000
+Busser,20000
+Line Cook,30000
+Prep Cook,25000
+Baker,30000
+Farm Worker,25000
+Rancher,40000
+Fisherman,35000
+Lumberjack,45000
+Miner,50000
+Oil Rig Worker,65000
+Factory Worker,35000
+Assembly Line Worker,30000
+Machine Operator,40000
+Weaving Machine Operator,30000
+Textile Worker,30000
+Sewing Machine Operator,30000
+Knitter,30000
+Paper Mill Worker,30000
+Packaging and Filling Machine Operator,30000
+Garbage Collector,30000
+Street Sweeper,25000
+Sanitation Worker,25000
+Recycling Sorter,25000
+Tree Trimmer,35000
+Commercial Diver,50000
+Marine Biologist,60000
+Park Ranger,45000
+Wildlife Biologist,60000
+Forest Ranger,50000
+Environmental Scientist,65000
+Geologist,70000
+Zoologist,65000
+Agricultural Worker,30000
+Agricultural Technician,35000
+Agricultural Engineer,65000
+Greenhouse Worker,25000
+Nursery Worker,25000
+Animal Caretaker,25000
+Pet Groomer,30000
+Kennel Worker,30000
+Rodeo Cowboy,40000
+Ranch Hand,30000
+Stable Hand,25000
+Horse Trainer,45000
+Jockey,30000
+Racehorse Trainer,50000
+Ferry Boat Captain,50000
+Tugboat Captain,55000
+Boat Mechanic,45000
+Aircraft Mechanic,65000
+Air Traffic Controller,75000
+Pilot,100000
+Flight Attendant,45000
+Ground Crew,35000
+Airline Dispatcher,55000
+Air Cargo Specialist,45000
+Mechanic,45000
+Automotive Technician,40000
+Diesel Mechanic,50000
+Transportation Manager,65000
+Dispatcher,45000
+Trucking Terminal Manager,55000
+Freight Broker,55000
+Logistics Coordinator,45000
+Import/Export Specialist,55000
+Customs Broker,60000
+Supply Chain Analyst,65000
+Distribution Center Manager,55000
+Inventory Manager,55000
+Purchasing Agent,55000
+Buyer,55000
+Retail Sales Associate,30000
+Retail Store Manager,45000
+Retail Buyer,55000
+Department Store Manager,55000
+Department Manager,45000
+Mall Manager,60000
+Marketing Coordinator,45000
+Advertising Sales Representative,45000
+Market Research Analyst,55000
+Plumber,55000
+Electrician,60000
+Carpenter,55000
+Mason,55000
+Painter,40000
+Roofing Contractor,55000
+Landscaper,40000
+Lawn Care Specialist,30000
+Tree Trimmer,40000
+Janitor,30000
+Housekeeper,30000
+Caregiver,30000
+Babysitter,25000
+Pet Sitter,20000
+Dog Walker,20000
+Veterinary Assistant,30000
+Auto Mechanic,45000
+Heavy Equipment Operator,55000
+Forklift Operator,40000
+Warehouse Worker,35000
+Factory Worker,35000
+Assembler,30000
+Packager,25000
+Machine Operator,40000
+Food Service Worker,25000
+Fast Food Worker,20000
+Line Cook,30000
+Baker,30000
+Food Stylist,35000
+Chef's Assistant,30000
+Kitchen Manager,45000
+Waitstaff,25000
+Dishwasher,20000
+Sanitation Worker,25000
+Agricultural Worker,20000
+Farm Hand,20000
+Fisherman,30000
+Lumberjack,40000
+Miner,50000
+Oil Rig Worker,60000
+Driller,55000
+Welder,40000
+Pipefitter,40000
+Metal Worker,40000
+Construction Equipment Operator,45000
+Road Worker,40000
+Street Cleaner,25000
+Garbage Collector,25000
+Landfill Operator,30000
+Recycling Worker,25000
+Logistics Coordinator,45000
+Dispatcher,35000
+Freight Broker,45000
+Trucking Company Manager,55000
+Delivery Route Planner,35000
+Postal Worker,35000
+Mail Carrier,30000
+Courier,30000
+Mover,30000
+Crane Operator,55000
+Excavator Operator,55000
+Heavy Equipment Mechanic,45000
+Security Guard,30000
+Private Investigator,40000
+Locksmith,35000
+Security Systems Technician,45000
+Fire Alarm Technician,45000
+Traffic Controller,25000
+Bouncer,25000
+Security Systems Salesperson,45000
+Data Center Technician,55000
+Network Administrator,60000
+Systems Administrator,60000
+Cloud Engineer,70000
+Database Administrator,60000
+DevOps Engineer,70000
+Cybersecurity Specialist,70000
+IT Support Specialist,45000
+IT Help Desk Technician,35000
+Webmaster,55000
+E-commerce Manager,60000
+Search Engine Optimizer,55000
+Social Media Advertising Manager,55000
+Online Advertising Manager,60000
+Search Engine Marketing Manager,55000
+Content Marketing Manager,55000
+Affiliate Marketing Manager,55000
+Video Game Designer,65000
+Video Game Animator,55000
+Video Game Programmer,65000
+Video Game Tester,35000
+Augmented Reality Developer,65000
+Virtual Reality Developer,65000
+Mobile Application Developer,65000
+Artificial Intelligence Developer,70000
+Federal Agent,95000
+Secret Service Agent,85000
+Border Patrol Agent,75000
+Customs and Border Protection Officer,75000
+Transportation Security Administration (TSA) Officer,60000
+Coast Guard Officer,70000
+Fish and Wildlife Service Agent,70000
+Park Ranger,60000
+Forest Ranger,60000
+Wildland Firefighter,60000
+State Trooper,70000
+Highway Patrol Officer,70000
+Sheriff Deputy,70000
+Corrections Officer,60000
+Parole Officer,65000
+Probation Officer,65000
+Chief Executive Officer (CEO),200000
+Chief Operating Officer (COO),175000
+Chief Financial Officer (CFO),200000
+Chief Marketing Officer (CMO),175000
+Chief Information Officer (CIO),200000
+Chief Human Resources Officer (CHRO),175000
+Chief Supply Chain Officer (CSCO),175000
+Chief Technology Officer (CTO),200000
+Chief Legal Officer (CLO),200000
+Chief Accounting Officer (CAO),175000
+Chief Communications Officer (CCO),175000
+Chief Diversity Officer (CDO),175000
+Chief Procurement Officer (CPO),175000
+Chief Innovation Officer (CINO),175000
+General Counsel,175000
+Corporate Counsel,135000
+Assistant General Counsel,110000
+Legal Secretary,45000
+Paralegal,65000
+Legal Assistant,50000
+Private Investigator,55000
+Detective,70000
+Crime Scene Investigator,65000
+Forensic Scientist,75000
+Forensic Accountant,85000
+Forensic Psychologist,90000
+Forensic Anthropologist,85000
+Forensic Pathologist,135000
+Geologist,95000
+Astronomer,90000
+Meteorologist,75000
+Oceanographer,85000
+Atmospheric Scientist,85000
+Environmental Scientist,75000
+Chemist,75000
+Biochemist,85000
+Biological Scientist,85000
+Physicist,95000
+Mathematician,95000
+Computer Scientist,105000
+Statistician,85000
+Actuary,115000
+Agricultural Scientist,75000
+Food Scientist,75000
+Zoologist,75000
+Wildlife Biologist,75000
+Marine Biologist,85000
+Botanist,75000
+Ecologist,75000
+Microbiologist,85000
+Biomedical Engineer,105000
+Industrial Designer,75000
+Architect,95000
+Landscape Architect,75000
+Urban Planner,75000
+Civil Engineer,95000
+Environmental Engineer,95000
+Mechanical Engineer,105000
+Electrical Engineer,105000
+Aerospace Engineer,115000
+Materials Scientist,95000
+Nanotechnologist,105000
+Structural Engineer,95000
+Surveyor,65000
+Cartographer,65000
+Geographic Information System (GIS) Specialist,65000
+Remote Sensing Scientist,75000
+Energy Engineer,85000
+Wind Energy Engineer,95000
+Solar Energy Engineer,95000
+Nuclear Engineer,105000
+Petroleum Engineer,115000
+Mining Engineer,95000
+C-Suite Executive,300000
+President of a Company,400000
+President of a Country,400000
+Ambassador,200000
+Diplomat,175000
+Intelligence Agent,135000
+Federal Agent,95000
+Border Patrol Agent,75000
+Customs and Border Protection Officer,70000
+Air Marshal,85000
+Secret Service Agent,85000
+NASA Scientist,100000
+Environmental Scientist,65000
+Geologist,75000
+Meteorologist,65000
+Astronomer,85000
+Archaeologist,65000
+Anthropologist,65000
+Zoologist,75000
+Botanist,65000
+Wildlife Biologist,75000
+Marine Biologist,75000
+Veterinarian (Wildlife),85000
+Agricultural Scientist,75000
+Food Scientist,75000
+Biomedical Scientist,95000
+Chemist,85000
+Biochemist,95000
+Pharmacist,105000
+Pharmaceutical Sales Representative,75000
+Microbiologist,85000
+Epidemiologist,85000
+Public Health Inspector,65000
+Health and Safety Inspector,65000
+Fire Marshal,70000
+Building Code Inspector,65000
+Civil Engineer (Design),85000
+Civil Engineer (Construction),75000
+Structural Engineer,95000
+Mechanical Engineer,95000
+Electrical Engineer,95000
+Environmental Engineer,85000
+Petroleum Engineer,110000
+Mining Engineer,100000
+Geotechnical Engineer,85000
+Agricultural Engineer,75000
+Industrial Engineer,95000
+Manufacturing Engineer,85000
+Aerospace Engineer,100000
+Automotive Engineer,95000
+Naval Architect,85000
+Materials Engineer,85000
+Nuclear Engineer,100000
+Sound Engineer,75000
+Lighting Engineer,75000
+Special Effects Engineer,75000
+Film Director,150000
+Film Writer,100000
+Film Editor,85000
+Cinematographer,85000
+Art Director (Film),100000
+Costume Designer (Film),75000
+Makeup Artist (Film),60000
+Stunt Coordinator,75000
+Gaffer,55000
+Best Boy,55000
+Grip,45000
+Production Sound Mixer,75000
+Boom Operator,55000
+Key Grip,55000
+Best Boy Electric,55000
+Swing Gang,45000
+Special Effects Technician,55000
+Pyrotechnician,55000
+Stunt Double,65000
+Broadcast Journalist,75000
+Sports Journalist,65000
+Political Journalist,75000
+Investigative Journalist,75000
+Foreign Correspondent,75000
+Science Journalist,65000
+Medical Journalist,65000
+Tech Journalist,65000
+Business Journalist,65000
+Entertainment Journalist,65000
+Lifestyle Journalist,65000
+Food Journalist,65000
+Travel Journalist,65000
+Fashion Journalist,65000
+Photographic Journalist,65000
+Music Journalist,65000
+Environmental Journalist,65000
+Arts Journalist,65000
+Retail Sales Associate,30000
+Customer Service Representative,35000
+Food Service Worker,25000
+Janitor,35000
+Teacher,55000
+Nurse,65000
+Construction Worker,45000
+Truck Driver,50000
+Administrative Assistant,45000
+Warehouse Worker,35000
+Software Engineer,105000
+Police Officer,65000
+Firefighter,70000
+Doctor,115000
+Accountant,75000
+Cashier,25000
+Delivery Driver,35000
+Receptionist,30000
+Manager,65000
+Electrician,55000
+Plumber,55000
+Mechanic,55000
+Landscaper,35000
+Security Guard,35000
+Security Systems Specialist,55000
+Data Analyst,75000
+Human Resources Manager,85000
+Marketing Manager,90000
+Project Manager,85000
+Product Manager,95000
+Graphic Designer,75000
+Journalist,65000
+Web Developer,85000
+IT Manager,105000
+Office Manager,60000
+Engineer,95000
+Lawyer,115000
+Investment Banker,120000
+Financial Advisor,80000
+Broker,100000
+Real Estate Agent,65000
+Insurance Agent,65000
+Bookkeeper,45000
+Auditor,75000
+CPA,85000
+Cost Estimator,65000
+Store Manager,50000
+Stock Clerk,28000
+Human Resources Specialist,60000
+Recruiter,65000
+Compensation and Benefits Specialist,60000
+Talent Acquisition Specialist,70000
+Training and Development Specialist,65000
+Employee Relations Specialist,65000
+Workforce Management Specialist,65000
+Dental Hygienist,70000
+Dental Assistant,35000
+Physical Therapist,85000
+Physical Therapy Assistant,55000
+Occupational Therapist,80000
+Occupational Therapy Assistant,55000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Diagnostic Medical Sonographer,65000
+MRI Technologist,70000
+Radiologic Technologist,60000
+Nuclear Medicine Technologist,75000
+Medical Laboratory Technician,50000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinary Technician,35000
+Veterinarian,85000
+Personal Assistant,45000
+Executive Assistant,55000
+Data Entry Clerk,28000
+File Clerk,25000
+Medical Assistant,35000
+Yoga Instructor,35000
+Fitness Trainer,45000
+Agricultural Worker,35000
+Cleaner,30000
+Construction Worker,45000
+Delivery Driver,35000
+Factory Worker,40000
+Fast Food Worker,25000
+Food Service Worker,28000
+Healthcare Aide,30000
+Home Health Aide,35000
+Janitor,30000
+Maintenance Worker,40000
+Office Clerk,30000
+Retail Sales Associate,30000
+Security Guard,35000
+Telephone Sales Representative,30000
+Truck Driver,50000
+Waitress/Waiter,25000
+Childcare Worker,30000
+Housekeeper,30000
+Nurse's Aide,35000
+Teacher's Aide,30000
+Medical Receptionist,30000
+Dental Assistant,35000
+Physical Therapy Aide,35000
+Pharmacy Technician,40000
+Certified Nursing Assistant (CNA),35000
+Licensed Practical Nurse (LPN),45000
+Home Caregiver,35000
+Lab Technician,40000
+Radiologic Technician,60000
+Veterinary Technician,35000
+Occupational Therapy Aide,35000
+Assistant Manager,45000
+Bookkeeper,45000
+Sales Associate,35000
+Customer Service Representative,35000
+Accountant,75000
+Human Resources Specialist,60000
+Project Manager,85000
+Receptionist,30000
+Office Manager,60000
+Secretary,35000
+Data Entry Clerk,28000
+Personal Assistant,45000
+Facilities Manager,65000
+Environmental Health and Safety Manager,75000
+Quality Control Manager,75000
+Supply Chain Manager,80000
+Procurement Manager,75000
+Maintenance Manager,65000
+Taxi Driver,35000
+Uber Driver,30000
+Lyft Driver,30000
+Delivery Driver,35000
+Cook,35000
+Bartender,30000
+Fast Food Cook,28000
+Chef,55000
+Police Officer,65000
+Firefighter,70000
+Nurse,65000
+Physical Therapist,85000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Diagnostic Medical Sonographer,65000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinarian,85000
+Copywriter,70000
+Content Creator,65000
+Event Planner,75000
+Graphic Designer,75000
+Journalist,65000
+Photographer,60000
+Social Media Manager,80000
+Web Developer,85000
+Marketing Manager,90000
+Software Engineer,105000
+IT Manager,105000
+Engineer,95000
+Product Manager,95000
+Investment Banker,120000
+Financial Advisor,80000
+Insurance Agent,65000
+Real Estate Agent,65000
+Broker,100000
+Lawyer,115000
+Doctor,115000
+Teacher,55000
+Yoga Instructor,35000
+Fitness Trainer,45000
+Construction Worker,45000
+Teacher,55000
+Nurse,65000
+Doctor,115000
+Software Engineer,105000
+Police Officer,65000
+Firefighter,70000
+Lawyer,115000
+Accountant,75000
+Marketing Manager,90000
+Human Resources Manager,85000
+IT Manager,105000
+Engineer,95000
+Graphic Designer,75000
+Journalist,65000
+Web Developer,85000
+Social Media Manager,80000
+Content Creator,65000
+Event Planner,75000
+Copywriter,70000
+Photographer,60000
+Videographer,65000
+Bartender,30000
+Waiter,25000
+Chef,55000
+Delivery Driver,35000
+Truck Driver,50000
+Taxi Driver,35000
+Uber Driver,30000
+Lyft Driver,30000
+Store Manager,50000
+Cashier,25000
+Stock Clerk,28000
+Customer Service Representative,35000
+Sales Associate,35000
+Real Estate Agent,65000
+Broker,100000
+Investment Banker,120000
+Financial Advisor,80000
+Insurance Agent,65000
+Bookkeeper,45000
+CPA,85000
+Auditor,75000
+Cost Estimator,65000
+Product Manager,95000
+Project Manager,85000
+Operations Manager,80000
+Quality Control Manager,75000
+Supply Chain Manager,80000
+Procurement Manager,75000
+Production Manager,75000
+Facilities Manager,65000
+Maintenance Manager,65000
+Environmental Health and Safety Manager,75000
+Human Resources Specialist,60000
+Recruiter,65000
+Talent Acquisition Specialist,70000
+Training and Development Specialist,65000
+Compensation and Benefits Specialist,60000
+Employee Relations Specialist,65000
+Workforce Management Specialist,65000
+Dental Hygienist,70000
+Dental Assistant,35000
+Physical Therapist,85000
+Physical Therapy Assistant,55000
+Occupational Therapist,80000
+Occupational Therapy Assistant,55000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Radiation Therapist,75000
+Diagnostic Medical Sonographer,65000
+MRI Technologist,70000
+Radiologic Technologist,60000
+Nuclear Medicine Technologist,75000
+Medical Laboratory Technician,50000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinary Technician,35000
+Veterinarian,85000
+Office Manager,60000
+Receptionist,30000
+Personal Assistant,45000
+Executive Assistant,55000
+Data Entry Clerk,28000
+Factory Worker,35000
+Office Worker,45000
+Cleaner,25000
+Janitor,25000
+Security Guard,35000
+Store Associate,28000
+Retail Worker,28000
+Food Service Worker,25000
+Customer Service Agent,28000
+Telephone Salesperson,35000
+Carpenter,45000
+Electrician,55000
+Plumber,55000
+Construction Worker,45000
+Factory Worker,35000
+Office Worker,35000
+Retail Sales Associate,25000
+Security Guard,30000
+Janitor,30000
+Cleaner,25000
+Landscaper,35000
+Maid,25000
+Waitress,25000
+Waiter,25000
+Bartender,30000
+Chef,55000
+Delivery Driver,35000
+Truck Driver,50000
+Taxi Driver,35000
+Uber Driver,30000
+Lyft Driver,30000
+Cashier,25000
+Stock Clerk,28000
+Customer Service Representative,35000
+Call Center Agent,30000
+Telemarketer,25000
+Data Entry Clerk,28000
+File Clerk,25000
+Medical Assistant,35000
+Nurse,65000
+Doctor,115000
+Teacher,55000
+Police Officer,65000
+Firefighter,70000
+Lawyer,115000
+Accountant,75000
+Marketing Manager,90000
+Human Resources Manager,85000
+IT Manager,105000
+Engineer,95000
+Graphic Designer,75000
+Journalist,65000
+Web Developer,85000
+Social Media Manager,80000
+Content Creator,65000
+Event Planner,75000
+Copywriter,70000
+Photographer,60000
+Videographer,65000
+Store Manager,50000
+Real Estate Agent,65000
+Broker,100000
+Investment Banker,120000
+Financial Advisor,80000
+Insurance Agent,65000
+Bookkeeper,45000
+CPA,85000
+Auditor,75000
+Cost Estimator,65000
+Product Manager,95000
+Project Manager,85000
+Operations Manager,80000
+Quality Control Manager,75000
+Supply Chain Manager,80000
+Procurement Manager,75000
+Production Manager,75000
+Facilities Manager,65000
+Maintenance Manager,65000
+Environmental Health and Safety Manager,75000
+Human Resources Specialist,60000
+Recruiter,65000
+Talent Acquisition Specialist,70000
+Training and Development Specialist,65000
+Compensation and Benefits Specialist,60000
+Employee Relations Specialist,65000
+Workforce Management Specialist,65000
+Dental Hygienist,70000
+Dental Assistant,35000
+Physical Therapist,85000
+Physical Therapy Assistant,55000
+Occupational Therapist,80000
+Occupational Therapy Assistant,55000
+Speech-Language Pathologist,80000
+Audiologist,85000
+Radiation Therapist,75000
+Diagnostic Medical Sonographer,65000
+MRI Technologist,70000
+Radiologic Technologist,60000
+Nuclear Medicine Technologist,75000
+Medical Laboratory Technician,50000
+Medical Technologist,60000
+Phlebotomist,35000
+Veterinary Technician,35000
+Veterinarian,85000
+Office Manager,60000
+Receptionist,30000
+Personal Assistant,45000
+Executive Assistant,55000
+Yoga Instructor,35000
+School Counselor,65000
+Fitness Trainer,45000
