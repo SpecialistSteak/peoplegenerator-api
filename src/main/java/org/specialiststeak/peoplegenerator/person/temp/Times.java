@@ -1,7 +1,10 @@
-package org.specialiststeak.peoplegenerator.person.TEMP;
+package org.specialiststeak.peoplegenerator.person.temp;
 
-import static org.specialiststeak.peoplegenerator.person.TEMP.TimeUnits.staticConvertTime;
+import lombok.Data;
 
+import static org.specialiststeak.peoplegenerator.person.temp.TimeUnits.staticConvertTime;
+
+@Data
 public class Times{
     private final long startTime;
     private long endTime;
@@ -12,10 +15,8 @@ public class Times{
      * Creates a new Times object.
      *
      * @param startTime   The start time in nanoseconds.
-     * @param endTime     The end time in nanoseconds.
-     * @param elapsedTime The elapsed time in nanoseconds.
      */
-    public Times(long startTime, long endTime, long elapsedTime) {
+    public Times(long startTime) {
         this.startTime = startTime;
         this.endTime = 0;
         this.elapsedTime = 0;
@@ -26,11 +27,9 @@ public class Times{
      * Creates a new Times object.
      *
      * @param startTime   The start time in nanoseconds.
-     * @param endTime     The end time in nanoseconds.
-     * @param elapsedTime The elapsed time in nanoseconds.
      * @param title       The title of the times object.
      */
-    public Times(long startTime, long endTime, long elapsedTime, String title) {
+    public Times(long startTime, String title) {
         this.startTime = startTime;
         this.endTime = 0;
         this.elapsedTime = 0;
@@ -88,20 +87,6 @@ public class Times{
      */
     public void setElapsedTime(long l) {
         this.elapsedTime = l;
-    }
-
-    /**
-     * @return the end time in nanoseconds
-     */
-    public long getElapsedTime() {
-        return elapsedTime;
-    }
-
-    /**
-     * Sets the title of the times object
-     */
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     /**

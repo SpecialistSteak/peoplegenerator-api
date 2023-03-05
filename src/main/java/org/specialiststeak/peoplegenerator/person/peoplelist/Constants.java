@@ -1,10 +1,12 @@
 package org.specialiststeak.peoplegenerator.person.peoplelist;
 
 import com.github.javafaker.Faker;
+import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 
 import java.util.*;
 
+@UtilityClass
 public final class Constants {
 
     public static List<String>[] CITY = new ArrayList[192];

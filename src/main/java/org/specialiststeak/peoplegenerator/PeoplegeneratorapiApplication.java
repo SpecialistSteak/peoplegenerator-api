@@ -30,7 +30,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @SpringBootApplication
 @Controller
 @EnableWebMvc
-public class Main {
+public class PeoplegeneratorapiApplication {
 
     @GetMapping("/")
     public String index() {
@@ -63,7 +63,7 @@ public class Main {
         System.out.print("\033[H\033[2J");
         System.out.flush();
         startup();
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(PeoplegeneratorapiApplication.class, args);
     }
 
     @GetMapping("/api/person/")

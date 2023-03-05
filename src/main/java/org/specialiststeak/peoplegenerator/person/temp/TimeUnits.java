@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.TEMP;
+package org.specialiststeak.peoplegenerator.person.temp;
 
 public enum TimeUnits {
     NANOSECONDS,
@@ -12,6 +12,7 @@ public enum TimeUnits {
     /**
      * @return the string representation of the time unit.
      */
+    @Override
     public String toString() {
         return switch (this) {
             case NANOSECONDS -> "ns";
@@ -21,35 +22,6 @@ public enum TimeUnits {
             case MINUTES -> "m";
             case HOURS -> "h";
             case DAYS -> "d";
-        };
-    }
-
-    /**
-     * Converts nanoseconds to milliseconds.
-     *
-     * @param ns the nanoseconds to convert.
-     * @return the milliseconds.
-     */
-    public static long nsToSec(long ns) {
-        return ns / 1000000000;
-    }
-
-    /**
-     * Converts nanoseconds to other time units.
-     *
-     * @param ns        the nanoseconds to convert.
-     * @return the converted time.
-     */
-    public long convertTime(long ns) {
-        return switch (this) {
-            case NANOSECONDS -> ns;
-            case MICROSECONDS -> ns / 1000;
-            case MILLISECONDS -> ns / 1000000;
-            case SECONDS -> ns / 1000000000;
-            case MINUTES -> ns / 60000000000L;
-            case HOURS -> ns / 3600000000000L;
-            case DAYS -> ns / 86400000000000L;
-            default -> 0;
         };
     }
 

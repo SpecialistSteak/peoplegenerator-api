@@ -3,23 +3,19 @@ package org.specialiststeak.peoplegenerator.person.peoplelist;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.github.javafaker.Address;
 import com.github.javafaker.Faker;
 import com.github.javafaker.PhoneNumber;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.Data;
-import org.json.JSONException;
 import org.specialiststeak.peoplegenerator.person.utils.AddressGenerator;
 import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Locale;
 
-import static org.specialiststeak.peoplegenerator.person.TEMP.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
-import static org.specialiststeak.peoplegenerator.person.utils.AddressGenerator.loadLists;
-import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
+import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
@@ -55,6 +51,8 @@ public class Person {
     //MAC address (based on IP address)
     //credit card expiration date (within 5 years, 5% chance of being expired)
 
+    private static final String FEMALE = "Female";
+
     public Person() {
         generateLine();
         generateLine2();
@@ -85,8 +83,7 @@ public class Person {
         this.religion = generateReligion();
     }
 
-    //TODO: Somethign odd is happening with this program...
-    public static void main(String[] args) throws IOException, JSONException, ParseException, CsvValidationException {
+    public static void main(String[] args) throws IOException, CsvValidationException {
         startup();
         personTimeTest();
         System.out.print("\033[H\033[2J");
@@ -94,7 +91,7 @@ public class Person {
         startup();
         System.out.println("0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0");
         personTimeTest();
-        for(int i = 0; i< 1000; ++i){
+        for (int i = 0; i < 1000; ++i) {
             System.out.println(new Person());
         }
     }
@@ -132,23 +129,17 @@ public class Person {
     }
 
     public String generateName() {
-        StringBuilder name = new StringBuilder();
+        StringBuilder n = new StringBuilder();
         switch (getGender()) {
-            case "Male" ->{
-                name.append(maleFirstNames[random.nextInt(maleFirstNames.length)]);
-            }
-            case "Female" -> {
-                name.append(femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
-            }
-            default -> {
-                name.append(random.nextDouble() > 0.5 ?
-                        maleFirstNames[random.nextInt(maleFirstNames.length)] :
-                        femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
-            }
+            case "Male" -> n.append(maleFirstNames[random.nextInt(maleFirstNames.length)]);
+            case FEMALE -> n.append(femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
+            default -> n.append(random.nextDouble() > 0.5 ?
+                    maleFirstNames[random.nextInt(maleFirstNames.length)] :
+                    femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
         }
-        name.append(" ");
-        name.append(lastNames[random.nextInt(lastNames.length)]);
-        return name.toString();
+        n.append(" ");
+        n.append(lastNames[random.nextInt(lastNames.length)]);
+        return n.toString();
     }
 
     public static String generateBloodType() {
@@ -187,20 +178,20 @@ public class Person {
     }
 
     public int generateCreditScore() {
-        if(getAge() < 18) {
+        if (getAge() < 18) {
             return 0;
         }
         int salary = salaries[random.nextInt(salaries.length)];
 
-        if(salary >= 100000) {
+        if (salary >= 100000) {
             return 800 + randomNegativify(random.nextInt(50));
-        } else if(salary >= 80000) {
+        } else if (salary >= 80000) {
             return 750 + randomNegativify(random.nextInt(50));
-        } else if(salary >= 60000) {
+        } else if (salary >= 60000) {
             return 600 + randomNegativify(random.nextInt(50));
-        } else if(salary >= 40000) {
+        } else if (salary >= 40000) {
             return 500 + randomNegativify(random.nextInt(50));
-        } else if(salary >= 20000) {
+        } else if (salary >= 20000) {
             return 400 + randomNegativify(random.nextInt(50));
         } else {
             return 550 + randomNegativify(random.nextInt(50));
@@ -239,17 +230,17 @@ public class Person {
         int[][] heights;
         if (gender.equals("Male")) {
             heights = MALE_HEIGHTS;
-        } else if (gender.equals("Female")) {
+        } else if (gender.equals(FEMALE)) {
             heights = FEMALE_HEIGHTS;
         } else {
             heights = OTHER_HEIGHTS;
         }
         int randomValue = random.nextInt(100);
         int cumulativeProb = 0;
-        for (int[] height : heights) {
-            cumulativeProb += height[1];
+        for (int[] h : heights) {
+            cumulativeProb += h[1];
             if (randomValue < cumulativeProb) {
-                return Math.round(((height[0] + random.nextDouble()) * 10) / 10);
+                return Math.round(((h[0] + random.nextDouble()) * 10) / 10);
             }
         }
         return 0;
@@ -259,23 +250,23 @@ public class Person {
         int[][] weights;
         if (gender.equals("Male")) {
             weights = MALE_WEIGHTS;
-        } else if (gender.equals("Female")) {
+        } else if (gender.equals(FEMALE)) {
             weights = FEMALE_WEIGHTS;
         } else {
             weights = OTHER_WEIGHTS;
         }
         int randomValue = random.nextInt(100);
         int cumulativeProb = 0;
-        for (int[] weight : weights) {
-            cumulativeProb += weight[1];
+        for (int[] w : weights) {
+            cumulativeProb += w[1];
             if (randomValue < cumulativeProb) {
-                return Math.round((weight[0] + (random.nextDouble() - 0.49) * 2) * 10.0) / 10.0;
+                return Math.round((w[0] + (random.nextDouble() - 0.49) * 2) * 10.0) / 10.0;
             }
         }
         return 0;
     }
 
-    public  static String generateEyeColor() {
+    public static String generateEyeColor() {
         return eyeColors[getRandomIndexBasedOnProbabilities(eyeColorProbabilities)];
     }
 
@@ -292,7 +283,7 @@ public class Person {
         int rand = random.nextInt(100);
         return switch (rand / 49) {
             case 0 -> "Male";
-            case 1 -> "Female";
+            case 1 -> FEMALE;
             default -> "Other";
         };
     }
@@ -355,11 +346,6 @@ public class Person {
         return phoneNumber.toString();
     }
 
-    public static String generatePhoneNumber(Locale locale) {
-        PhoneNumber phoneNumber = new Faker(locale).phoneNumber();
-        return phoneNumber.cellPhone();
-    }
-    
     public static String generateAddress() {
         return new AddressGenerator().toString();
     }
@@ -445,8 +431,8 @@ public class Person {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             return objectMapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            return "Error";
         }
     }
 }

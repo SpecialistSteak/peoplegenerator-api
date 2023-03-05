@@ -2,6 +2,7 @@ package org.specialiststeak.peoplegenerator.person.utils;
 
 import com.github.javafaker.Faker;
 import com.opencsv.exceptions.CsvValidationException;
+import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.AddressGenerator.loadLists;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 
-
+@UtilityClass
 public final class Utils {
 
     public static void main(String[] args) throws IOException {

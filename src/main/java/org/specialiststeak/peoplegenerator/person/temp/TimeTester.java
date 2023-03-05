@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.TEMP;
+package org.specialiststeak.peoplegenerator.person.temp;
 
 import java.util.ArrayList;
 
@@ -24,29 +24,6 @@ public class TimeTester {
         return (end - start);
     }
 
-    public static String compareTimes(Runnable code1, Runnable code2, int numIterations) {
-        long total1 = 0;
-        long total2 = 0;
-        //Warm up the code:
-        for (int i = 0; i < 5; i++) {
-            runCode(code1);
-            runCode(code2);
-        }
-        for (int i = 0; i < numIterations; i++) {
-            total1 += runCode(code1);
-            total2 += runCode(code2);
-        }
-        long avg1 = total1 / numIterations;
-        long avg2 = total2 / numIterations;
-        if (avg1 > avg2) {
-            return "Code 2 was faster by " + (avg1 - avg2) + "ns on average";
-        } else if (avg2 > avg1) {
-            return "Code 1 was faster by " + (avg2 - avg1) + "ns on average";
-        } else {
-            return "Both codes took the same amount of time on average";
-        }
-    }
-
     public void runTimedCode(Runnable code) {
         this.startTimer();
         code.run();
@@ -63,7 +40,7 @@ public class TimeTester {
      * Starts a timer with no title.
      */
     public void startTimer() {
-        times.add(new Times(System.nanoTime(), 0, 0));
+        times.add(new Times(System.nanoTime()));
     }
 
     /**
@@ -72,7 +49,7 @@ public class TimeTester {
      * @param title The title of the timer.
      */
     public void startTimer(String title) {
-        times.add(new Times(System.nanoTime(), 0, 0, title));
+        times.add(new Times(System.nanoTime(), title));
     }
 
     /**
