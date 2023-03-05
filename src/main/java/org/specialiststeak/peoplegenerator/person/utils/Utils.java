@@ -5,13 +5,9 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.AddressGenerator.loadLists;
@@ -23,10 +19,10 @@ public final class Utils {
     public static void main(String[] args) throws IOException {
         loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/JOBS_SALARIES.csv");
         loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
-        LoadALLNames();
+        loadAllNames();
         jobs = nullRemove(jobs);
         lastNames = nullRemove(lastNames);
-        for(int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             System.out.println(makeEmail("John", "Doe"));
         }
     }
@@ -38,7 +34,7 @@ public final class Utils {
         loadLists();
         //Warmup the JVM
         for (int i = 0; i < 5000; i++) {
-            try{
+            try {
                 rateLimit(null, 1);
             } catch (Exception ignored) {
             }
@@ -52,7 +48,7 @@ public final class Utils {
         }
         selectedLine = 0;
         selectedLine2 = 0;
-        LoadALLNames();
+        loadAllNames();
         lastNames = duplicateRemove(lastNames);
         System.out.println("Warmup took " + (System.nanoTime() - start) / 1_000_000 + "ms");
     }
@@ -70,14 +66,10 @@ public final class Utils {
 
     private static <T> T[] nullRemove(T[] arr) {
         List<T> list = new ArrayList<>(Arrays.asList(arr));
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == null) {
-                list.remove(i);
-                i--;
-            }
-        }
+        list.removeIf(Objects::isNull);
         return list.toArray(Arrays.copyOf(arr, list.size()));
     }
+
 
     public static int getRandomIndexBasedOnProbabilities(int[] array) {
         int cumulativeSum = 0;
@@ -93,31 +85,31 @@ public final class Utils {
     /**
      * @throws IOException if the file cannot be found
      */
-    public static void LoadALLNames() throws IOException {
-        File fem = new File("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/FemaleNames.csv");
-        File mal = new File("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/MaleNames.csv");
-        File sur = new File("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/Surnames.csv");
-        var reader = new BufferedReader(new FileReader(fem));
-        var reader2 = new BufferedReader(new FileReader(mal));
-        var reader3 = new BufferedReader(new FileReader(sur));
+    public static void loadAllNames() throws IOException {
         femaleFirstNames = new String[50000];
         maleFirstNames = new String[50000];
         lastNames = new String[50000];
         String line;
         int index = 0;
-        while ((line = reader.readLine()) != null) {
-            femaleFirstNames[index] = line;
-            index++;
+        try (var reader = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/FemaleNames.csv"))) {
+            while ((line = reader.readLine()) != null) {
+                femaleFirstNames[index] = line;
+                index++;
+            }
         }
         index = 0;
-        while ((line = reader2.readLine()) != null) {
-            maleFirstNames[index] = line;
-            index++;
+        try (var reader2 = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/MaleNames.csv"))) {
+            while ((line = reader2.readLine()) != null) {
+                maleFirstNames[index] = line;
+                index++;
+            }
         }
         index = 0;
-        while ((line = reader3.readLine()) != null) {
-            lastNames[index] = line;
-            index++;
+        try (var reader3 = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/Surnames.csv"))) {
+            while ((line = reader3.readLine()) != null) {
+                lastNames[index] = line;
+                index++;
+            }
         }
     }
 
@@ -125,9 +117,7 @@ public final class Utils {
      * @param fileName the name of the file to load
      */
     public static void loadCountryCSV(String fileName) {
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(fileName));
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             int index = 0;
             while ((line = br.readLine()) != null) {
@@ -140,22 +130,13 @@ public final class Utils {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         Locale locale;
         for (int i = 0; i < fakers.length; i++) {
             locale = new Locale.Builder().setLanguage("en").setRegion(countryCodes[i]).build();
             fakers[i] = new Faker(locale);
-//            addresses[i] = fakers[i].address();
-            String postalCode = fakers[i].address().zipCode();
-            String cityName = fakers[i].address().cityName();
+            fakers[i].address().zipCode();
+            fakers[i].address().cityName();
         }
     }
 
@@ -163,21 +144,17 @@ public final class Utils {
      * @param fileName name of the file to load
      */
     public static void loadJobsCSV(String fileName) {
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(fileName));
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line = reader.readLine();
             int numJobs = 0;
             while (line != null) {
                 numJobs++;
                 line = reader.readLine();
             }
-            reader.close();
 
             jobs = new String[numJobs];
             salaries = new int[numJobs];
 
-            reader = new BufferedReader(new FileReader(fileName));
             line = reader.readLine();
             int index = 0;
             while (line != null) {
@@ -187,7 +164,8 @@ public final class Utils {
                 index++;
                 line = reader.readLine();
             }
-        } catch (Exception ignored) {
+        } catch (Exception s) {
+            s.printStackTrace();
         }
     }
 
@@ -211,6 +189,7 @@ public final class Utils {
             return number + random.nextDouble() / 2;
         }
     }
+
     public static int randomNegativify(int number) {
         return random.nextDouble() > 0.5 ? number : -number;
     }
@@ -220,7 +199,9 @@ public final class Utils {
      * @return a random item from the list
      */
     public static String randomItemFromList(List<String> list) {
-        if (list.isEmpty()) return null;
+        if (list.isEmpty()) {
+            return null;
+        }
         return list.get(random.nextInt(list.size()));
     }
 
