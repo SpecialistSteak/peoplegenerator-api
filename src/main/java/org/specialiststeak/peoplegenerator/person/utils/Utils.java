@@ -50,6 +50,7 @@ public final class Utils {
         }
         selectedLine = 0;
         selectedLine2 = 0;
+        loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/data/JOBS_SALARIES.csv");
         loadAllNames();
         lastNames = duplicateRemove(lastNames);
         System.out.println("Warmup took " + (System.nanoTime() - start) / 1_000_000 + "ms");
@@ -156,8 +157,12 @@ public final class Utils {
 
             jobs = new String[numJobs];
             salaries = new int[numJobs];
+        } catch (Exception s) {
+            s.printStackTrace();
+        }
 
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line = reader.readLine();
             int index = 0;
             while (line != null) {
                 String[] parts = line.split(",");
