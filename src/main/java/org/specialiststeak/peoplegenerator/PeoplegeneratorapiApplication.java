@@ -11,15 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +25,13 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @Controller
 @EnableWebMvc
 public class PeoplegeneratorapiApplication {
+
+    public static void main(String[] args) throws IOException, CsvValidationException {
+        startup();
+        personTimeTest();
+        startup();
+        SpringApplication.run(PeoplegeneratorapiApplication.class, args);
+    }
 
     @GetMapping("/")
     public String index() {
@@ -55,15 +56,6 @@ public class PeoplegeneratorapiApplication {
     @GetMapping("/about")
     public String about() {
         return "about";
-    }
-
-    public static void main(String[] args) throws IOException, CsvValidationException {
-        startup();
-        personTimeTest();
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        startup();
-        SpringApplication.run(PeoplegeneratorapiApplication.class, args);
     }
 
     @GetMapping("/api/person/")
@@ -227,14 +219,14 @@ public class PeoplegeneratorapiApplication {
 
     @GetMapping("/api/person/politicalleaning/")
     @ResponseBody
-    public double politicalleaning(HttpServletRequest request) {
+    public double politicalLeaning(HttpServletRequest request) {
         rateLimit(request, 1);
         return new Person().getPoliticalLeaning();
     }
 
     @GetMapping("/api/location/")
     @ResponseBody
-    public Address getAddress(HttpServletRequest request) {
+    public Address generateAddress(HttpServletRequest request) {
         rateLimit(request, 2);
         Person p = new Person();
         return new Address(
@@ -246,34 +238,32 @@ public class PeoplegeneratorapiApplication {
         );
     }
 
-    @PostMapping("/api/feedback/")
-    @ResponseBody
-    public ResponseEntity<String> feedback(@RequestParam String feedback, HttpServletRequest request) {
-        rateLimit(request, 10);
-        if (feedback.length() > 1000) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Feedback is too long");
-        }
-
-        feedback = feedback.replaceAll("\\\\", "");
-        try {
-            Path filePath = Paths.get("feedback.txt");
-            if (Files.notExists(filePath)) {
-                Files.createFile(filePath);
-            }
-
-            byte[] feedbackBytes = feedback.getBytes(StandardCharsets.UTF_8);
-            if (Files.size(filePath) + feedbackBytes.length > 100000) {
-                throw new ResponseStatusException(HttpStatus.PAYLOAD_TOO_LARGE,
-                        "Feedback file is too large. Please try again in a few days.");
-            }
-
-            Files.write(filePath, feedbackBytes, StandardOpenOption.APPEND);
-            Files.write(filePath, "\n".getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to write feedback to file");
-        }
-
-        return ResponseEntity.ok("Thank you for your feedback!");
-    }
+//    @PostMapping("/api/feedback/")
+//    @ResponseBody
+//    public void createIssue(String feedback) {
+//        try {
+//            // Set up GitHub credentials
+//            GitHub github = new GitHubBuilder().withOAuthToken("YOUR_TOKEN").build();
+//
+//            // Set up the repository to create the issue in
+//            GHRepository repo = github.getRepository("USERNAME/REPOSITORY_NAME");
+//
+//            // Check feedback for malicious content or swear words
+//            if (containsMaliciousContent(feedback)) {
+//                throw new Exception("Feedback contains malicious content");
+//            }
+//
+//            // Create the issue
+//            GHIssueBuilder builder = repo.createIssue("New feedback");
+//            builder.body(feedback);
+//            builder.create();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // Handle any errors here
+//        }
+//    }
+//
+//    private boolean containsMaliciousContent(String feedback) {
+//
+//    }
 }
