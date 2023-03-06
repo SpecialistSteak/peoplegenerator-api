@@ -11,8 +11,9 @@ public final class Constants {
 
     public static List<String>[] CITY = new ArrayList[192];
     public static List<String>[] SUBCOUNTRY = new ArrayList[192];
-    public static List<String>[] GEONAMEID = new ArrayList[192];
+    public static List<Integer>[] GEONAMEID = new ArrayList[192];
     public static List<String> EMPTY_LIST = new ArrayList<>();
+    public static List<Integer> EMPTY_LIST_OF_INTEGERS = new ArrayList<>();
 
     public static Calendar calendar = Calendar.getInstance();
     public static Date date = new Date();

@@ -1,18 +1,14 @@
 package org.specialiststeak.peoplegenerator.person.peoplelist;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.Data;
-import org.specialiststeak.peoplegenerator.person.utils.AddressGenerator;
+import org.specialiststeak.peoplegenerator.person.utils.Address;
 import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Locale;
 
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
@@ -32,19 +28,15 @@ public class Person {
     private double height;
     private double weight;
     private String eyeColor;
-    private String address;
-    private String phoneNumber;
     private String email;
     private String gender;
     private boolean hasDegree;
-    private String nationality;
     private double GPA;
-    private String countryCode;
-    private String IPAddress;
     private String bloodType;
     private String username;
     private double politicalLeaning;
     private String religion;
+    private Address address;
 
     //useragent ex: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0
     //zodiac sign (based on date of birth)
@@ -72,11 +64,7 @@ public class Person {
         this.eyeColor = generateEyeColor();
         this.hasDegree = generateHasDegree();
         this.GPA = generateGPA();
-        this.countryCode = generateCountryCode();
-        this.nationality = generateNationality();
-        this.phoneNumber = generatePhoneNumber();
-        this.IPAddress = generateIPAddress();
-        this.address = generateAddress();
+        this.address = new Address();
         this.bloodType = generateBloodType();
         this.username = generateUsername();
         this.politicalLeaning = generatePoliticalLeaning();
@@ -117,11 +105,6 @@ public class Person {
         System.out.println("Eye Color:          " + runCode(Person::generateEyeColor));
         System.out.println("Has Degree:         " + runCode(Person::generateHasDegree));
         System.out.println("GPA:                " + runCode(Person::generateGPA));
-        System.out.println("Country Code:       " + runCode(Person::generateCountryCode));
-        System.out.println("Nationality:        " + runCode(Person::generateNationality));
-        System.out.println("Phone Number:       " + runCode(Person::generatePhoneNumber));
-        System.out.println("IP Address:         " + runCode(Person::generateIPAddress));
-        System.out.println("Address:            " + runCode(Person::generateAddress));
         System.out.println("Blood Type:         " + runCode(Person::generateBloodType));
         System.out.println("Username:           " + runCode(p1::generateUsername));
         System.out.println("Political Leaning:  " + runCode(Person::generatePoliticalLeaning));
@@ -133,9 +116,8 @@ public class Person {
         switch (getGender()) {
             case "Male" -> n.append(maleFirstNames[random.nextInt(maleFirstNames.length)]);
             case FEMALE -> n.append(femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
-            default -> n.append(random.nextDouble() > 0.5 ?
-                    maleFirstNames[random.nextInt(maleFirstNames.length)] :
-                    femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
+            default ->
+                    n.append(random.nextDouble() > 0.5 ? maleFirstNames[random.nextInt(maleFirstNames.length)] : femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
         }
         n.append(" ");
         n.append(lastNames[random.nextInt(lastNames.length)]);
@@ -332,39 +314,6 @@ public class Person {
         return gpa;
     }
 
-    public static String generatePhoneNumber() {
-        int countryNumLength = countryNumberLength[selectedLine2];
-        StringBuilder phoneNumber = new StringBuilder();
-        phoneNumber.append("+");
-        phoneNumber.append(countryNumber[selectedLine2]);
-        phoneNumber.append(" ");
-
-        for (int i = 0; i < countryNumLength; i++) {
-            phoneNumber.append(random.nextInt(10));
-        }
-
-        return phoneNumber.toString();
-    }
-
-    public static String generateAddress() {
-        return new AddressGenerator().toString();
-    }
-
-    public static String generateIPAddress() {
-        return random.nextInt(256) + "." +
-                random.nextInt(256) + "." +
-                random.nextInt(256) + "." +
-                random.nextInt(256);
-    }
-
-    public static String generateNationality() {
-        return countries[selectedLine2];
-    }
-
-    public static String generateCountryCode() {
-        return countryCodes[selectedLine2];
-    }
-
     public String generateUsername() {
         return name.substring(0, name.indexOf(" ")).toLowerCase().trim() + random.nextInt(100);
     }
@@ -381,15 +330,8 @@ public class Person {
 
     public String generateReligion() {
         int rand = random.nextInt(100);
-
-        switch (getNationality()) {
-            case "United States", "Mexico", "Brazil", "Canada", "Italy", "France", "Spain",
-                    "United Kingdom", "Poland", "Argentina", "Australia", "Germany", "Colombia",
-                    "South Africa", "Philippines", "Russia", "Chile", "Peru", "Ukraine",
-                    "Netherlands", "Belgium", "Switzerland", "Portugal", "Sweden", "Austria",
-                    "Norway", "Ireland", "Denmark", "Finland", "Greece", "Czech Republic",
-                    "Romania", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia", "Slovenia",
-                    "Latvia", "Estonia", "Lithuania", "Iceland" -> {
+        switch (this.address.getNationality()) {
+            case "United States", "Mexico", "Brazil", "Canada", "Italy", "France", "Spain", "United Kingdom", "Poland", "Argentina", "Australia", "Germany", "Colombia", "South Africa", "Philippines", "Russia", "Chile", "Peru", "Ukraine", "Netherlands", "Belgium", "Switzerland", "Portugal", "Sweden", "Austria", "Norway", "Ireland", "Denmark", "Finland", "Greece", "Czech Republic", "Romania", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia", "Slovenia", "Latvia", "Estonia", "Lithuania", "Iceland" -> {
                 if (rand < 37) {
                     return "Christian";
                 }

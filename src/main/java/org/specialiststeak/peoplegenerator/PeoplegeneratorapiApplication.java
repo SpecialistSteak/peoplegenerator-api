@@ -67,7 +67,7 @@ public class PeoplegeneratorapiApplication {
 
     @GetMapping("/api/person/" + "{number}")
     @ResponseBody
-    public ResponseEntity<List<Person>> getPerson(@PathVariable int number, HttpServletRequest request) {
+    public ResponseEntity<Person[]> getPerson(@PathVariable int number, HttpServletRequest request) {
         rateLimit(request, 10);
         if (number <= 0 || number > 50000) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -75,10 +75,8 @@ public class PeoplegeneratorapiApplication {
                     .body(null);
         }
 
-        List<Person> people = new ArrayList<>(number);
-        for (int i = 0; i < number; i++) {
-            people.add(new Person());
-        }
+        Person[] people = new Person[number];
+        for (int i = 0; i < number; i++) people[i] = new Person();
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -227,15 +225,8 @@ public class PeoplegeneratorapiApplication {
     @GetMapping("/api/location/")
     @ResponseBody
     public Address generateAddress(HttpServletRequest request) {
-        rateLimit(request, 2);
-        Person p = new Person();
-        return new Address(
-                p.getAddress(),
-                p.getNationality(),
-                p.getCountryCode(),
-                p.getPhoneNumber(),
-                p.getIPAddress()
-        );
+        rateLimit(request, 1);
+        return new Address();
     }
 
 //    @PostMapping("/api/feedback/")

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
-import static org.specialiststeak.peoplegenerator.person.utils.AddressGenerator.loadLists;
+import static org.specialiststeak.peoplegenerator.person.utils.Address.loadWorldCitiesCSV;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 
 @UtilityClass
@@ -32,7 +32,7 @@ public final class Utils {
         long start = System.nanoTime();
         loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/JOBS_SALARIES.csv");
         loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
-        loadLists();
+        loadWorldCitiesCSV();
         //Warmup the JVM
         for (int i = 0; i < 5000; i++) {
             try {
@@ -40,8 +40,9 @@ public final class Utils {
             } catch (Exception ignored) {
             }
             new Person();
-            var ex = new AddressGenerator();
-            ex.toString();
+            var ex = new Address();
+            String x = ex.toString();
+            x = String.format("%s %s", x, x);
             getRandomIndexBasedOnProbabilities(new int[]{10, 30, 20, 40});
             generateLine();
             generateLine2();
@@ -200,6 +201,13 @@ public final class Utils {
      * @return a random item from the list
      */
     public static String randomItemFromList(List<String> list) {
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(random.nextInt(list.size()));
+    }
+
+    public static Integer randomIntItemFromList(List<Integer> list) {
         if (list.isEmpty()) {
             return null;
         }
