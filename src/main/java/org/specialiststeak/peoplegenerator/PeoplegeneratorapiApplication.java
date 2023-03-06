@@ -224,7 +224,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getPoliticalLeaning();
     }
 
-    @GetMapping("/api/location/")
+    @GetMapping("/api/address/")
     @ResponseBody
     public Address generateAddress(HttpServletRequest request) {
         rateLimit(request, 1);

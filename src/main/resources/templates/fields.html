@@ -3,7 +3,7 @@
 <head>
     <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="../static/styles2.css">
-    <link rel="icon" href ="../static/Logo.svg">
+    <link rel="icon" href="../static/Logo.svg">
 </head>
 <body class="fullpage">
 <header>
@@ -69,16 +69,6 @@
                 <td>string</td>
             </tr>
             <tr>
-                <td>Address</td>
-                <td>The person's address.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Phone Number</td>
-                <td>The person's phone number.</td>
-                <td>string</td>
-            </tr>
-            <tr>
                 <td>Email</td>
                 <td>The person's email address.</td>
                 <td>string</td>
@@ -94,14 +84,9 @@
                 <td>boolean</td>
             </tr>
             <tr>
-                <td>Nationality</td>
-                <td>The name of the country the person is from.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Country Code</td>
-                <td>The ISO 3166-1 alpha-2 country code of the country the person is from.</td>
-                <td>string</td>
+                <td><a href="#address">Address</a></td>
+                <td>The person's address (as an object).</td>
+                <td>Address</td>
             </tr>
             <tr>
                 <td>Blood Type</td>
@@ -128,13 +113,9 @@
                 <td>The person's GPA on a 4 point scale.</td>
                 <td>double</td>
             </tr>
-            <tr>
-                <td>IPv4 Address</td>
-                <td>The person's IPv4 address</td>
-                <td>string</td>
-            </tr>
             </tbody>
         </table>
+        <section id="address">
         <h3>Address (Object):</h3>
         <table class="content-table">
             <thead>
@@ -146,13 +127,38 @@
             </thead>
             <tbody>
             <tr>
-                <td>Address</td>
-                <td>The address of person as a string.</td>
-                <td>double</td>
+                <td>Street Address</td>
+                <td>The street address of the location.</td>
+                <td>string</td>
             </tr>
             <tr>
-                <td>Nationality</td>
+                <td>City</td>
+                <td>The city of the location.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>The state or province of the location.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Zip Code</td>
+                <td>The zip code or postal code of the location.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Country</td>
                 <td>The name of the country the location is in.</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>Geoname ID</td>
+                <td>The geoname ID of the location.</td>
+                <td>int</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>The phone number of the location.</td>
                 <td>string</td>
             </tr>
             <tr>
@@ -161,8 +167,8 @@
                 <td>string</td>
             </tr>
             <tr>
-                <td>Phone Number</td>
-                <td>The phone number of the location.</td>
+                <td>Nationality</td>
+                <td>The nationality of the person.</td>
                 <td>string</td>
             </tr>
             <tr>
@@ -172,36 +178,7 @@
             </tr>
             </tbody>
         </table>
-        <h3>Location (String):</h3>
-        <table class="content-table">
-            <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Street Address</td>
-                <td>The street address of the person.</td>
-            </tr>
-            <tr>
-                <td>City</td>
-                <td>The city the person lives in.</td>
-            </tr>
-            <tr>
-                <td>State</td>
-                <td>The state the person lives in.</td>
-            </tr>
-            <tr>
-                <td>Country</td>
-                <td>The country the person lives in.</td>
-            </tr>
-            <tr>
-                <td>Zip Code</td>
-                <td>The zip code of the person's location.</td>
-            </tr>
-        </table>
+        </section>
     </section>
 </main>
 <footer>
