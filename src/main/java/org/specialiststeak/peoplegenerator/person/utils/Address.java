@@ -56,7 +56,8 @@ public class Address {
         loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
         loadWorldCitiesCSV();
         startup();
-        long[] start2 = new long[1_000], end2 = new long[1_000];
+        long[] start2 = new long[1_000];
+        long[] end2 = new long[1_000];
         for (int i = 0; i < 1_000; i++) {
             start2[i] = System.nanoTime();
             System.out.println(new Address());

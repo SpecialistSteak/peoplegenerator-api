@@ -109,6 +109,7 @@ public class Person {
         System.out.println("Username:           " + runCode(p1::generateUsername));
         System.out.println("Political Leaning:  " + runCode(Person::generatePoliticalLeaning));
         System.out.println("Religion:           " + runCode(p1::generateReligion));
+        System.out.println("Address:            " + runCode(Address::new));
     }
 
     public String generateName() {

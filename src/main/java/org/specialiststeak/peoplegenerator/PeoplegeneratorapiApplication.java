@@ -10,12 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
@@ -76,7 +76,9 @@ public class PeoplegeneratorapiApplication {
         }
 
         Person[] people = new Person[number];
-        for (int i = 0; i < number; i++) people[i] = new Person();
+        for (int i = 0; i < number; i++) {
+            people[i] = new Person();
+        }
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
