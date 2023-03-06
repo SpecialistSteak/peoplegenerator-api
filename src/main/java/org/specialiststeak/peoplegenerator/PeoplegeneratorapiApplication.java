@@ -67,7 +67,7 @@ public class PeoplegeneratorapiApplication {
 
     @GetMapping("/api/person/" + "{number}")
     @ResponseBody
-    public ResponseEntity<Person[]> getPerson(@PathVariable int number, HttpServletRequest request) {
+    public ResponseEntity<List<Person>> getPerson(@PathVariable int number, HttpServletRequest request) {
         rateLimit(request, 10);
         if (number <= 0 || number > 50000) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -82,7 +82,7 @@ public class PeoplegeneratorapiApplication {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(people.toArray(new Person[0]));
+                .body(people);
     }
 
     @GetMapping("/api/person/gender/")
