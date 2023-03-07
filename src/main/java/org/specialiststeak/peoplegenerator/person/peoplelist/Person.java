@@ -131,7 +131,7 @@ public class Person {
 
     public static int generateAge() {
         AgeRange ageRange = ageRanges[getRandomIndexBasedOnProbabilities(ageDistribution)];
-        return random.nextInt(ageRange.getHigh() - ageRange.getLow()) + ageRange.getLow();
+        return random.nextInt(ageRange.high() - ageRange.low()) + ageRange.low();
     }
 
     public String generateDateOfBirth() {
