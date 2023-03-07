@@ -69,7 +69,7 @@ public class PeoplegeneratorapiApplication {
     @ResponseBody
     public ResponseEntity<Person[]> getPerson(@PathVariable int number, HttpServletRequest request) {
         rateLimit(request, 10);
-        if (number <= 0 || number > 50000) {
+        if (number <= 0 || number > 50_000) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(null);
