@@ -41,8 +41,7 @@ public final class Utils {
             }
             new Person();
             var ex = new Address();
-            String x = ex.toString();
-            x = String.format("%s %s", x, x);
+            String x = ex.toString().format("%s %s", "jeff", "is");
             getRandomIndexBasedOnProbabilities(new int[]{10, 30, 20, 40});
             generateLine();
             generateLine2();
