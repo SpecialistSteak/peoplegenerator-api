@@ -28,30 +28,31 @@ public final class Utils {
         }
     }
 
-    public static void startup() throws IOException, CsvValidationException {
+    public static void startup(boolean warmup) throws IOException, CsvValidationException {
         long start = System.nanoTime();
         loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/JOBS_SALARIES.csv");
         loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
         loadWorldCitiesCSV();
-        //Warmup the JVM
-        for (int i = 0; i < 5000; i++) {
-            try {
-                rateLimit(null, 1);
-            } catch (Exception ignored) {
-            }
-            new Person();
-            var ex = new Address();
-            String x = ex.toString().format("%s %s", "jeff", "is");
-            getRandomIndexBasedOnProbabilities(new int[]{10, 30, 20, 40});
-            generateLine();
-            generateLine2();
-            plusOrMinus(random.nextDouble());
-        }
-        selectedLine = 0;
-        selectedLine2 = 0;
         loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/data/JOBS_SALARIES.csv");
         loadAllNames();
         lastNames = duplicateRemove(lastNames);
+        if (warmup) {
+            for (int i = 0; i < 5000; i++) {
+                try {
+                    rateLimit(null, 1);
+                } catch (Exception ignored) {
+                }
+                new Person();
+                var ex = new Address();
+                String x = ex.toString().format("%s %s", "jeff", "is");
+                getRandomIndexBasedOnProbabilities(new int[]{10, 30, 20, 40});
+                generateLine();
+                generateLine2();
+                plusOrMinus(random.nextDouble());
+            }
+            selectedLine = 0;
+            selectedLine2 = 0;
+        }
         System.out.println("Warmup took " + (System.nanoTime() - start) / 1_000_000 + "ms");
     }
 
@@ -66,7 +67,7 @@ public final class Utils {
         return nullRemove(arr);
     }
 
-    private static <T> T[] nullRemove(T[] arr) {
+    public static <T> T[] nullRemove(T[] arr) {
         List<T> list = new ArrayList<>(Arrays.asList(arr));
         list.removeIf(Objects::isNull);
         return list.toArray(Arrays.copyOf(arr, list.size()));

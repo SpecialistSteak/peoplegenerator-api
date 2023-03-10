@@ -72,11 +72,11 @@ public class Person {
     }
 
     public static void main(String[] args) throws IOException, CsvValidationException {
-        startup();
+        startup(true);
         personTimeTest();
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        startup();
+        startup(true);
         System.out.println("0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0");
         personTimeTest();
         for (int i = 0; i < 1000; ++i) {

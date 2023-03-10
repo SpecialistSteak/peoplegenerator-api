@@ -55,7 +55,7 @@ public class Address {
     public static void main(String[] args) throws IOException, CsvValidationException {
         loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
         loadWorldCitiesCSV();
-        startup();
+        startup(true);
         long[] start2 = new long[1_000];
         long[] end2 = new long[1_000];
         for (int i = 0; i < 1_000; i++) {

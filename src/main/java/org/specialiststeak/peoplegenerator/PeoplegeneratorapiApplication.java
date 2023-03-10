@@ -27,9 +27,9 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 public class PeoplegeneratorapiApplication {
 
     public static void main(String[] args) throws IOException, CsvValidationException {
-        startup();
+        startup(true);
         personTimeTest();
-        startup();
+        startup(true);
         SpringApplication.run(PeoplegeneratorapiApplication.class, args);
     }
 

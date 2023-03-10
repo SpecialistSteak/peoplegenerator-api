@@ -9,7 +9,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 
 public class Testing {
     public static void main(String[] args) throws CsvValidationException, IOException {
-        startup();
+        startup(false);
         System.out.println(new Person());
         long start = System.nanoTime();
         new Person();
