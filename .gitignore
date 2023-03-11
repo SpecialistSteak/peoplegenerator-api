@@ -31,4 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
 /src/main/java/org/specialiststeak/peoplegenerator/person/utils/env.java
+/src/main/java/org/specialiststeak/peoplegenerator/person/feedback/
+/resources/application.properties
+application.properties
+/src/main/java/resources/application.properties
