@@ -1,7 +1,10 @@
 package org.specialiststeak.peoplegenerator.person.temp;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 
+@Data
 public class TimeTester {
     private final ArrayList<Times> times;
 

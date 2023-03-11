@@ -5,6 +5,10 @@ import lombok.experimental.UtilityClass;
 
 import java.util.*;
 
+
+/**
+ * I hate using static variables like this, but the performance gains from using them are huge
+ */
 @UtilityClass
 public final class Constants {
     public static List<String>[] CITY = new ArrayList[192];

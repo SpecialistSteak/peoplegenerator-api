@@ -1,12 +1,14 @@
 package org.specialiststeak.peoplegenerator;
 
 import com.opencsv.exceptions.CsvValidationException;
+import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
 import java.io.IOException;
 
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 
+@UtilityClass
 public class Testing {
     public static void main(String[] args) throws CsvValidationException, IOException {
         startup(false);
