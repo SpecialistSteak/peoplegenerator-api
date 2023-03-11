@@ -15,51 +15,32 @@ import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 
 @UtilityClass
 public class Loading {
-    public static final String JOBS_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/data/JOBS_SALARIES.csv";
-    public static final String COUNTRIES_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv";
-    public static final String WORLD_CITIES_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/DATA/world-cities.csv";
-    public static final String FEMALE_NAMES_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/DATA/FemaleNames.csv";
-    public static final String MALE_NAMES_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/DATA/MaleNames.csv";
-    public static final String SURNAMES_CSV =
-            "src/main/java/org/specialiststeak/peoplegenerator/person/DATA/Surnames.csv";
+    public static final String JOBS_CSV = "src/main/resources/csv/JOBS_SALARIES.csv";
+    public static final String COUNTRIES_CSV = "src/main/resources/csv/COUNTRYNAME_COUNTRYCODE.csv";
+    public static final String WORLD_CITIES_CSV = "src/main/resources/csv/world-cities.csv";
+    public static final String FEMALE_NAMES_CSV = "src/main/resources/csv/FemaleNames.csv";
+    public static final String MALE_NAMES_CSV = "src/main/resources/csv/MaleNames.csv";
+    public static final String SURNAMES_CSV = "src/main/resources/csv/Surnames.csv";
 
-    public static void loadAllNames_jar() throws IOException {
-        femaleFirstNames = new String[50000];
-        maleFirstNames = new String[50000];
-        lastNames = new String[50000];
+    public static void loadAllNames_JAR() throws IOException {
+        femaleFirstNames = loadNamesFromJAR(FEMALE_NAMES_CSV);
+        maleFirstNames = loadNamesFromJAR(MALE_NAMES_CSV);
+        lastNames = loadNamesFromJAR(SURNAMES_CSV);
+    }
+
+    private static String[] loadNamesFromJAR(String pathToFile) throws IOException {
         String line;
         int index = 0;
-        try (var inputStream = Utils.class.getResourceAsStream("/path/to/FemaleNames.csv")) {
+        String[] names = new String[50000];
+        try (var inputStream = Utils.class.getResourceAsStream(pathToFile)) {
             try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
                 while ((line = reader.readLine()) != null) {
-                    femaleFirstNames[index] = line;
+                    names[index] = line;
                     index++;
                 }
             }
         }
-        index = 0;
-        try (var inputStream = Utils.class.getResourceAsStream("/path/to/MaleNames.csv")) {
-            try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
-                while ((line = reader.readLine()) != null) {
-                    maleFirstNames[index] = line;
-                    index++;
-                }
-            }
-        }
-        index = 0;
-        try (var inputStream = Utils.class.getResourceAsStream("/path/to/Surnames.csv")) {
-            try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
-                while ((line = reader.readLine()) != null) {
-                    lastNames[index] = line;
-                    index++;
-                }
-            }
-        }
+        return names;
     }
 
     public static void loadAllNames() throws IOException {

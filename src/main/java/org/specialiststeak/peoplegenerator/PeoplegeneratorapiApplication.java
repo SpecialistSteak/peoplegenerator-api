@@ -25,7 +25,6 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @Controller
 @EnableWebMvc
 public class PeoplegeneratorapiApplication {
-
     public static void main(String[] args) throws IOException, CsvValidationException {
         startup(true);
         personTimeTest();

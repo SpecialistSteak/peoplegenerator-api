@@ -17,7 +17,7 @@ import java.util.Map;
 @UtilityClass
 public class RateLimit {
     private static final Map<String, Instant> personRequestHistory = new HashMap<>();
-    private static final File file = new File("ip_log.txt");
+    private static final File ipLog = new File("ip_log.txt");
 
     public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS) {
         String clientIp = request.getHeader("X-Forwarded-For");
@@ -29,12 +29,14 @@ public class RateLimit {
         if (lastRequestTime != null && lastRequestTime.plusSeconds(RATE_LIMIT_TIME_IN_SECONDS).isAfter(Instant.now())) {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again later.");
         }
-
         personRequestHistory.put(clientIp, Instant.now());
 
-        if (!file.exists()) {
+        ipLog(clientIp);
+    }
+    void ipLog(String clientIp){
+        if (!ipLog.exists()) {
             try {
-                System.out.println(file.createNewFile());
+                System.out.println(ipLog.createNewFile());
             } catch (IOException ignored) {
             }
         }
