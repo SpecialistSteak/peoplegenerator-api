@@ -19,7 +19,7 @@ public final class Utils {
 
     public static void startup(boolean warmup) {
         long start = System.nanoTime();
-        loadAll();
+        loadAll_JAR();
         lastNames = duplicateRemove(lastNames);
         if (warmup) {
             for (int i = 0; i < 5000; i++) {

@@ -16,12 +16,12 @@ import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 
 @UtilityClass
 public class Loading {
-    public static final String JOBS_CSV = "src/main/resources/csv/JOBS_SALARIES.csv";
-    public static final String COUNTRIES_CSV = "src/main/resources/csv/COUNTRYNAME_COUNTRYCODE.csv";
-    public static final String WORLD_CITIES_CSV = "src/main/resources/csv/world-cities.csv";
-    public static final String FEMALE_NAMES_CSV = "src/main/resources/csv/FemaleNames.csv";
-    public static final String MALE_NAMES_CSV = "src/main/resources/csv/MaleNames.csv";
-    public static final String SURNAMES_CSV = "src/main/resources/csv/Surnames.csv";
+    private static final String JOBS_CSV = "JOBS_SALARIES.csv";
+    private static final String COUNTRIES_CSV = "COUNTRYNAME_COUNTRYCODE.csv";
+    private static final String WORLD_CITIES_CSV = "world-cities.csv";
+    private static final String FEMALE_NAMES_CSV = "FemaleNames.csv";
+    private static final String MALE_NAMES_CSV = "MaleNames.csv";
+    private static final String SURNAMES_CSV = "Surnames.csv";
 
     public static void loadAll_JAR(){
         try {
@@ -54,7 +54,7 @@ public class Loading {
     private static String[] loadNamesFromJAR(String pathToFile) throws IOException {
         String line;
         int index = 0;
-        String[] names = new String[50000];
+        String[] names = new String[50000]; // 50,000 is the max number of names in the csv files
         try (var inputStream = Loading.class.getResourceAsStream(pathToFile)) {
             try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
                 while ((line = reader.readLine()) != null) {
@@ -142,7 +142,7 @@ public class Loading {
 
     private static void loadJobsCSV_JAR() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                Objects.requireNonNull(Loading.class.getResourceAsStream("/resources/JOBS_CSV"))))) {
+                Objects.requireNonNull(Loading.class.getResourceAsStream(JOBS_CSV))))) {
             String line = reader.readLine();
             int numJobs = 0;
             while (line != null) {
@@ -157,7 +157,7 @@ public class Loading {
         }
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                Objects.requireNonNull(Loading.class.getResourceAsStream("/resources/JOBS_CSV"))))) {
+                Objects.requireNonNull(Loading.class.getResourceAsStream(JOBS_CSV))))) {
             String line = reader.readLine();
             int index = 0;
             while (line != null) {
