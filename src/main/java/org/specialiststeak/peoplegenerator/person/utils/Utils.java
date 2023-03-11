@@ -1,39 +1,27 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
-import com.github.javafaker.Faker;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
-import static org.specialiststeak.peoplegenerator.person.utils.Address.loadWorldCitiesCSV;
+import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Loading.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 
 @UtilityClass
 public final class Utils {
 
-    public static void main(String[] args) throws IOException {
-        loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/JOBS_SALARIES.csv");
-        loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
-        loadAllNames();
-        jobs = nullRemove(jobs);
-        lastNames = nullRemove(lastNames);
-        for (int i = 0; i < 100; i++) {
-            System.out.println(makeEmail("John", "Doe"));
-        }
-    }
-
     public static void startup(boolean warmup) throws IOException, CsvValidationException {
         long start = System.nanoTime();
-        loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/JOBS_SALARIES.csv");
-        loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
+        loadCountryCSV();
         loadWorldCitiesCSV();
-        loadJobsCSV("src/main/java/org/specialiststeak/peoplegenerator/person/data/JOBS_SALARIES.csv");
+        loadJobsCSV();
         loadAllNames();
         lastNames = duplicateRemove(lastNames);
         if (warmup) {
@@ -83,97 +71,6 @@ public final class Utils {
             }
         }
         return -1;
-    }
-
-    /**
-     * @throws IOException if the file cannot be found
-     */
-    public static void loadAllNames() throws IOException {
-        femaleFirstNames = new String[50000];
-        maleFirstNames = new String[50000];
-        lastNames = new String[50000];
-        String line;
-        int index = 0;
-        try (var reader = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/FemaleNames.csv"))) {
-            while ((line = reader.readLine()) != null) {
-                femaleFirstNames[index] = line;
-                index++;
-            }
-        }
-        index = 0;
-        try (var reader2 = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/MaleNames.csv"))) {
-            while ((line = reader2.readLine()) != null) {
-                maleFirstNames[index] = line;
-                index++;
-            }
-        }
-        index = 0;
-        try (var reader3 = new BufferedReader(new FileReader("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/Surnames.csv"))) {
-            while ((line = reader3.readLine()) != null) {
-                lastNames[index] = line;
-                index++;
-            }
-        }
-    }
-
-    /**
-     * @param fileName the name of the file to load
-     */
-    public static void loadCountryCSV(String fileName) {
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            int index = 0;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                countries[index] = values[0].replace("\"", "");
-                countryCodes[index] = values[1].replace("\"", "");
-                countryNumber[index] = Integer.parseInt(values[2].trim());
-                countryNumberLength[index] = Integer.parseInt(values[3].trim());
-                index++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Locale locale;
-        for (int i = 0; i < fakers.length; i++) {
-            locale = new Locale.Builder().setLanguage("en").setRegion(countryCodes[i]).build();
-            fakers[i] = new Faker(locale);
-            fakers[i].address().zipCode();
-            fakers[i].address().cityName();
-        }
-    }
-
-    /**
-     * @param fileName name of the file to load
-     */
-    public static void loadJobsCSV(String fileName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line = reader.readLine();
-            int numJobs = 0;
-            while (line != null) {
-                numJobs++;
-                line = reader.readLine();
-            }
-
-            jobs = new String[numJobs];
-            salaries = new int[numJobs];
-        } catch (Exception s) {
-            s.printStackTrace();
-        }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line = reader.readLine();
-            int index = 0;
-            while (line != null) {
-                String[] parts = line.split(",");
-                jobs[index] = parts[0];
-                salaries[index] = Integer.parseInt(parts[1]);
-                index++;
-                line = reader.readLine();
-            }
-        } catch (Exception s) {
-            s.printStackTrace();
-        }
     }
 
     public static void generateLine() {

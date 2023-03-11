@@ -35,11 +35,13 @@ public class RateLimit {
         if (!file.exists()) {
             try {
                 System.out.println(file.createNewFile());
-            } catch (IOException ignored) {}
+            } catch (IOException ignored) {
+            }
         }
 
         try {
             Files.write(Paths.get("ip_log.txt"), (clientIp + "\n").getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 }

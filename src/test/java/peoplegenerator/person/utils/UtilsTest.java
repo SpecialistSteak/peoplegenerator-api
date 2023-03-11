@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.specialiststeak.peoplegenerator.person.utils.Utils;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.getRandomIndexBasedOnProbabilities;

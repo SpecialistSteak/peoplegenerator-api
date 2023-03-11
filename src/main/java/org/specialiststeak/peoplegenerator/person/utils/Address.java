@@ -2,19 +2,9 @@ package org.specialiststeak.peoplegenerator.person.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-import com.opencsv.exceptions.CsvValidationException;
 import lombok.Data;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
@@ -50,51 +40,6 @@ public class Address {
         this.phoneNumber = generatePhoneNumber();
         this.IPAddress = generateIPAddress();
         this.geonameID = generateGeonameID();
-    }
-
-    public static void main(String[] args) throws IOException, CsvValidationException {
-        loadCountryCSV("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/COUNTRYNAME_COUNTRYCODE.csv");
-        loadWorldCitiesCSV();
-        startup(true);
-        long[] start2 = new long[1_000];
-        long[] end2 = new long[1_000];
-        for (int i = 0; i < 1_000; i++) {
-            start2[i] = System.nanoTime();
-            System.out.println(new Address());
-            end2[i] = System.nanoTime();
-            System.out.println("-----------------------------------------------------------------");
-        }
-        long sum = 0;
-        for (int i = 0; i < 1_000; i++) {
-            sum += (end2[i] - start2[i]);
-        }
-        System.out.println("Average time: " + sum / 1_000 + " nanoseconds");
-    }
-
-    public static void loadWorldCitiesCSV() throws IOException, CsvValidationException {
-        File file = new File("src/main/java/org/specialiststeak/peoplegenerator/person/DATA/world-cities.csv");
-        Reader reader = new FileReader(file);
-        CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
-        String[] line;
-        while ((line = csvReader.readNext()) != null) {
-            String country = line[1];
-            int countryIndex = Arrays.asList(countries).indexOf(country);
-            if (countryIndex != -1) {
-                if (CITY[countryIndex] == null) {
-                    CITY[countryIndex] = new ArrayList<>();
-                }
-                if (SUBCOUNTRY[countryIndex] == null) {
-                    SUBCOUNTRY[countryIndex] = new ArrayList<>();
-                }
-                if (GEONAMEID[countryIndex] == null) {
-                    GEONAMEID[countryIndex] = new ArrayList<>();
-                }
-                CITY[countryIndex].add(line[0]);
-                SUBCOUNTRY[countryIndex].add(line[2]);
-                GEONAMEID[countryIndex].add(Integer.valueOf(line[3]));
-            }
-        }
-        csvReader.close();
     }
 
     private int generateGeonameID() {

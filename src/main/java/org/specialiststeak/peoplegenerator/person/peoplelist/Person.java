@@ -10,7 +10,7 @@ import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 import java.io.IOException;
 import java.util.Calendar;
 
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Constants.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
@@ -120,9 +120,7 @@ public class Person {
             default ->
                     n.append(random.nextDouble() > 0.5 ? maleFirstNames[random.nextInt(maleFirstNames.length)] : femaleFirstNames[random.nextInt(femaleFirstNames.length)]);
         }
-        n.append(" ");
-        n.append(lastNames[random.nextInt(lastNames.length)]);
-        return n.toString();
+        return n.append(" ").append(lastNames[random.nextInt(lastNames.length)]).toString();
     }
 
     public static String generateBloodType() {
@@ -151,9 +149,8 @@ public class Person {
             return "Student";
         } else if (getAge() > 69) {
             return "Retired";
-        } else {
-            return jobs[selectedLine];
         }
+        return jobs[selectedLine];
     }
 
     public int generateIncome() {
@@ -176,9 +173,8 @@ public class Person {
             return 500 + randomNegativify(random.nextInt(50));
         } else if (salary >= 20000) {
             return 400 + randomNegativify(random.nextInt(50));
-        } else {
-            return 550 + randomNegativify(random.nextInt(50));
         }
+        return 550 + randomNegativify(random.nextInt(50));
     }
 
     public String generateCreditCardNumber() {
@@ -263,8 +259,7 @@ public class Person {
     }
 
     public static String generateGender() {
-        int rand = random.nextInt(100);
-        return switch (rand / 49) {
+        return switch (random.nextInt(100) / 49) {
             case 0 -> "Male";
             case 1 -> FEMALE;
             default -> "Other";
@@ -272,13 +267,12 @@ public class Person {
     }
 
     public static boolean generateHasDegree() {
-        double rand = random.nextDouble();
         double averagePercentageOfPeopleWithDegrees = 0.65;
         double gpa = generateGPA();
         if (gpa >= 2.0) {
-            return rand < averagePercentageOfPeopleWithDegrees;
+            return random.nextDouble() < averagePercentageOfPeopleWithDegrees;
         } else {
-            return rand < averagePercentageOfPeopleWithDegrees / 2.0;
+            return random.nextDouble() < averagePercentageOfPeopleWithDegrees / 2.0;
         }
     }
 
@@ -330,34 +324,33 @@ public class Person {
     }
 
     public String generateReligion() {
-        int rand = random.nextInt(100);
         switch (this.address.getNationality()) {
             case "United States", "Mexico", "Brazil", "Canada", "Italy", "France", "Spain", "United Kingdom", "Poland", "Argentina", "Australia", "Germany", "Colombia", "South Africa", "Philippines", "Russia", "Chile", "Peru", "Ukraine", "Netherlands", "Belgium", "Switzerland", "Portugal", "Sweden", "Austria", "Norway", "Ireland", "Denmark", "Finland", "Greece", "Czech Republic", "Romania", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia", "Slovenia", "Latvia", "Estonia", "Lithuania", "Iceland" -> {
-                if (rand < 37) {
+                if (random.nextInt(100) < 37) {
                     return "Christian";
                 }
                 return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
             }
             case "Israel" -> {
-                if (rand < 74) {
+                if (random.nextInt(100) < 74) {
                     return "Jewish";
                 }
                 return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
             }
             case "Indonesia", "Pakistan", "Bangladesh", "Nigeria", "Egypt" -> {
-                if (rand < 85) {
+                if (random.nextInt(100) < 85) {
                     return "Muslim";
                 }
                 return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
             }
             case "India", "Sri Lanka", "Nepal", "Bhutan" -> {
-                if (rand < 75) {
+                if (random.nextInt(100) < 75) {
                     return "Hindu";
                 }
                 return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
             }
             case "Iran" -> {
-                if (rand < 95) {
+                if (random.nextInt(100) < 95) {
                     return "Muslim";
                 }
                 return religions[getRandomIndexBasedOnProbabilities(religionProbabilities)];
