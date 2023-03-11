@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Objects;
 
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 
@@ -22,7 +23,29 @@ public class Loading {
     public static final String MALE_NAMES_CSV = "src/main/resources/csv/MaleNames.csv";
     public static final String SURNAMES_CSV = "src/main/resources/csv/Surnames.csv";
 
-    public static void loadAllNames_JAR() throws IOException {
+    public static void loadAll_JAR(){
+        try {
+            loadWorldCitiesCSV_JAR();
+            loadJobsCSV_JAR();
+            loadAllNames_JAR();
+            loadCountryCSV_JAR();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadAll(){
+        try {
+            loadWorldCitiesCSV();
+            loadJobsCSV();
+            loadAllNames();
+            loadCountryCSV();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadAllNames_JAR() throws IOException {
         femaleFirstNames = loadNamesFromJAR(FEMALE_NAMES_CSV);
         maleFirstNames = loadNamesFromJAR(MALE_NAMES_CSV);
         lastNames = loadNamesFromJAR(SURNAMES_CSV);
@@ -32,7 +55,7 @@ public class Loading {
         String line;
         int index = 0;
         String[] names = new String[50000];
-        try (var inputStream = Utils.class.getResourceAsStream(pathToFile)) {
+        try (var inputStream = Loading.class.getResourceAsStream(pathToFile)) {
             try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
                 while ((line = reader.readLine()) != null) {
                     names[index] = line;
@@ -43,7 +66,7 @@ public class Loading {
         return names;
     }
 
-    public static void loadAllNames() throws IOException {
+    private static void loadAllNames() throws IOException {
         femaleFirstNames = new String[50000];
         maleFirstNames = new String[50000];
         lastNames = new String[50000];
@@ -71,7 +94,36 @@ public class Loading {
         }
     }
 
-    public static void loadCountryCSV() {
+    private static void loadFakers(){
+        Locale locale;
+        for (int i = 0; i < fakers.length; i++) {
+            locale = new Locale.Builder().setLanguage("en").setRegion(countryCodes[i]).build();
+            fakers[i] = new Faker(locale);
+            fakers[i].address().zipCode();
+            fakers[i].address().cityName();
+        }
+    }
+
+    private static void loadCountryCSV_JAR() {
+        loadFakers();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(Loading.class.getResourceAsStream(COUNTRIES_CSV))))) {
+            String line;
+            int index = 0;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                countries[index] = values[0].replace("\"", "");
+                countryCodes[index] = values[1].replace("\"", "");
+                countryNumber[index] = Integer.parseInt(values[2].trim());
+                countryNumberLength[index] = Integer.parseInt(values[3].trim());
+                index++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadCountryCSV() {
+        loadFakers();
         try (BufferedReader br = new BufferedReader(new FileReader(COUNTRIES_CSV))) {
             String line;
             int index = 0;
@@ -86,16 +138,41 @@ public class Loading {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Locale locale;
-        for (int i = 0; i < fakers.length; i++) {
-            locale = new Locale.Builder().setLanguage("en").setRegion(countryCodes[i]).build();
-            fakers[i] = new Faker(locale);
-            fakers[i].address().zipCode();
-            fakers[i].address().cityName();
+    }
+
+    private static void loadJobsCSV_JAR() {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                Objects.requireNonNull(Loading.class.getResourceAsStream("/resources/JOBS_CSV"))))) {
+            String line = reader.readLine();
+            int numJobs = 0;
+            while (line != null) {
+                numJobs++;
+                line = reader.readLine();
+            }
+
+            jobs = new String[numJobs];
+            salaries = new int[numJobs];
+        } catch (Exception s) {
+            s.printStackTrace();
+        }
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                Objects.requireNonNull(Loading.class.getResourceAsStream("/resources/JOBS_CSV"))))) {
+            String line = reader.readLine();
+            int index = 0;
+            while (line != null) {
+                String[] parts = line.split(",");
+                jobs[index] = parts[0];
+                salaries[index] = Integer.parseInt(parts[1]);
+                index++;
+                line = reader.readLine();
+            }
+        } catch (Exception s) {
+            s.printStackTrace();
         }
     }
 
-    public static void loadJobsCSV() {
+    private static void loadJobsCSV() {
         try (BufferedReader reader = new BufferedReader(new FileReader(JOBS_CSV))) {
             String line = reader.readLine();
             int numJobs = 0;
@@ -125,7 +202,33 @@ public class Loading {
         }
     }
 
-    public static void loadWorldCitiesCSV() throws IOException, CsvValidationException {
+    private static void loadWorldCitiesCSV_JAR() throws IOException, CsvValidationException {
+        InputStream inputStream = Loading.class.getResourceAsStream(WORLD_CITIES_CSV);
+        Reader reader = new InputStreamReader(inputStream);
+        CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
+        String[] line;
+        while ((line = csvReader.readNext()) != null) {
+            String country = line[1];
+            int countryIndex = Arrays.asList(countries).indexOf(country);
+            if (countryIndex != -1) {
+                if (CITY[countryIndex] == null) {
+                    CITY[countryIndex] = new ArrayList<>();
+                }
+                if (SUBCOUNTRY[countryIndex] == null) {
+                    SUBCOUNTRY[countryIndex] = new ArrayList<>();
+                }
+                if (GEONAMEID[countryIndex] == null) {
+                    GEONAMEID[countryIndex] = new ArrayList<>();
+                }
+                CITY[countryIndex].add(line[0]);
+                SUBCOUNTRY[countryIndex].add(line[2]);
+                GEONAMEID[countryIndex].add(Integer.valueOf(line[3]));
+            }
+        }
+        csvReader.close();
+    }
+
+    private static void loadWorldCitiesCSV() throws IOException, CsvValidationException {
         Reader reader = new FileReader(WORLD_CITIES_CSV);
         CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
         String[] line;

@@ -17,12 +17,9 @@ import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLim
 @UtilityClass
 public final class Utils {
 
-    public static void startup(boolean warmup) throws IOException, CsvValidationException {
+    public static void startup(boolean warmup) {
         long start = System.nanoTime();
-        loadCountryCSV();
-        loadWorldCitiesCSV();
-        loadJobsCSV();
-        loadAllNames();
+        loadAll();
         lastNames = duplicateRemove(lastNames);
         if (warmup) {
             for (int i = 0; i < 5000; i++) {
@@ -32,7 +29,7 @@ public final class Utils {
                 }
                 new Person();
                 var ex = new Address();
-                String x = ex.toString().format("%s %s", "jeff", "is");
+                ex.toString().format("%s %s", "jeff", "is");
                 getRandomIndexBasedOnProbabilities(new int[]{10, 30, 20, 40});
                 generateLine();
                 generateLine2();
