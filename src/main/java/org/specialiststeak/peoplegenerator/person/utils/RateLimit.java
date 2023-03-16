@@ -5,11 +5,6 @@ import lombok.experimental.UtilityClass;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +12,6 @@ import java.util.Map;
 @UtilityClass
 public class RateLimit {
     private static final Map<String, Instant> personRequestHistory = new HashMap<>();
-    private static final File ipLog = new File("ip_log.txt");
 
     public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS) {
         String clientIp = request.getHeader("X-Forwarded-For");
@@ -31,19 +25,9 @@ public class RateLimit {
         }
         personRequestHistory.put(clientIp, Instant.now());
 
-        ipLog(clientIp);
+//        ipLog(clientIp);
     }
     void ipLog(String clientIp){
-        if (!ipLog.exists()) {
-            try {
-                System.out.println(ipLog.createNewFile());
-            } catch (IOException ignored) {
-            }
-        }
-
-        try {
-            Files.write(Paths.get("ip_log.txt"), (clientIp + "\n").getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException ignored) {
-        }
+        //TODO: This should be a database, not a file. Make sure to run it on another thread.
     }
 }

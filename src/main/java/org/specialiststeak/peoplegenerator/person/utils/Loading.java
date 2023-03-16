@@ -204,7 +204,7 @@ public class Loading {
 
     private static void loadWorldCitiesCSV_JAR() throws IOException, CsvValidationException {
         InputStream inputStream = Loading.class.getResourceAsStream(WORLD_CITIES_CSV);
-        Reader reader = new InputStreamReader(inputStream);
+        Reader reader = new InputStreamReader(inputStream != null ? inputStream : System.in);
         CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
         String[] line;
         while ((line = csvReader.readNext()) != null) {

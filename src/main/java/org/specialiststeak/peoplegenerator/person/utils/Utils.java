@@ -4,7 +4,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
