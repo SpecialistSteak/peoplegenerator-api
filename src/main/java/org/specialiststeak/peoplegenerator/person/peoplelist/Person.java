@@ -46,6 +46,7 @@ public class Person {
     public Person() {
         generateLine();
         generateLine2();
+        this.address = new Address();
         this.gender = generateGender();
         this.name = generateName();
         this.email = generateEmail();
@@ -62,7 +63,6 @@ public class Person {
         this.eyeColor = generateEyeColor();
         this.hasDegree = generateHasDegree();
         this.GPA = generateGPA();
-        this.address = new Address();
         this.bloodType = generateBloodType();
         this.username = generateUsername();
         this.politicalLeaning = generatePoliticalLeaning();

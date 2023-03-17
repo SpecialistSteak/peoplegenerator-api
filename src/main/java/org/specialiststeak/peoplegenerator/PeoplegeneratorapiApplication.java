@@ -1,6 +1,5 @@
 package org.specialiststeak.peoplegenerator;
 
-import com.opencsv.exceptions.CsvValidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 import org.specialiststeak.peoplegenerator.person.utils.Address;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.io.IOException;
-
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
@@ -25,7 +22,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @Controller
 @EnableWebMvc
 public class PeoplegeneratorapiApplication {
-    public static void main(String[] args) throws IOException, CsvValidationException {
+    public static void main(String[] args) {
         startup(true);
         personTimeTest();
         startup(true);
@@ -232,30 +229,10 @@ public class PeoplegeneratorapiApplication {
 
 //    @PostMapping("/api/feedback/")
 //    @ResponseBody
-//    public void createIssue(String feedback) {
-//        try {
-//            // Set up GitHub credentials
-//            GitHub github = new GitHubBuilder().withOAuthToken("YOUR_TOKEN").build();
-//
-//            // Set up the repository to create the issue in
-//            GHRepository repo = github.getRepository("USERNAME/REPOSITORY_NAME");
-//
-//            // Check feedback for malicious content or swear words
-//            if (containsMaliciousContent(feedback)) {
-//                throw new Exception("Feedback contains malicious content");
-//            }
-//
-//            // Create the issue
-//            GHIssueBuilder builder = repo.createIssue("New feedback");
-//            builder.body(feedback);
-//            builder.create();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            // Handle any errors here
-//        }
-//    }
-//
-//    private boolean containsMaliciousContent(String feedback) {
-//
+//    public ResponseEntity<String> feedback(@RequestBody String feedback) {
+//        /*Feedback logic goes here...*/
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .body("Thank you for your feedback!");
 //    }
 }

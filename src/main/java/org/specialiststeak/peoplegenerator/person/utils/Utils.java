@@ -123,8 +123,4 @@ public final class Utils {
             default -> "";
         } + "@" + EMAIL_SERVICE_PROVIDERS[getRandomIndexBasedOnProbabilities(EMAIL_SERVICE_PROVIDER_PROBABILITIES)]).toLowerCase();
     }
-
-    public static void runInAnotherThread(Runnable code) {
-        new Thread(code).start();
-    }
 }
