@@ -44,23 +44,24 @@ public class Address {
         this.geonameID = generateGeonameID();
     }
 
-    private void timeTest(){
+    private static void timeTest(){
+        Address a = new Address();
         System.out.println("New Address:    " + runCode(Address::new) + "ns");
-        System.out.println("Geoname ID:     " + runCode(this::generateGeonameID) + "ns");
-        System.out.println("Country Code:   " + runCode(this::generateCountryCode) + "ns");
-        System.out.println("Phone Number:   " + runCode(this::generatePhoneNumber) + "ns");
-        System.out.println("IP Address:     " + runCode(this::generateIPAddress) + "ns");
-        System.out.println("Street Address: " + runCode(this::generateStreetAddress) + "ns");
-        System.out.println("City:           " + runCode(this::generateCity) + "ns");
-        System.out.println("State:          " + runCode(this::generateState) + "ns");
-        System.out.println("Country:        " + runCode(this::generateCountry) + "ns");
-        System.out.println("Zip Code:       " + runCode(this::generateZipCode) + "ns");
+        System.out.println("Geoname ID:     " + runCode(a::generateGeonameID) + "ns");
+        System.out.println("Country Code:   " + runCode(a::generateCountryCode) + "ns");
+        System.out.println("Phone Number:   " + runCode(a::generatePhoneNumber) + "ns");
+        System.out.println("IP Address:     " + runCode(a::generateIPAddress) + "ns");
+        System.out.println("Street Address: " + runCode(a::generateStreetAddress) + "ns");
+        System.out.println("City:           " + runCode(a::generateCity) + "ns");
+        System.out.println("State:          " + runCode(a::generateState) + "ns");
+        System.out.println("Country:        " + runCode(a::generateCountry) + "ns");
+        System.out.println("Zip Code:       " + runCode(a::generateZipCode) + "ns");
     }
 
     public static void main(String[] args) {
         startup(true);
         startup(true);
-        new Address().timeTest();
+        timeTest();
     }
 
     private int generateGeonameID() {
@@ -124,7 +125,7 @@ public class Address {
         try {
             return objectMapper.writeValueAsString(this);
         } catch (Exception e) {
-            return "Error";
+            return "Error converting to JSON";
         }
     }
 }
