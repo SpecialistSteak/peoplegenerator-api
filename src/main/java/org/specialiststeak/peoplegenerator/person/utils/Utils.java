@@ -1,6 +1,5 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
-import com.opencsv.exceptions.CsvValidationException;
 import lombok.experimental.UtilityClass;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
-import static org.specialiststeak.peoplegenerator.person.utils.Loading.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Loading.loadAll_JAR;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 
 @UtilityClass

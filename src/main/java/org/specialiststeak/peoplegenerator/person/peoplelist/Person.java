@@ -359,10 +359,8 @@ public class Person {
 
     @Override
     public String toString() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            return objectMapper.writeValueAsString(this);
+            return new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).writeValueAsString(this);
         } catch (Exception e) {
             return "Error";
         }
