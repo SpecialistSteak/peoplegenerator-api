@@ -2,16 +2,14 @@ package org.specialiststeak.peoplegenerator.person.peoplelist;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.opencsv.exceptions.CsvValidationException;
 import lombok.Data;
 import org.specialiststeak.peoplegenerator.person.utils.Address;
 import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 
-import java.io.IOException;
 import java.util.Calendar;
 
-import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
+import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
@@ -71,12 +69,12 @@ public class Person {
         this.religion = generateReligion();
     }
 
-    public static void main(String[] args) throws IOException, CsvValidationException {
-        startup(true);
+    public static void main(String[] args) {
+        startup(false);
         personTimeTest();
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        startup(true);
+        startup(false);
         System.out.println("0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0");
         personTimeTest();
         for (int i = 0; i < 1000; ++i) {
@@ -103,7 +101,7 @@ public class Person {
         System.out.println("Height:             " + runCode(p1::generateHeight));
         System.out.println("Weight:             " + runCode(p1::generateWeight));
         System.out.println("Eye Color:          " + runCode(Person::generateEyeColor));
-        System.out.println("Has Degree:         " + runCode(Person::generateHasDegree));
+        System.out.println("Has Degree:         " + runCode(p1::generateHasDegree));
         System.out.println("GPA:                " + runCode(Person::generateGPA));
         System.out.println("Blood Type:         " + runCode(Person::generateBloodType));
         System.out.println("Username:           " + runCode(p1::generateUsername));
@@ -154,7 +152,7 @@ public class Person {
     }
 
     public int generateIncome() {
-        return getAge() < 20 ? 0 : salaries[selectedLine] + random.nextInt(10000);
+        return (getAge() < 18 || getAge() > 69) ? 0 : salaries[selectedLine] + random.nextInt(10000);
     }
 
     public int generateCreditScore() {
@@ -266,13 +264,11 @@ public class Person {
         };
     }
 
-    public static boolean generateHasDegree() {
-        double averagePercentageOfPeopleWithDegrees = 0.65;
-        double gpa = generateGPA();
-        if (gpa >= 2.0) {
-            return random.nextDouble() < averagePercentageOfPeopleWithDegrees;
+    public boolean generateHasDegree() {
+        if (getGPA() >= 2.0) {
+            return random.nextDouble() < 0.65;
         } else {
-            return random.nextDouble() < averagePercentageOfPeopleWithDegrees / 2.0;
+            return random.nextDouble() < 0.65 / 2.0;
         }
     }
 

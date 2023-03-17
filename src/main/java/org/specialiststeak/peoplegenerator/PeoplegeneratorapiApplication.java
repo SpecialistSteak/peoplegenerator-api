@@ -185,7 +185,7 @@ public class PeoplegeneratorapiApplication {
     @ResponseBody
     public boolean hasdegree(HttpServletRequest request) {
         rateLimit(request, 1);
-        return generateHasDegree();
+        return new Person().generateHasDegree();
     }
 
     @GetMapping("/api/person/gpa/")

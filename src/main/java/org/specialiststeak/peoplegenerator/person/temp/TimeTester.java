@@ -27,6 +27,15 @@ public class TimeTester {
         return (end - start);
     }
 
+    public static long runCode(Runnable code, int iterations) {
+        long start = System.nanoTime();
+        for (int i = 0; i < iterations; i++) {
+            code.run();
+        }
+        long end = System.nanoTime();
+        return (end - start) / iterations;
+    }
+
     public void runTimedCode(Runnable code) {
         this.startTimer();
         code.run();

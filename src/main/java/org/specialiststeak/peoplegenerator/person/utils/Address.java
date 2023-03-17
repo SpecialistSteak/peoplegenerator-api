@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
 
+import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
@@ -42,6 +43,25 @@ public class Address {
         this.geonameID = generateGeonameID();
     }
 
+    private void timeTest(){
+        System.out.println("New Address:    " + runCode(Address::new) + "ns");
+        System.out.println("Geoname ID:     " + runCode(this::generateGeonameID) + "ns");
+        System.out.println("Country Code:   " + runCode(this::generateCountryCode) + "ns");
+        System.out.println("Phone Number:   " + runCode(this::generatePhoneNumber) + "ns");
+        System.out.println("IP Address:     " + runCode(this::generateIPAddress) + "ns");
+        System.out.println("Street Address: " + runCode(this::generateStreetAddress) + "ns");
+        System.out.println("City:           " + runCode(this::generateCity) + "ns");
+        System.out.println("State:          " + runCode(this::generateState) + "ns");
+        System.out.println("Country:        " + runCode(this::generateCountry) + "ns");
+        System.out.println("Zip Code:       " + runCode(this::generateZipCode) + "ns");
+    }
+
+    public static void main(String[] args) {
+        startup(true);
+        startup(true);
+        new Address().timeTest();
+    }
+
     private int generateGeonameID() {
         if (GEONAMEID[selectedLine2] == null || GEONAMEID[selectedLine2].isEmpty()) {
             return -1;
@@ -55,13 +75,10 @@ public class Address {
     }
 
     public String generatePhoneNumber() {
-        int countryNumLength = countryNumberLength[selectedLine2];
         StringBuilder pn = new StringBuilder();
-        pn.append("+");
-        pn.append(countryNumber[selectedLine2]);
-        pn.append(" ");
+        pn.append("+").append(countryNumber[selectedLine2]).append(" ");
 
-        for (int i = 0; i < countryNumLength; i++) {
+        for (int i = 0; i < countryNumberLength[selectedLine2]; i++) {
             pn.append(random.nextInt(10));
         }
 
@@ -69,10 +86,12 @@ public class Address {
     }
 
     public String generateIPAddress() {
-        return random.nextInt(256) + "." +
-                random.nextInt(256) + "." +
-                random.nextInt(256) + "." +
-                random.nextInt(256);
+        return new StringBuilder()
+                .append(random.nextInt(256)).append(".")
+                .append(random.nextInt(256)).append(".")
+                .append(random.nextInt(256)).append(".")
+                .append(random.nextInt(256))
+                .toString();
     }
 
     private String generateStreetAddress() {
@@ -97,6 +116,7 @@ public class Address {
         return fakers[selectedLine2].address().zipCode();
     }
 
+    @Override
     public String toString() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
