@@ -1,4 +1,7 @@
-Note:
-- GraalVM performance < JAR Performance in this case
-- Run the JAR using a graalvm distribution
+================= Native Image creation & Instructions =================
+- Make a native image by running `mvn package -Pnative`
+- Run the native image using a graalvm distribution
+
+================= JAR file creation & Instructions =================
 - Make a new jar by running `mvn install`
+- Run the JAR using a graalvm distribution
