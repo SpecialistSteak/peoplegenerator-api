@@ -1,0 +1,4 @@
+Note:
+- GraalVM performance < JAR Performance in this case
+- Run the JAR using a graalvm distribution
+- Make a new jar by running `mvn install`
