@@ -23,7 +23,6 @@ public class Address {
 
     public Address() {
         generateLine2();
-        var address = fakers[selectedLine2].address();
         this.streetAddress = generateStreetAddress();
         this.city = generateCity();
         this.state = generateState();
