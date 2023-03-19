@@ -1,5 +1,5 @@
 ================= Native Image creation & Instructions =================
-- Make a native image by running `mvn package -Pnative`
+- Make a native image by running `mvn clean -Pnative compile`
 - Run the native image using a graalvm distribution
 
 ================= JAR file creation & Instructions =================
