@@ -1,6 +1,8 @@
-================= Native Image creation & Instructions =================
-- Make a native image by running `mvn clean -Pnative compile`
-- Run the native image using a graalvm distribution
+================= Native Image creation & Instructions | NOT CURRENTLY AVAILABLE =================
+THIS WILL NOT WORK! The code requires reading files from the packaged jar file, which is not possible with a native image.
+- Open `x64 Native Tools Command Prompt for VS 2019`
+- Make a native image by running `mvnw native:compile -Pnative`
+- Run the native image
 
 ================= JAR file creation & Instructions =================
 - Make a new jar by running `mvn install`
