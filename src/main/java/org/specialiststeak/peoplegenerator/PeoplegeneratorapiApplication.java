@@ -1,6 +1,7 @@
 package org.specialiststeak.peoplegenerator;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 import org.specialiststeak.peoplegenerator.person.utils.Address;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import static org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory.lifestoryFactory;
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
@@ -225,6 +227,13 @@ public class PeoplegeneratorapiApplication {
     public Address generateAddress(HttpServletRequest request) {
         rateLimit(request, 1);
         return new Address();
+    }
+
+    @GetMapping("/api/lifestory")
+    @ResponseBody
+    public Lifestory generateLifeStory(HttpServletRequest request) {
+        rateLimit(request, 1);
+        return lifestoryFactory(new Person());
     }
 
 //    @PostMapping("/api/feedback/")
