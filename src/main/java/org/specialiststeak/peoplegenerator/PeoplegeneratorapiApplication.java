@@ -229,7 +229,7 @@ public class PeoplegeneratorapiApplication {
         return new Address();
     }
 
-    @GetMapping("/api/lifestory")
+    @GetMapping("/api/lifestory/")
     @ResponseBody
     public Lifestory generateLifeStory(HttpServletRequest request) {
         rateLimit(request, 1);

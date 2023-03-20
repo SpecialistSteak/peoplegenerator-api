@@ -62,17 +62,15 @@ public class Lifestory {
                 ", and " + genderPronoun.toLowerCase() + " has a credit score of " + person.getCreditScore() + ". " +
                 (person.getCreditCardNumber() == null ? "" :
                         genderPronoun2 + " credit card number is " + person.getCreditCardNumber()) +
-                ". " + genderPronoun + " uses " + person.getEmail() + " for " + genderPronoun2 + "email address and " +
-                person.getUsername() + " for " + genderPronoun2 + " username on various websites. " +
-                genderPronoun + " follows " +
+                ". " + genderPronoun + " uses " + person.getEmail() + " for " + genderPronoun2.toLowerCase()
+                + " email address and " + person.getUsername() + " for " + genderPronoun2 +
+                " username on various websites. " + genderPronoun + " follows " +
                 person.getReligion() + " and " + genderPronoun2.toLowerCase() +
                 " political leaning is " + person.getPoliticalLeaning() + ". " +
                 genderPronoun + " has a geonameid of " + person.getAddress().getGeonameID() +
                 " and " + genderPronoun2.toLowerCase() + " phone number is " +
-                person.getAddress().getPhoneNumber() + ". " +
-                genderPronoun + " is from " + person.getAddress().getNationality() +
-                " and " + genderPronoun2.toLowerCase() + " IP address is " +
-                person.getAddress().getIPAddress();
+                person.getAddress().getPhoneNumber() + ", and " + genderPronoun2.toLowerCase()
+                + " IP address is " + person.getAddress().getIPAddress();
     }
 
     public String toString() {

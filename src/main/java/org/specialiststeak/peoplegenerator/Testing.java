@@ -50,7 +50,8 @@ public class Testing {
         USERNAME("http://localhost:8080/api/person/username/"),
         RELIGION("http://localhost:8080/api/person/religion/"),
         POLITICAL_LEANING("http://localhost:8080/api/person/politicalleaning/"),
-        ADDRESS("http://localhost:8080/api/address/");
+        ADDRESS("http://localhost:8080/api/address/"),
+        LIFESTORY("http://localhost:8080/api/person/lifestory/");
 
         private final String url;
 
