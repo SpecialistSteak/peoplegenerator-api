@@ -2,6 +2,7 @@ package org.specialiststeak.peoplegenerator.person.utils;
 
 import com.github.javafaker.Faker;
 import lombok.experimental.UtilityClass;
+import org.specialiststeak.peoplegenerator.person.peoplelist.AgeRange;
 
 import java.util.*;
 

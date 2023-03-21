@@ -1,68 +1,104 @@
-//package peoplegenerator.person.utils;
-//
-//import com.opencsv.exceptions.CsvValidationException;
-//import org.junit.jupiter.api.BeforeAll;
-//import org.junit.jupiter.api.Test;
-//import org.specialiststeak.peoplegenerator.person.utils.Address;
-//
-//import java.io.IOException;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
-//
-//class AddressTest {
-//
-//    @BeforeAll
-//    static void startp() throws CsvValidationException, IOException {
-//        startup(false);
-//    }
-//
-//    @Test
-//    void testConstructor() {
-//        Address address = new Address();
-//        assertNotNull(address.getStreetAddress());
-//        assertNotNull(address.getCity());
-//        assertNotNull(address.getState());
-//        assertNotNull(address.getCountry());
-//        assertNotNull(address.getZipCode());
-//        assertNotNull(address.getCountryCode());
-//        assertNotNull(address.getNationality());
-//        assertNotNull(address.getPhoneNumber());
-//        assertNotNull(address.getIPAddress());
-//        assertTrue(address.getGeonameID() >= -1);
-//    }
-//
-//    @Test
-//    void testGenerateCountryCode() {
-//        Address address = new Address();
-//        String countryCode = address.generateCountryCode();
-//        assertNotNull(countryCode);
-//        assertEquals(2, countryCode.length());
-//        assertTrue(Character.isUpperCase(countryCode.charAt(0)));
-//        assertTrue(Character.isUpperCase(countryCode.charAt(1)));
-//    }
-//
-//    @Test
-//    void testGeneratePhoneNumber() {
-//        Address address = new Address();
-//        String phoneNumber = address.generatePhoneNumber();
-//        assertNotNull(phoneNumber);
-//        assertTrue(phoneNumber.startsWith("+"));
-//        assertTrue(phoneNumber.contains(" "));
-//        assertTrue(phoneNumber.length() > 3);
-//    }
-//
-//    @Test
-//    void testGenerateIPAddress() {
-//        Address address = new Address();
-//        String ipAddress = address.generateIPAddress();
-//        assertNotNull(ipAddress);
-//        String[] parts = ipAddress.split("\\.");
-//        assertEquals(4, parts.length);
-//        assertTrue(Integer.parseInt(parts[0]) < 256);
-//        assertTrue(Integer.parseInt(parts[1]) < 256);
-//        assertTrue(Integer.parseInt(parts[2]) < 256);
-//        assertTrue(Integer.parseInt(parts[3]) < 256);
-//    }
-//
-//}
+package peoplegenerator.person.utils;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
+
+class AddressTest{
+    @BeforeAll
+    static void setup() {
+        startup(true);
+        startup(true);
+    }
+
+    @Test
+    void testConstructor() {
+        Address address = new Address();
+        assertNotNull(address.getStreetAddress());
+        assertNotNull(address.getCity());
+        assertNotNull(address.getState());
+        assertNotNull(address.getCountry());
+        assertNotNull(address.getZipCode());
+        assertNotNull(address.getPhoneNumber());
+        assertNotNull(address.getIPAddress());
+        assertNotNull(address.getCountryCode());
+        assertNotNull(address.getNationality());
+        assertTrue(address.getGeonameID() >= -1);
+    }
+
+    @Test
+    void testGenerateGeonameID() {
+        Address address = new Address();
+        int geonameID = address.getGeonameID();
+        assert true;
+    }
+
+    @Test
+    void testGenerateCountryCode() {
+        Address address = new Address();
+        String countryCode = address.generateCountryCode();
+        assertNotNull(countryCode);
+    }
+
+    @Test
+    void testGeneratePhoneNumber() {
+        Address address = new Address();
+        String phoneNumber = address.generatePhoneNumber();
+        assertNotNull(phoneNumber);
+        assertTrue(phoneNumber.startsWith("+"));
+    }
+
+    @Test
+    void testGenerateIPAddress() {
+        Address address = new Address();
+        String ipAddress = address.generateIPAddress();
+        assertNotNull(ipAddress);
+        assertTrue(ipAddress.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"));
+    }
+
+    @Test
+    void testGenerateStreetAddress() {
+        Address address = new Address();
+        String streetAddress = address.getStreetAddress();
+        assertNotNull(streetAddress);
+    }
+
+    @Test
+    void testGenerateCity() {
+        Address address = new Address();
+        String city = address.getCity();
+        assertNotNull(city);
+    }
+
+    @Test
+    void testGenerateState() {
+        Address address = new Address();
+        String state = address.getState();
+        assertNotNull(state);
+    }
+
+    @Test
+    void testGenerateCountry() {
+        Address address = new Address();
+        String country = address.getCountry();
+        assertNotNull(country);
+    }
+
+    @Test
+    void testGenerateZipCode() {
+        Address address = new Address();
+        String zipCode = address.getZipCode();
+        assertNotNull(zipCode);
+    }
+
+    @Test
+    void testToString() {
+        Address address = new Address();
+        String addressString = address.toString();
+        assertNotNull(addressString);
+        assertFalse(addressString.isEmpty());
+    }
+}

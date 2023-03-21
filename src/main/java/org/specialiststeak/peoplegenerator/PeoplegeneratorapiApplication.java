@@ -3,7 +3,7 @@ package org.specialiststeak.peoplegenerator;
 import jakarta.servlet.http.HttpServletRequest;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
-import org.specialiststeak.peoplegenerator.person.utils.Address;
+import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -31,31 +31,38 @@ public class PeoplegeneratorapiApplication {
         SpringApplication.run(PeoplegeneratorapiApplication.class, args);
     }
 
+    // Index page
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
+    // Get-started page
     @GetMapping("/get-started")
     public String getStarted() {
         return "get-started";
     }
 
+    // endpoints page
     @GetMapping("/endpoints")
     public String endpoints() {
         return "endpoints";
     }
 
+    // fields page
     @GetMapping("/fields")
     public String fields() {
         return "fields";
     }
 
+    // about page
     @GetMapping("/about")
     public String about() {
         return "about";
     }
 
+
+    // Returns a single person Object
     @GetMapping("/api/person/")
     @ResponseBody
     public Person getPerson(HttpServletRequest request) {
@@ -63,6 +70,7 @@ public class PeoplegeneratorapiApplication {
         return new Person();
     }
 
+    // Returns a number of people Objects in an array < 50_000
     @GetMapping("/api/person/" + "{number}")
     @ResponseBody
     public ResponseEntity<Person[]> getPerson(@PathVariable int number, HttpServletRequest request) {
@@ -83,6 +91,7 @@ public class PeoplegeneratorapiApplication {
                 .body(people);
     }
 
+    // Returns a random gender String
     @GetMapping("/api/person/gender/")
     @ResponseBody
     public String gender(HttpServletRequest request) {
@@ -90,6 +99,8 @@ public class PeoplegeneratorapiApplication {
         return new Person().getGender();
     }
 
+
+    // Returns a random name String
     @GetMapping("/api/person/name/")
     @ResponseBody
     public String name(HttpServletRequest request) {
@@ -97,6 +108,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getName();
     }
 
+    // Returns a random email String
     @GetMapping("/api/person/email/")
     @ResponseBody
     public String email(HttpServletRequest request) {
@@ -104,6 +116,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getEmail();
     }
 
+    // Returns a persons age as an int
     @GetMapping("/api/person/age/")
     @ResponseBody
     public int age(HttpServletRequest request) {
@@ -111,6 +124,7 @@ public class PeoplegeneratorapiApplication {
         return generateAge();
     }
 
+    // returns a persons job as a String
     @GetMapping("/api/person/job/")
     @ResponseBody
     public String job(HttpServletRequest request) {
@@ -118,12 +132,14 @@ public class PeoplegeneratorapiApplication {
         return new Person().getJob();
     }
 
+    // returns a persons date of birth as a String
     @GetMapping("/api/person/dateofbirth/")
     public String dateofbirth(HttpServletRequest request) {
         rateLimit(request, 1);
         return new Person().getDateOfBirth();
     }
 
+    // returns a person's income as an int
     @GetMapping("/api/person/income/")
     @ResponseBody
     public int income(HttpServletRequest request) {
@@ -131,6 +147,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getIncomeInUSD();
     }
 
+    // returns a person's credit score as an int
     @GetMapping("/api/person/creditscore/")
     @ResponseBody
     public int creditscore(HttpServletRequest request) {
@@ -138,6 +155,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getCreditScore();
     }
 
+    // returns a person's credit card number as a String
     @GetMapping("/api/person/creditcardnumber/")
     @ResponseBody
     public String creditcardnumber(HttpServletRequest request) {
@@ -145,6 +163,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getCreditCardNumber();
     }
 
+    // returns a person's marital status as a boolean
     @GetMapping("/api/person/maritalstatus/")
     @ResponseBody
     public boolean maritalstatus(HttpServletRequest request) {
@@ -152,6 +171,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().isHasChildren();
     }
 
+    // returns a person's has children as a boolean
     @GetMapping("/api/person/haschildren/")
     @ResponseBody
     public boolean haschildren(HttpServletRequest request) {
@@ -159,6 +179,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().isMarried();
     }
 
+    // returns a person's height as a double
     @GetMapping("/api/person/height/")
     @ResponseBody
     public double height(HttpServletRequest request) {
@@ -166,6 +187,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getHeight();
     }
 
+    // returns a person's weight as a double
     @GetMapping("/api/person/weight/")
     @ResponseBody
     public double weight(HttpServletRequest request) {
@@ -173,6 +195,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getWeight();
     }
 
+    // return's a person's eye color as a string
     @GetMapping("/api/person/eyecolor/")
     @ResponseBody
     public String eyecolor(HttpServletRequest request) {
@@ -180,6 +203,7 @@ public class PeoplegeneratorapiApplication {
         return generateEyeColor();
     }
 
+    // returns whether a person has a degree or not as a boolean
     @GetMapping("/api/person/hasdegree/")
     @ResponseBody
     public boolean hasdegree(HttpServletRequest request) {
@@ -187,6 +211,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().generateHasDegree();
     }
 
+    // returns a person's GPA as a double
     @GetMapping("/api/person/gpa/")
     @ResponseBody
     public double gpa(HttpServletRequest request) {
@@ -194,6 +219,7 @@ public class PeoplegeneratorapiApplication {
         return generateGPA();
     }
 
+    // returns a person's blood type as a string
     @GetMapping("/api/person/bloodtype/")
     @ResponseBody
     public String bloodtype(HttpServletRequest request) {
@@ -201,6 +227,7 @@ public class PeoplegeneratorapiApplication {
         return generateBloodType();
     }
 
+    // Returns a person's username as a String
     @GetMapping("/api/person/username/")
     @ResponseBody
     public String username(HttpServletRequest request) {
@@ -208,6 +235,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getUsername();
     }
 
+    // returns a person's religion as a String
     @GetMapping("/api/person/religion/")
     @ResponseBody
     public String religion(HttpServletRequest request) {
@@ -215,6 +243,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getReligion();
     }
 
+    // returns a person's political leaning as a double
     @GetMapping("/api/person/politicalleaning/")
     @ResponseBody
     public double politicalLeaning(HttpServletRequest request) {
@@ -222,6 +251,7 @@ public class PeoplegeneratorapiApplication {
         return new Person().getPoliticalLeaning();
     }
 
+    // returns an address object
     @GetMapping("/api/address/")
     @ResponseBody
     public Address generateAddress(HttpServletRequest request) {
@@ -229,6 +259,7 @@ public class PeoplegeneratorapiApplication {
         return new Address();
     }
 
+    //returns a lifestory object containing a lifestory string and a person object
     @GetMapping("/api/lifestory/")
     @ResponseBody
     public Lifestory generateLifeStory(HttpServletRequest request) {

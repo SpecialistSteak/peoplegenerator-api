@@ -1,8 +1,8 @@
-package org.specialiststeak.peoplegenerator.person.temp;
+package org.specialiststeak.peoplegenerator.person.timetesting;
 
 import lombok.Data;
 
-import static org.specialiststeak.peoplegenerator.person.temp.TimeUnits.staticConvertTime;
+import static org.specialiststeak.peoplegenerator.person.timetesting.TimeUnits.staticConvertTime;
 
 @Data
 public class Times{

@@ -3,12 +3,10 @@ package org.specialiststeak.peoplegenerator.person.peoplelist;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
-import org.specialiststeak.peoplegenerator.person.utils.Address;
-import org.specialiststeak.peoplegenerator.person.utils.AgeRange;
 
 import java.util.Calendar;
 
-import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
+import static org.specialiststeak.peoplegenerator.person.timetesting.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 

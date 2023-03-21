@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.temp;
+package org.specialiststeak.peoplegenerator.person.timetesting;
 
 import lombok.Data;
 

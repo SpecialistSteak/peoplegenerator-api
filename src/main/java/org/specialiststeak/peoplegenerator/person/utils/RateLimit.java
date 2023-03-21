@@ -12,7 +12,7 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static org.specialiststeak.peoplegenerator.person.temp.TimeTester.runCode;
+import static org.specialiststeak.peoplegenerator.person.timetesting.TimeTester.runCode;
 
 @UtilityClass
 public class RateLimit {

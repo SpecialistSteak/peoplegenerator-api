@@ -1,6 +1,7 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
 import lombok.experimental.UtilityClass;
+import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
 import java.util.ArrayList;
