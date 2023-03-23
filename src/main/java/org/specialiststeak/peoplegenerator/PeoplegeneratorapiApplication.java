@@ -23,7 +23,13 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @SpringBootApplication
 @Controller
 @EnableWebMvc
-public class PeoplegeneratorapiApplication {
+public class PeoplegeneratorapiApplication implements Runnable {
+
+    @Override
+    public void run() {
+        System.out.println("Running");
+    }
+
     public static void main(String[] args) {
         startup(true);
         personTimeTest();

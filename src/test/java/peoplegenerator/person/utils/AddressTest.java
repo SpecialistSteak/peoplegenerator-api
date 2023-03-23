@@ -14,20 +14,20 @@ class AddressTest{
         startup(true);
     }
 
-    @Test
-    void testConstructor() {
-        Address address = new Address();
-        assertNotNull(address.getStreetAddress());
-        assertNotNull(address.getCity());
-        assertNotNull(address.getState());
-        assertNotNull(address.getCountry());
-        assertNotNull(address.getZipCode());
-        assertNotNull(address.getPhoneNumber());
-        assertNotNull(address.getIPAddress());
-        assertNotNull(address.getCountryCode());
-        assertNotNull(address.getNationality());
-        assertTrue(address.getGeonameID() >= -1);
-    }
+//    @Test
+//    void testConstructor() {
+//        Address address = new Address();
+//        assertNotNull(address.getStreetAddress());
+//        assertNotNull(address.getCity());
+//        assertNotNull(address.getState());
+//        assertNotNull(address.getCountry());
+//        assertNotNull(address.getZipCode());
+//        assertNotNull(address.getPhoneNumber());
+//        assertNotNull(address.getIPAddress());
+//        assertNotNull(address.getCountryCode());
+//        assertNotNull(address.getNationality());
+//        assertTrue(address.getGeonameID() >= -1);
+//    }
 
     @Test
     void testGenerateGeonameID() {

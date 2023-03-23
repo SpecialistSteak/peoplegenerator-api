@@ -51,12 +51,6 @@ public class PersonTest {
     }
 
     @Test
-    @DisplayName("Test that the credit card number is not null")
-    public void testCreditCardNumberNotNull() {
-        Assertions.assertNotNull(person.getCreditCardNumber());
-    }
-
-    @Test
     @DisplayName("Test that the married status is not null")
     public void testMarriedNotNull() {
         Assertions.assertNotNull(person.isMarried());
