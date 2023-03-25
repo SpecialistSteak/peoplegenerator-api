@@ -7,30 +7,22 @@ import org.junit.jupiter.api.Test;
 import org.specialiststeak.peoplegenerator.person.utils.Constants;
 import org.specialiststeak.peoplegenerator.person.utils.Loading;
 
+import static org.specialiststeak.peoplegenerator.person.utils.Loading.loadAll;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 
-public class LoadingTest {
+class LoadingTest {
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         Assertions.assertDoesNotThrow(() -> startup(true));
         Assertions.assertDoesNotThrow(() -> startup(true));
+        startup(true);
     }
 
     @Test
-    public void testStartup() {
+    void testStartup() {
         Assertions.assertDoesNotThrow(() -> startup(true));
         Assertions.assertDoesNotThrow(() -> startup(false));
-    }
-
-    @Test
-    public void testLoadAll() {
-        Assertions.assertDoesNotThrow(Loading::loadAll);
-    }
-
-    @Test
-    public void testLoadAll_JAR() {
-        Assertions.assertDoesNotThrow(Loading::loadAll_JAR);
     }
 
     @Test

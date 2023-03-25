@@ -5,5 +5,5 @@ THIS WILL NOT WORK! The code requires reading files from the packaged jar file, 
 - Run the native image
 
 ================= JAR file creation & Instructions =================
-- Make a new jar by running `mvn install`
+- Make a new jar by running `mvn validate compile test package verify install`
 - Run the JAR using a graalvm distribution
