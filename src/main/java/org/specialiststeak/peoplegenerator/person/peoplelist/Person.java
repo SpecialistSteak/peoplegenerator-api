@@ -4,8 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
+import java.util.stream.IntStream;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.specialiststeak.peoplegenerator.person.timetesting.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
@@ -38,6 +45,41 @@ public class Person {
     //zodiac sign (based on date of birth)
     //MAC address (based on IP address)
     //credit card expiration date (within 5 years, 5% chance of being expired)
+
+    public static Person[] createPeople(int number) {
+        Person[] people = new Person[number];
+        if(number < 100){
+            for(int i = 0; i < number; i++){
+                people[i] = new Person();
+            }
+            return people;
+        }
+
+        int numThreads = Runtime.getRuntime().availableProcessors();
+        ExecutorService executor = newFixedThreadPool(numThreads);
+        try {
+            int chunkSize = number / numThreads;
+            List<Future<?>> futures = new ArrayList<>();
+            for (int i = 0; i < numThreads; i++) {
+                int start = i * chunkSize;
+                int end = (i == numThreads - 1) ? number : start + chunkSize;
+                futures.add(executor.submit(() -> {
+                    for (int j = start; j < end; j++) {
+                        people[j] = new Person();
+                    }
+                }));
+            }
+            for (Future<?> future : futures) {
+                future.get();
+            }
+            executor.shutdown();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            executor.shutdown();
+        }
+        return people;
+    }
 
     private static final String FEMALE = "Female";
 
@@ -129,7 +171,7 @@ public class Person {
     }
 
     public String generateDateOfBirth() {
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.YEAR, -getAge());
         calendar.add(Calendar.MONTH, random.nextInt(12));

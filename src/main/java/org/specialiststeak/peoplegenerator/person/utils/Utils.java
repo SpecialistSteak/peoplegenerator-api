@@ -1,13 +1,16 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
 import lombok.experimental.UtilityClass;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.zip.GZIPOutputStream;
 
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Loading.loadAll_JAR;
@@ -106,7 +109,7 @@ public final class Utils {
     }
 
     public static Integer randomIntItemFromList(List<Integer> list) {
-        if (list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return null;
         }
         return list.get(random.nextInt(list.size()));
@@ -122,5 +125,15 @@ public final class Utils {
             case "%s_%s" -> String.format("%s_%s", firstName, lastName);
             default -> "";
         } + "@" + EMAIL_SERVICE_PROVIDERS[getRandomIndexBasedOnProbabilities(EMAIL_SERVICE_PROVIDER_PROBABILITIES)]).toLowerCase();
+    }
+
+    public static byte[] compressByteArray(byte[] data) throws IOException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream(data.length);
+        GZIPOutputStream gzip = new GZIPOutputStream(bos);
+        gzip.write(data, 0, data.length);
+        gzip.close();
+        byte[] compressedData = bos.toByteArray();
+        bos.close();
+        return compressedData;
     }
 }

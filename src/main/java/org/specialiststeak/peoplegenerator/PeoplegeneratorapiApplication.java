@@ -1,11 +1,13 @@
 package org.specialiststeak.peoplegenerator;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
+import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.io.IOException;
+
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory.lifestoryFactory;
 import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
+import static org.specialiststeak.peoplegenerator.person.utils.Utils.compressByteArray;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 
 @SpringBootApplication
@@ -77,24 +82,21 @@ public class PeoplegeneratorapiApplication implements Runnable {
     }
 
     // Returns a number of people Objects in an array < 50_000
-    @GetMapping("/api/person/" + "{number}")
+    @GetMapping(value = "/api/person/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Person[]> getPerson(@PathVariable int number, HttpServletRequest request) {
+    public ResponseEntity<byte[]> getCompressedPerson(@PathVariable int number, HttpServletRequest request) throws IOException {
         rateLimit(request, 10);
         if (number < 1 || number > 50_000) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(null);
         }
 
-        Person[] people = new Person[number];
-        for (int i = 0; i < number; i++) {
-            people[i] = new Person();
-        }
+        byte[] compressedData = compressByteArray(new ObjectMapper().writeValueAsBytes(createPeople(number)));
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setContentLength(compressedData.length);
+        headers.set("Content-Encoding", "gzip");
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(people);
+        return new ResponseEntity<>(compressedData, headers, HttpStatus.OK);
     }
 
     // Returns a random gender String

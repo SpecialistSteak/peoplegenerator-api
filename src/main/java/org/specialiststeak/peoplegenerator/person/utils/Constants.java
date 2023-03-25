@@ -17,8 +17,7 @@ public final class Constants {
     public static List<Integer>[] GEONAMEID = new ArrayList[192];
     public static List<String> EMPTY_LIST = new ArrayList<>();
 
-    public static Calendar calendar = Calendar.getInstance();
-    public static Date date = new Date();
+    public static final Date date = new Date();
 
     /**
      * Single instance of faker for general use
