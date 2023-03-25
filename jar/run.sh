@@ -1,1 +1,1 @@
-mvn spring-boot:run -Dspring.config.location="C:\Users\Luke\Documents\Code\peoplegeneratorapi\src\main\resources\Application.properties"
+java -XX:+UseParallelGC -XX:+UseParallelOldGC -XX:+UseAdaptiveSizePolicy -XX:+AggressiveOpts -jar "JAR_LOCATION" --spring.config.location="SPRING_CONFIG_LOCATION"
