@@ -13,10 +13,10 @@ public class Lifestory {
         startup(true);
         Person p = new Person();
         String lifeStory = formatPerson(p);
-        System.out.println("Person: " + p.toString());
+        System.out.println("Person: " + p);
         System.out.println("Lifestory (String): " + lifeStory);
         Lifestory l = lifestoryFactory(p);
-        System.out.println("Lifestory (Object): " + l.toString());
+        System.out.println("Lifestory (Object): " + l);
     }
 
     private Person person;
@@ -34,16 +34,22 @@ public class Lifestory {
     }
 
     public static String formatPerson(Person person) {
-        String genderPronoun = switch (person.getGender()) {
-            case "Male" -> "He";
-            case "Female" -> "She";
-            default -> "They";
-        };
-        String genderPronoun2 = switch (person.getGender()) {
-            case "Male" -> "His";
-            case "Female" -> "Her";
-            default -> "Their";
-        };
+        String genderPronoun;
+        String genderPronoun2;
+        switch (person.getGender()){
+            case "Male" -> {
+                genderPronoun = "He";
+                genderPronoun2 = "His";
+            }
+            case "Female" -> {
+                genderPronoun = "She";
+                genderPronoun2 = "Her";
+            }
+            default -> {
+                genderPronoun = "They";
+                genderPronoun2 = "Their";
+            }
+        }
         return person.getName() + " is a " + person.getAge() + "-year-old who was born on " +
                 person.getDateOfBirth() + ". " + person.getName().substring(0, person.getName().indexOf(" "))
                 + " works as a " + person.getJob().toLowerCase() + " and lives in " +

@@ -1,0 +1,1 @@
+mvn spring-boot:run -Dspring.config.location="C:\Users\Luke\Documents\Code\peoplegeneratorapi\src\main\resources\Application.properties"
