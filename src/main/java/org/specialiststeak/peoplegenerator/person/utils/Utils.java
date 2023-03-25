@@ -1,5 +1,6 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
+import com.nixxcode.jvmbrotli.enc.BrotliOutputStream;
 import lombok.experimental.UtilityClass;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
@@ -102,7 +103,7 @@ public final class Utils {
      * @return a random item from the list
      */
     public static String randomItemFromList(List<String> list) {
-        if (list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return null;
         }
         return list.get(random.nextInt(list.size()));
@@ -117,12 +118,12 @@ public final class Utils {
 
     public static String makeEmail(String firstName, String lastName) {
         return (switch (EMAIL_NAME_FORMATS[random.nextInt(EMAIL_NAME_FORMATS.length)]) {
-            case "%s.%s" -> (random.nextDouble() < 0.5 ? String.format("%s", firstName) : String.format("%s", lastName))
+            case "%s.%s" -> (random.nextDouble() < 0.5 ? firstName : lastName)
                     + "."
-                    + (random.nextDouble() < 0.5 ? String.format("%s", lastName) : String.format("%s", firstName));
+                    + (random.nextDouble() < 0.5 ? lastName : firstName);
             case "%s%s" -> firstName + lastName;
-            case "%s" -> random.nextDouble() < 0.5 ? String.format("%s", firstName) : String.format("%s", lastName);
-            case "%s_%s" -> String.format("%s_%s", firstName, lastName);
+            case "%s" -> random.nextDouble() < 0.5 ? firstName : lastName;
+            case "%s_%s" -> firstName + "_" + lastName;
             default -> "";
         } + "@" + EMAIL_SERVICE_PROVIDERS[getRandomIndexBasedOnProbabilities(EMAIL_SERVICE_PROVIDER_PROBABILITIES)]).toLowerCase();
     }
