@@ -5,4 +5,4 @@
 ![License](https://img.shields.io/badge/License-GPL-blue)
 People generator API built in java using Spring Boot.
 
-You can find a live site at <a href="peoplegeneratorapi.live">peoplegeneratorapi.live</a>
+You can find a live site at <a href="http://peoplegeneratorapi.live">peoplegeneratorapi.live</a>
