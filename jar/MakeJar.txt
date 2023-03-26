@@ -7,3 +7,11 @@ THIS WILL NOT WORK! The code requires reading files from the packaged jar file, 
 ================= JAR file creation & Instructions =================
 - Make a new jar by running `mvn validate compile test package verify install`
 - Run the JAR using a graalvm distribution
+
+=======================RUN IN BACKGROUND ON DIGITAL OCEAN=======================
+Open a terminal window.
+Type screen and press Enter to start a new screen session.
+Run the command you want to keep running.
+Press CTRL + A followed by CTRL + D. This will detach your screen session and return you to your normal terminal session.
+Disconnect from your droplet.
+To reattach to your screen session, log back into your droplet and type screen -r. This will reattach you to your screen session.
