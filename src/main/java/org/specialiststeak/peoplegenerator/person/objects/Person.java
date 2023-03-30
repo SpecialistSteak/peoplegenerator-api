@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.peoplelist;
+package org.specialiststeak.peoplegenerator.person.objects;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
-import java.util.stream.IntStream;
 
 import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.specialiststeak.peoplegenerator.person.timetesting.TimeTester.runCode;

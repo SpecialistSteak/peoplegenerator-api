@@ -2,9 +2,9 @@ package org.specialiststeak.peoplegenerator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
+import org.specialiststeak.peoplegenerator.person.objects.Address;
+import org.specialiststeak.peoplegenerator.person.objects.Lifestory;
+import org.specialiststeak.peoplegenerator.person.objects.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpHeaders;
@@ -19,8 +19,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Lifestory.lifestoryFactory;
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.*;
+import static org.specialiststeak.peoplegenerator.person.objects.Lifestory.lifestoryFactory;
+import static org.specialiststeak.peoplegenerator.person.objects.Person.*;
 import static org.specialiststeak.peoplegenerator.person.utils.RateLimit.rateLimit;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.compressByteArray;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;

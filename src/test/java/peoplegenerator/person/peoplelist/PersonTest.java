@@ -1,7 +1,7 @@
 package peoplegenerator.person.peoplelist;
 
 import org.junit.jupiter.api.*;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
+import org.specialiststeak.peoplegenerator.person.objects.Person;
 
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 

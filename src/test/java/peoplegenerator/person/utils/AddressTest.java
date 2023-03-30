@@ -2,7 +2,7 @@ package peoplegenerator.person.utils;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
+import org.specialiststeak.peoplegenerator.person.objects.Address;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;

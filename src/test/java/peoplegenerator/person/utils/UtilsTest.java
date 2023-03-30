@@ -3,7 +3,7 @@ package peoplegenerator.person.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
+import org.specialiststeak.peoplegenerator.person.objects.Person;
 import org.specialiststeak.peoplegenerator.person.utils.Utils;
 
 import java.util.Arrays;

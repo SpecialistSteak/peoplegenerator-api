@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.peoplelist;
+package org.specialiststeak.peoplegenerator.person.objects;
 
 import com.google.gson.Gson;
 import lombok.Data;

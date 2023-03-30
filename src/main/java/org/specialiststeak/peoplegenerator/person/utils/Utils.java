@@ -1,10 +1,9 @@
 package org.specialiststeak.peoplegenerator.person.utils;
 
-import com.nixxcode.jvmbrotli.enc.BrotliOutputStream;
 import lombok.experimental.UtilityClass;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Address;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
+import org.specialiststeak.peoplegenerator.person.objects.Address;
+import org.specialiststeak.peoplegenerator.person.objects.Person;
 
 import java.io.IOException;
 import java.util.ArrayList;

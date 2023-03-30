@@ -1,16 +1,11 @@
 package org.specialiststeak.peoplegenerator;
 
 import lombok.experimental.UtilityClass;
-import org.specialiststeak.peoplegenerator.person.peoplelist.Person;
+import org.specialiststeak.peoplegenerator.person.objects.Person;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 
-import static org.specialiststeak.peoplegenerator.person.peoplelist.Person.createPeople;
+import static org.specialiststeak.peoplegenerator.person.objects.Person.createPeople;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 
 @UtilityClass

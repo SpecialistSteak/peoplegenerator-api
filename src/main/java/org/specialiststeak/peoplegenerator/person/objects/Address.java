@@ -1,4 +1,4 @@
-package org.specialiststeak.peoplegenerator.person.peoplelist;
+package org.specialiststeak.peoplegenerator.person.objects;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
