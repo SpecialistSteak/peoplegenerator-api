@@ -1,4 +1,6 @@
-
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/102715674/228890015-c38a38c5-cd6c-4dcf-b955-cde95fb380ca.svg" alt="Logo" width="128" height="128">
+</div>
 
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/user/repo/actions) [![License](https://img.shields.io/badge/License-GPL-blue)](https://opensource.org/licenses/GPL-3.0) [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.6.3-brightgreen)](https://spring.io/projects/spring-boot) [![Maven](https://img.shields.io/badge/Maven-4.0.0-blue)](https://maven.apache.org/)
 
