@@ -10,7 +10,7 @@ THIS WILL NOT WORK! The code requires reading files from the packaged jar file, 
 
 =======================RUN IN BACKGROUND ON DIGITAL OCEAN=======================
 Open a terminal window.
-Type screen and press Enter to start a new screen session.
+Type 'screen' and press Enter to start a new screen session.
 Run the command you want to keep running.
 Press CTRL + A followed by CTRL + D. This will detach your screen session and return you to your normal terminal session.
 Disconnect from your droplet.
