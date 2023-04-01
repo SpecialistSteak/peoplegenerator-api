@@ -1,3 +1,3 @@
 package org.specialiststeak.peoplegenerator.person.objects;
 
-public record Name(String title, String first, String last) {}
+public record Name(String title, String middle, String first, String last) {}

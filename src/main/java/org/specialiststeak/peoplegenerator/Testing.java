@@ -1,12 +1,17 @@
 package org.specialiststeak.peoplegenerator;
 
 import lombok.experimental.UtilityClass;
+import org.apache.commons.collections.ArrayStack;
 import org.specialiststeak.peoplegenerator.person.objects.Person;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import static org.specialiststeak.peoplegenerator.person.objects.Person.createPeople;
-import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
+import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
+import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @UtilityClass
 public class Testing {
@@ -27,7 +32,16 @@ public class Testing {
 //        }
         startup(true);
         startup(true);
-        testSpeed(50_000);
+//        testSpeed(50_000);
+        List<Object> l1 = new ArrayList<>(List.of(duplicateRemove(femaleFirstNames)));
+        List<Object> l2 = new ArrayList<>(List.of(duplicateRemove(maleFirstNames)));
+        List<Object> l3 = new ArrayList<>(List.of(duplicateRemove(lastNames)));
+        l1.removeIf(Objects::isNull);
+        l2.removeIf(Objects::isNull);
+        l3.removeIf(Objects::isNull);
+        System.out.println(l1.size());
+        System.out.println(l2.size());
+        System.out.println(l3.size());
     }
 
     public static void testSpeed(int num_iterations) {
