@@ -20,10 +20,17 @@ public class RateLimit {
     private static final Map<String, Instant> personRequestHistory = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
-        String ip = "127.0.0.1";
+        final String ip = "127.0.0.1";
         String hashed = sha256Hash(ip);
         System.out.println("IP: " + ip);
         System.out.println("Hashed: " + hashed);
+        for (int i = 0; i < 1_000; i++) {
+            new Thread(() -> {
+                for(int j = 0; j < 100; j++) {
+                    logIPToDatabase(ip);
+                }
+            }).start();
+        }
     }
 
     public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS) {
@@ -41,8 +48,7 @@ public class RateLimit {
     }
 
     static void logIPToDatabase(String clientIp) {
-        String ip = sha256Hash(clientIp + SALT);
-        writeToFile(ip, "ip.txt");
+        writeToFile(sha256Hash(clientIp + SALT));
     }
 
     private static String sha256Hash(String ipAddress) {
@@ -54,6 +60,7 @@ public class RateLimit {
             System.out.println("CRITICAL ERROR: SHA3-256 does not exist!");
             e.printStackTrace();
         }
+        assert digest != null;
         byte[] hash = digest.digest((ipAddress).getBytes(StandardCharsets.UTF_8));
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
