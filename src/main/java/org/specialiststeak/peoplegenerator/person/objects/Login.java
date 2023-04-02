@@ -1,7 +1,9 @@
 package org.specialiststeak.peoplegenerator.person.objects;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,8 +12,20 @@ import java.util.UUID;
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.random;
 
 @Data
-@EqualsAndHashCode
+@AllArgsConstructor
 public class Login {
+
+    public static void main(String[] args) {
+        var login = new Login("jon", "email");
+        System.out.println(login);
+        System.out.println("/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
+        System.out.println(login.generatePassword());
+        System.out.println(login.generateSalt());
+        System.out.println(login.generateMD5(login.password));
+        System.out.println(login.generateSHA1(login.password, login.salt));
+        System.out.println(login.generateSHA256(login.password, login.salt));
+        System.out.println(login.generateUUID());
+    }
 
     private static final String ALL_SYMBOLS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~`!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
     private static final MessageDigest md5Digest;
@@ -28,36 +42,46 @@ public class Login {
         }
     }
 
+    public Login(String username, String email) {
+        this.uuid = generateUUID().toString();
+        this.username = username;
+        this.email = email;
+        this.password = generatePassword();
+        this.salt = generateSalt();
+        this.md5 = generateMD5(password);
+        this.sha1 = generateSHA1(password, salt);
+        this.sha256 = generateSHA256(password, salt);
+        this.has2fa = generateTwoFactorAuthentification();
+    }
+
+    public Login(Person p1) {
+        this.uuid = generateUUID().toString();
+        this.username = p1.getUsername();
+        this.email = p1.getEmail();
+        this.password = generatePassword();
+        this.salt = generateSalt();
+        this.md5 = generateMD5(password);
+        this.sha1 = generateSHA1(password, salt);
+        this.sha256 = generateSHA256(password, salt);
+        this.has2fa = generateTwoFactorAuthentification();
+    }
+
     private final String uuid;
     private final String username;
+    private final String email;
     private final String password;
     private final String salt;
     private final String md5;
     private final String sha1;
     private final String sha256;
-
-    public Login() {
-        this.uuid = "uuid";
-        this.username = "username";
-        this.password = "password";
-        this.salt = "salt";
-        this.md5 = "md5";
-        this.sha1 = "sha1";
-        this.sha256 = "sha256";
-    }
-
-    public Login(String uuid, String username, String password, String salt, String md5, String sha1, String sha256) {
-        this.uuid = uuid;
-        this.username = username;
-        this.password = password;
-        this.salt = salt;
-        this.md5 = md5;
-        this.sha1 = sha1;
-        this.sha256 = sha256;
-    }
+    private final boolean has2fa;
 
     UUID generateUUID() {
         return UUID.randomUUID();
+    }
+
+    private boolean generateTwoFactorAuthentification() {
+        return random.nextDouble() < .3;
     }
 
     String generatePassword() {
@@ -101,13 +125,14 @@ public class Login {
         return ALL_SYMBOLS.charAt(random.nextInt(ALL_SYMBOLS.length()));
     }
 
-    public static void main(String[] args) {
-        var login = new Login();
-        System.out.println(login.generatePassword());
-        System.out.println(login.generateSalt());
-        System.out.println(login.generateMD5(login.password));
-        System.out.println(login.generateSHA1(login.password, login.salt));
-        System.out.println(login.generateSHA256(login.password, login.salt));
-        System.out.println(login.generateUUID());
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }

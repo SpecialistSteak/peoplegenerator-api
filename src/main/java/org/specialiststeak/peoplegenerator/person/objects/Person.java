@@ -3,6 +3,7 @@ package org.specialiststeak.peoplegenerator.person.objects;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
+@Accessors(chain = true)
 public class Person {
     private String name;
     private int age;
