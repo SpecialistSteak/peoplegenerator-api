@@ -19,6 +19,7 @@
     <title>People Generator API - Generate Random People Profiles with Realistic Data</title>
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <link rel="icon" href="../static/Logo.svg">
+    <script src="../static/script.js"></script>
 </head>
 <body class="fullpage">
 <header>
@@ -40,11 +41,7 @@
     <section id="overview">
         <h2>Overview</h2>
         <p class="body">
-            This API is designed to create large (or small) amounts of realistic and believable profiles of fictitious
-            people, primarily intended for
-            testing purposes. It can be a helpful resource for developers who need to quickly generate sample user data
-            in both small and large quantities. Moreover, the data from this API is skewed towards the global and
-            country averages, making it a fairly accurate representation of what real people might look like.
+            This API is designed to create large (or small) amounts of realistic and believable profiles of fictitious people, primarily intended for testing purposes. It can be a helpful resource for developers who need to quickly generate sample user data in both small and large quantities. Moreover, the data from this API is skewed towards the global and country averages, making it a fairly accurate representation of what real people might look like.
         </p>
     </section>
     <br>
@@ -57,6 +54,13 @@
             <li>Generate individual pieces of information, such as names, birthdays, realistic addresses, etc.</li>
             <li>The service is completely free and requires no signup</li>
         </ul>
+    </section>
+    <br>
+    <section>
+        <button
+                onclick="fetch('https://peoplegeneratorapi.live/api/person/').then(response => response.json()).then(data => document.getElementById('RESPONSE').innerHTML = JSON.stringify(data, null, 2))">Click me to see an example person!</button>
+        <br><br>
+        <code class="codeblock" id="RESPONSE"></code>
     </section>
 </main>
 <footer>
