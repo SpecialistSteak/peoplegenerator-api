@@ -25,8 +25,8 @@
         <hr class="separator">
         <br>
         <section>
-            <h2>Tabs</h2>
-            <p>Click on the buttons inside the tabbed menu:</p>
+            <h2>Requesting 100 People:</h2>
+            <p>Each of the tabs show example code for how to request 100 people in different languages:</p>
 
             <div class="tab">
                 <button class="tablinks active" onclick="openCity(event, 'JavaScript')">JavaScript</button>
@@ -35,10 +35,12 @@
             </div>
 
             <div id="JavaScript" class="tabcontent" style="display: block;">
-fetch('https://peoplegeneratorapi.live/api/person/100')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));</div>
+console.log(
+    fetch('https://peoplegeneratorapi.live/api/person/100')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
+);</div>
 
             <div id="Java" class="tabcontent" style="display: none;">
 import java.net.URI;
@@ -67,13 +69,11 @@ public class Main {
 import requests
 
 response = requests.get('https://peoplegeneratorapi.live/api/person/100')
-print(response.json())</div>
+response = response.json()
+# Encode the response to utf-8 so that it can be printed
+encoded_response = str(response).encode('utf-8')
+print(encoded_response)</div>
         </section>
-        <br>
-        <h3>Request One Person:</h3>
-        <p class="get-started">
-            To see a single example user, send a GET request to <code>/person/</code>.
-        </p>
         <br>
         <h3>Example API Response:</h3>
         <p style="padding-bottom:5px">
