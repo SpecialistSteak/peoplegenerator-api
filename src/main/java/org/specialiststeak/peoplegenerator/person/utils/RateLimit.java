@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -44,6 +45,22 @@ public class RateLimit {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again later.");
         }
         personRequestHistory.put(clientIp, Instant.now());
+        logIPToDatabase(clientIp);
+    }
+
+    public static void rateLimitRequest(HttpServletRequest request, final double RATE_LIMIT_TIME_IN_SECONDS) {
+        String clientIp = request.getHeader("X-Forwarded-For");
+        if (clientIp == null) {
+            clientIp = request.getRemoteAddr();
+        }
+
+        Instant lastRequestTime = personRequestHistory.get(clientIp);
+        Instant currentTime = Instant.now();
+        if (lastRequestTime != null && lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000)).isAfter(currentTime)) {
+            double timeRemaining = Duration.between(currentTime, lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000))).toMillis() / 1000.0;
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again in " + timeRemaining + " seconds.");
+        }
+        personRequestHistory.put(clientIp, currentTime);
         logIPToDatabase(clientIp);
     }
 
