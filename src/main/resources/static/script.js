@@ -6,3 +6,4 @@ button.addEventListener('click', async () => {
     const data = await response.json();
     codeblock.textContent = JSON.stringify(data, null, 2);
 });
+

@@ -3,7 +3,8 @@
 <head>
     <title>Get Started</title>
     <link rel="stylesheet" type="text/css" href="../static/styles2.css">
-    <link rel="icon" href ="../static/Logo.svg">
+    <link rel="icon" href="../static/Logo.svg">
+    <script src="script.js"></script>
 </head>
 <body class="fullpage">
 <header style="padding-bottom: 20px">
@@ -23,6 +24,52 @@
         <p>Below are the first steps you can take to access and start using the API.</p>
         <hr class="separator">
         <br>
+        <section>
+            <h2>Tabs</h2>
+            <p>Click on the buttons inside the tabbed menu:</p>
+
+            <div class="tab">
+                <button class="tablinks active" onclick="openCity(event, 'JavaScript')">JavaScript</button>
+                <button class="tablinks" onclick="openCity(event, 'Java')">Java</button>
+                <button class="tablinks" onclick="openCity(event, 'Python')">Python</button>
+            </div>
+
+            <div id="JavaScript" class="tabcontent" style="display: block;">
+fetch('https://peoplegeneratorapi.live/api/person/100')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));</div>
+
+            <div id="Java" class="tabcontent" style="display: none;">
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+  public static void main(String[] args) {
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("https://peoplegeneratorapi.live/api/person/100"))
+        .GET()
+        .build();
+    try {
+      HttpResponse&#60;String&#62;response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+      System.out.println(response.body());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}</div>
+
+            <div id="Python" class="tabcontent" style="display: none;">
+import requests
+
+response = requests.get('https://peoplegeneratorapi.live/api/person/100')
+print(response.json())</div>
+        </section>
+        <br>
         <h3>Request One Person:</h3>
         <p class="get-started">
             To see a single example user, send a GET request to <code>/person/</code>.
@@ -35,7 +82,6 @@
         </p>
         <br>
         <h3>Person Object:</h3>
-        <br>
         <code class="codeblock">{
     "name": "Mana Nikolaus",
     "age": 63,
@@ -73,7 +119,7 @@
         <br>
         <h3>Address Object:</h3>
         <br>
-        <code class="codeblock">{
+<code class="codeblock">{
     "streetAddress": "1139 Padberg Branch",
     "city": "Tarawa",
     "state": "Gilbert Islands",
@@ -92,13 +138,16 @@
     "person": {
         ...Person object, details ommitted for brevity...
     },
-    "lifestory": "Harvey Krajcik is a 43-year-old who was born on Sun Mar 22 13:05:47 IST 1981. Harvey works as a geologist and lives in Shymkent, AtyraÅ«, Kazakhstan. He is married and has children. He is 160.0cm tall and weighs 69.2 kg, and has brown eyes and a blood type of A-. He has a GPA of 3.0, and doesn't have a degree. His income is $70830, and he has a credit score of 437. His credit card number is 3441-081071-67187. He uses harvey_krajcik@gmail.com for Hisemail address and harvey30 for His username on various websites. He follows Buddhism and his political leaning is -0.82. He has a geonameid of 609123 and his phone number is +7 4144872266. He is from Kazakhstan and his IP address is 244.16.7.60"
+    "lifestory": "Harvey Krajcik is a 43-year-old who was born on Sun Mar 22 13:05:47 IST 1981. Harvey works as
+    a geologist and lives in Shymkent, AtyraÅ«, Kazakhstan. He is married and has children. He is 160.0cm tall
+    and weighs 69.2 kg, and has brown eyes and a blood type of A-. He has a GPA of 3.0, and doesn't have a
+    degree. His income is $70830, and he has a credit score of 437. His credit card number is 3441-081071-67187.
+    He uses harvey_krajcik@gmail.com for Hisemail address and harvey30 for His username on various websites. He
+    follows Buddhism and his political leaning is -0.82. He has a geonameid of 609123 and his phone number is +7
+    4144872266. He is from Kazakhstan and his IP address is 244.16.7.60"
 }</code>
     </section>
     <br>
-    <section id="example-usage">
-
-    </section>
 </main>
 <footer>
     <p><span>&copy;</span> 2023 SpecialistSteak</p>
