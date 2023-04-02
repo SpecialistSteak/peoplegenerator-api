@@ -256,12 +256,3 @@ body.fullpage {
 main {
     flex: 1;
 }
-
-.codeblock {
-    font-family: 'Roboto Mono', monospace;
-    display: block;
-    white-space: pre-wrap;
-    border: 1px solid var(--surface2);
-    background: #313244;
-    max-width: max-content;
-}

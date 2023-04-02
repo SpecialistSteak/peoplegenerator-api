@@ -61,13 +61,15 @@
     </section>
     <br>
     <section>
-        <button id="ex" onclick="fetch('https://peoplegeneratorapi.live/api/person/')
+        <button style="color: var(--black); background: var(--lavender); border : none; font-family: 'Roboto', sans-serif; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin: 4px 2px; cursor: pointer; border-radius: 5px;"
+                id="ex" onclick="fetch('https://peoplegeneratorapi.live/api/person/')
             .then(response => response.json())
             .then(data => document.getElementById('RESPONSE').innerHTML = `${JSON.stringify(data, null, 2).replace(/\\n/g, '<br>')}`)">
             Click me to see an example person!
         </button>
         <br><br>
-        <code class="codeblock" id="RESPONSE"></code>
+        <code style="    font-family: 'Roboto Mono', monospace; display: block; white-space: pre-wrap; border: 1px solid var(--surface2); background: #313244; max-width: max-content;"
+              id="RESPONSE"></code>
     </section>
 </main>
 <footer>
