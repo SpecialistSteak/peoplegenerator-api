@@ -41,7 +41,11 @@
     <section id="overview">
         <h2>Overview</h2>
         <p class="body">
-            This API is designed to create large (or small) amounts of realistic and believable profiles of fictitious people, primarily intended for testing purposes. It can be a helpful resource for developers who need to quickly generate sample user data in both small and large quantities. Moreover, the data from this API is skewed towards the global and country averages, making it a fairly accurate representation of what real people might look like.
+            This API is designed to create large (or small) amounts of realistic and believable profiles of fictitious
+            people, primarily intended for testing purposes. It can be a helpful resource for developers who need to
+            quickly generate sample user data in both small and large quantities. Moreover, the data from this API is
+            skewed towards the global and country averages, making it a fairly accurate representation of what real
+            people might look like.
         </p>
     </section>
     <br>
@@ -55,13 +59,16 @@
             <li>The service is completely free and requires no signup</li>
         </ul>
     </section>
-<!--    <br>-->
-<!--    <section>-->
-<!--        <button-->
-<!--                onclick="fetch('https://peoplegeneratorapi.live/api/person/').then(response => response.json()).then(data => document.getElementById('RESPONSE').innerHTML = JSON.stringify(data, null, 2))">Click me to see an example person!</button>-->
-<!--        <br><br>-->
-<!--        <code class="codeblock" id="RESPONSE"></code>-->
-<!--    </section>-->
+    <br>
+    <section>
+        <button id="ex" onclick="fetch('https://peoplegeneratorapi.live/api/person/')
+            .then(response => response.json())
+            .then(data => document.getElementById('RESPONSE').innerHTML = `${JSON.stringify(data, null, 2).replace(/\\n/g, '<br>')}`)">
+            Click me to see an example person!
+        </button>
+        <br><br>
+        <code class="codeblock" id="RESPONSE"></code>
+    </section>
 </main>
 <footer>
     <p><span>&copy;</span> 2023 SpecialistSteak</p>

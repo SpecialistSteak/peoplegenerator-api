@@ -28,6 +28,7 @@
     --pink: #f5c2e7;
     --flamingo: #f2cdcd;
     --rosewater: #f5e0dc;
+    --black: #000000;
 }
 
 /* Apply a universal box-sizing value for consistency */
@@ -236,6 +237,31 @@ body.fullpage {
     flex-direction: column;
 }
 
+#ex {
+/*    this is a button*/
+    background-color: var(--lavender);
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    color: var(--black);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 main {
     flex: 1;
+}
+
+.codeblock {
+    font-family: 'Roboto Mono', monospace;
+    display: block;
+    white-space: pre-wrap;
+    border: 1px solid var(--surface2);
+    background: #313244;
+    max-width: max-content;
 }
