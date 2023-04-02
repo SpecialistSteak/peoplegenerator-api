@@ -37,3 +37,4 @@ build/
 /resources/application.properties
 application.properties
 /src/main/java/resources/application.properties
+ip.log

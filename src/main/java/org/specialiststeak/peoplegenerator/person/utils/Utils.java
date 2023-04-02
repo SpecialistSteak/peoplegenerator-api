@@ -60,7 +60,6 @@ public final class Utils {
         return list.toArray(Arrays.copyOf(arr, list.size()));
     }
 
-
     public static int getRandomIndexBasedOnProbabilities(int[] array) {
         int cumulativeSum = 0;
         for (int i = 0; i < array.length; i++) {
@@ -117,9 +116,8 @@ public final class Utils {
 
     public static String makeEmail(String firstName, String lastName) {
         return (switch (EMAIL_NAME_FORMATS[random.nextInt(EMAIL_NAME_FORMATS.length)]) {
-            case "%s.%s" -> (random.nextDouble() < 0.5 ? firstName : lastName)
-                    + "."
-                    + (random.nextDouble() < 0.5 ? lastName : firstName);
+            case "%s.%s" ->
+                    (random.nextDouble() < 0.5 ? firstName : lastName) + "." + (random.nextDouble() < 0.5 ? lastName : firstName);
             case "%s%s" -> firstName + lastName;
             case "%s" -> random.nextDouble() < 0.5 ? firstName : lastName;
             case "%s_%s" -> firstName + "_" + lastName;
