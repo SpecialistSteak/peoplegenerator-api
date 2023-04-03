@@ -78,7 +78,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/", "/api/person"})
     @ResponseBody
     public Person getPerson(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/");
         return new Person();
     }
 
@@ -86,7 +86,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping(value = {"/api/person/{number}", "/api/person/{number}/"}, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<byte[]> getCompressedPerson(@PathVariable int number, HttpServletRequest request) throws IOException {
-        rateLimit(request, 10);
+        rateLimit(request, 10, "/api/person/" + number);
         if (number < 1 || number > 50_000) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(null);
         }
@@ -104,7 +104,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/gender/", "/api/person/gender"})
     @ResponseBody
     public String gender(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/gender/");
         return new Person().getGender();
     }
 
@@ -112,7 +112,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/name/", "/api/person/name"})
     @ResponseBody
     public String name(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/name/");
         return new Person().getName();
     }
 
@@ -120,7 +120,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/email/", "/api/person/email"})
     @ResponseBody
     public String email(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/email/");
         return new Person().getEmail();
     }
 
@@ -128,7 +128,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/age/", "/api/person/age"})
     @ResponseBody
     public int age(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/age/");
         return generateAge();
     }
 
@@ -136,14 +136,14 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/job/", "/api/person/job"})
     @ResponseBody
     public String job(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/job/");
         return new Person().getJob();
     }
 
     // returns a persons date of birth as a String
     @GetMapping({"/api/person/dateofbirth/", "/api/person/dateofbirth"})
     public String dateofbirth(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/dateofbirth/");
         return new Person().getDateOfBirth();
     }
 
@@ -151,7 +151,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/income/", "/api/person/income"})
     @ResponseBody
     public int income(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05 , "/api/person/income/");
         return new Person().getIncomeInUSD();
     }
 
@@ -159,7 +159,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/creditscore/", "/api/person/creditscore"})
     @ResponseBody
     public int creditscore(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/creditscore/");
         return new Person().getCreditScore();
     }
 
@@ -167,7 +167,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/creditcardnumber/", "/api/person/creditcardnumber"})
     @ResponseBody
     public String creditcardnumber(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/creditcardnumber/");
         return new Person().getCreditCardNumber();
     }
 
@@ -175,7 +175,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/maritalstatus/", "/api/person/maritalstatus"})
     @ResponseBody
     public boolean maritalstatus(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/maritalstatus/");
         return new Person().isHasChildren();
     }
 
@@ -183,7 +183,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/haschildren/", "/api/person/haschildren"})
     @ResponseBody
     public boolean haschildren(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/haschildren/");
         return new Person().isMarried();
     }
 
@@ -191,7 +191,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/height/", "/api/person/height"})
     @ResponseBody
     public double height(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/height/");
         return new Person().getHeight();
     }
 
@@ -199,7 +199,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/weight/", "/api/person/weight"})
     @ResponseBody
     public double weight(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/weight/");
         return new Person().getWeight();
     }
 
@@ -207,7 +207,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/eyecolor/", "/api/person/eyecolor"})
     @ResponseBody
     public String eyecolor(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/eyecolor/");
         return generateEyeColor();
     }
 
@@ -215,7 +215,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/hasdegree/", "/api/person/hasdegree"})
     @ResponseBody
     public boolean hasdegree(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/hasdegree/");
         return new Person().generateHasDegree();
     }
 
@@ -223,7 +223,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/gpa/", "/api/person/gpa"})
     @ResponseBody
     public double gpa(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/gpa/");
         return generateGPA();
     }
 
@@ -231,7 +231,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/bloodtype/", "/api/person/bloodtype"})
     @ResponseBody
     public String bloodtype(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/bloodtype/");
         return generateBloodType();
     }
 
@@ -239,7 +239,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/username/", "/api/person/username"})
     @ResponseBody
     public String username(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/username/");
         return new Person().getUsername();
     }
 
@@ -247,7 +247,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/religion/", "/api/person/religion"})
     @ResponseBody
     public String religion(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/religion/");
         return new Person().getReligion();
     }
 
@@ -255,7 +255,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/politicalleaning/", "/api/person/politicalleaning"})
     @ResponseBody
     public double politicalLeaning(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/person/politicalleaning/");
         return new Person().getPoliticalLeaning();
     }
 
@@ -263,7 +263,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/address", "/api/address/"})
     @ResponseBody
     public Address generateAddress(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/address/");
         return new Address();
     }
 
@@ -271,7 +271,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/lifestory", "/api/lifestory/"})
     @ResponseBody
     public Lifestory generateLifeStory(HttpServletRequest request) {
-        rateLimitRequest(request, .05);
+        rateLimitRequest(request, .05, "/api/lifestory/");
         return lifestoryFactory(new Person());
     }
 

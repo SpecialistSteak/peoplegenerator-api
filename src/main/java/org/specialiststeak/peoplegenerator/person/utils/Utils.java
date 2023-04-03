@@ -26,7 +26,7 @@ public final class Utils {
         if (warmup) {
             for (int i = 0; i < 5000; i++) {
                 try {
-                    rateLimit(null, 1);
+                    rateLimit(null, 1, "Warmup");
                 } catch (Exception ignored) {
                 }
                 new Person();

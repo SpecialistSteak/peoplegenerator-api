@@ -27,14 +27,14 @@ public class RateLimit {
         System.out.println("Hashed: " + hashed);
         for (int i = 0; i < 1_000; i++) {
             new Thread(() -> {
-                for(int j = 0; j < 100; j++) {
-                    logIPToDatabase(ip);
+                for (int j = 0; j < 100; j++) {
+                    logIPToDatabase(ip, "Test");
                 }
             }).start();
         }
     }
 
-    public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS) {
+    public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS, final String WHERE) {
         String clientIp = request.getHeader("X-Forwarded-For");
         if (clientIp == null) {
             clientIp = request.getRemoteAddr();
@@ -45,10 +45,10 @@ public class RateLimit {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again later.");
         }
         personRequestHistory.put(clientIp, Instant.now());
-        logIPToDatabase(clientIp);
+        logIPToDatabase(clientIp, WHERE);
     }
 
-    public static void rateLimitRequest(HttpServletRequest request, final double RATE_LIMIT_TIME_IN_SECONDS) {
+    public static void rateLimitRequest(HttpServletRequest request, final double RATE_LIMIT_TIME_IN_SECONDS, final String WHERE) {
         String clientIp = request.getHeader("X-Forwarded-For");
         if (clientIp == null) {
             clientIp = request.getRemoteAddr();
@@ -61,11 +61,11 @@ public class RateLimit {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again in " + timeRemaining + " seconds.");
         }
         personRequestHistory.put(clientIp, currentTime);
-        logIPToDatabase(clientIp);
+        logIPToDatabase(clientIp, WHERE);
     }
 
-    static void logIPToDatabase(String clientIp) {
-        writeToFile(sha256Hash(clientIp + SALT));
+    static void logIPToDatabase(String clientIp, String data) {
+        writeToFile(data + ": " + sha256Hash(clientIp + SALT));
     }
 
     private static String sha256Hash(String ipAddress) {
