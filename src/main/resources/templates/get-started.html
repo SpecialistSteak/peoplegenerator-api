@@ -57,26 +57,30 @@ console.log(
 );</div>
 
             <div id="Java" class="tabcontent" style="display: none;">
+import java.net.http.*;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.zip.GZIPInputStream;
 
 public class Main {
-  public static void main(String[] args) {
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("https://peoplegeneratorapi.live/api/person/100"))
-        .GET()
-        .build();
-    try {
-      HttpResponse&#60;String&#62;response = client.send(request,
-                HttpResponse.BodyHandlers.ofString());
-      System.out.println(response.body());
-    } catch (Exception e) {
-      e.printStackTrace();
+    private static String decompressGzip(byte[] compressedData) {
+        try (GZIPInputStream gis = new GZIPInputStream(
+                new ByteArrayInputStream(compressedData))) {
+            return new String(gis.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) { return null; }
     }
-  }
+    public static void main(String[] args) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(
+                    "https://peoplegeneratorapi.live/api/person/501"))
+                .GET()
+                .build();
+        HttpResponse&#60;byte[]> response = client.send(request,
+                HttpResponse.BodyHandlers.ofByteArray());
+        System.out.println(decompressGzip(response.body()));
+    }
 }</div>
 
             <div id="Python" class="tabcontent" style="display: none;">
@@ -84,8 +88,7 @@ import requests
 
 response = requests.get('https://peoplegeneratorapi.live/api/person/100')
 response = response.json()
-# Encode the response to utf-8 so that it can be printed
-encoded_response = str(response).encode('utf-8')
+encoded_response = str(response).encode('utf-8').replace(b"'", b'"')
 print(encoded_response)</div>
         </section>
         <br>

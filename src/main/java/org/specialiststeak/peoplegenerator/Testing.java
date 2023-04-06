@@ -16,7 +16,8 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 @UtilityClass
 public class Testing {
     public static void main(String[] args) throws IOException, InterruptedException {
-//        for (Endpoints endpts : Endpoints.values()) {
+
+        //        for (Endpoints endpts : Endpoints.values()) {
 //            var uri = URI.create(endpts.getUrl());
 //            var client = HttpClient.newHttpClient();
 //            var request = HttpRequest.newBuilder()

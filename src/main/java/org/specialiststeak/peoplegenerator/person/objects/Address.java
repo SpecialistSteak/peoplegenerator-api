@@ -10,6 +10,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
 public class Address {
+    // TODO: work on shortening the names of these variables
     private String streetAddress;
     private String city;
     private String state;
