@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.specialiststeak.peoplegenerator.person.timetesting.TimeTester.runCode;
 import static org.specialiststeak.peoplegenerator.person.utils.Constants.*;
 import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
@@ -23,9 +23,12 @@ public class Person {
     private int age;
     private String job;
     private String dateOfBirth;
+    // dob
     private int incomeInUSD;
+    // incomeUSD
     private int creditScore;
     private String creditCardNumber;
+    // ccNumber
     private boolean married;
     private boolean hasChildren;
     private double height;
@@ -56,7 +59,8 @@ public class Person {
         }
 
         int numThreads = Runtime.getRuntime().availableProcessors();
-        ExecutorService executor = newFixedThreadPool(numThreads);
+        @SuppressWarnings("java:S2095")
+        ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         try {
             int chunkSize = number / numThreads;
             List<Future<?>> futures = new ArrayList<>();

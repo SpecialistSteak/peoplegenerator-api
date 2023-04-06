@@ -10,17 +10,26 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
 public class Address {
-    // TODO: work on shortening the names of these variables
     private String streetAddress;
+    //streetAddr
     private String city;
+    //city
     private String state;
+    //state
     private String country;
+    //country
     private String zipCode;
+    //zip
     private int geonameID;
+    //geonameId
     private String phoneNumber;
+    //phone
     private String IPAddress;
+    //ipAddr
     private String countryCode;
-    private String nationality;
+    //countryCode
+    @Deprecated(forRemoval = true) private String nationality;
+    // to be removed
 
     public Address() {
         generateLine2();
