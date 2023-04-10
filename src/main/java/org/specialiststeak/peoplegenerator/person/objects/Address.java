@@ -46,7 +46,7 @@ public class Address {
                 this.zipCode = USfaker.address().zipCode();
             }
         }
-        this.nationality = country;
+//        this.nationality = country; TODO: remove
         this.countryCode = generateCountryCode();
         this.phoneNumber = generatePhoneNumber();
         this.IPAddress = generateIPAddress();
