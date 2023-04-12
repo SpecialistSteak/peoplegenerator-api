@@ -144,7 +144,14 @@ public final class Constants {
     /**
      * Array of possible age ranges
      */
-    public static final AgeRange[] ageRanges = {new AgeRange(1, 20), new AgeRange(20, 39), new AgeRange(40, 59), new AgeRange(60, 79), new AgeRange(80, 99), new AgeRange(100, 105)};
+    public static final AgeRange[] ageRanges = {
+            new AgeRange(1, 20),
+            new AgeRange(20, 39),
+            new AgeRange(40, 59),
+            new AgeRange(60, 79),
+            new AgeRange(80, 99),
+            new AgeRange(100, 105)
+    };
 
     /**
      * int[][] of possible male heights and their probabilities, in cm
