@@ -32,7 +32,7 @@ class AddressTest{
     @Test
     void testGenerateGeonameID() {
         Address address = new Address();
-        int geonameID = address.getGeonameID();
+        int geonameID = address.getGeonameId();
         assert true;
     }
 
@@ -90,7 +90,7 @@ class AddressTest{
     @Test
     void testGenerateZipCode() {
         Address address = new Address();
-        String zipCode = address.getZipCode();
+        String zipCode = address.getZip();
         assertNotNull(zipCode);
     }
 

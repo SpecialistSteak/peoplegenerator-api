@@ -144,7 +144,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/dateofbirth/", "/api/person/dateofbirth"})
     public String dateofbirth(HttpServletRequest request) {
         rateLimitRequest(request, .05, "/api/person/dateofbirth/");
-        return new Person().getDateOfBirth();
+        return new Person().getDoB();
     }
 
     // returns a person's income as an int
@@ -152,7 +152,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @ResponseBody
     public int income(HttpServletRequest request) {
         rateLimitRequest(request, .05 , "/api/person/income/");
-        return new Person().getIncomeInUSD();
+        return new Person().getIncomeUSD();
     }
 
     // returns a person's credit score as an int
@@ -168,7 +168,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @ResponseBody
     public String creditcardnumber(HttpServletRequest request) {
         rateLimitRequest(request, .05, "/api/person/creditcardnumber/");
-        return new Person().getCreditCardNumber();
+        return new Person().getCcNumber();
     }
 
     // returns a person's marital status as a boolean

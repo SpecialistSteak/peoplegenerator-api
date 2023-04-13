@@ -22,13 +22,10 @@ public class Person {
     private String name;
     private int age;
     private String job;
-    private String dateOfBirth;
-    // dob
-    private int incomeInUSD;
-    // incomeUSD
+    private String DoB;
+    private int incomeUSD;
     private int creditScore;
-    private String creditCardNumber;
-    // ccNumber
+    private String ccNumber;
     private boolean married;
     private boolean hasChildren;
     private double height;
@@ -96,10 +93,10 @@ public class Person {
         this.email = generateEmail();
         this.age = generateAge();
         this.job = generateJob();
-        this.dateOfBirth = generateDateOfBirth();
-        this.incomeInUSD = generateIncome();
+        this.DoB = generateDateOfBirth();
+        this.incomeUSD = generateIncome();
         this.creditScore = generateCreditScore();
-        this.creditCardNumber = generateCreditCardNumber();
+        this.ccNumber = generateCreditCardNumber();
         this.married = generateMarried();
         this.hasChildren = generateHasChildren();
         this.height = generateHeight();
@@ -364,7 +361,7 @@ public class Person {
     }
 
     public String generateReligion() {
-        switch (this.address.getNationality()) {
+        switch (this.address.getCountry()) {
             case "United States", "Mexico", "Brazil", "Canada", "Italy", "France", "Spain", "United Kingdom", "Poland", "Argentina", "Australia", "Germany", "Colombia", "South Africa", "Philippines", "Russia", "Chile", "Peru", "Ukraine", "Netherlands", "Belgium", "Switzerland", "Portugal", "Sweden", "Austria", "Norway", "Ireland", "Denmark", "Finland", "Greece", "Czech Republic", "Romania", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia", "Slovenia", "Latvia", "Estonia", "Lithuania", "Iceland" -> {
                 if (random.nextInt(100) < 37) {
                     return "Christian";

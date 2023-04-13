@@ -88,8 +88,8 @@ class UtilsTest {
         assert (p1.getAddress() != null);
         assert (p1.getEmail() != null);
         assert (p1.getJob() != null);
-        assert (p1.getDateOfBirth() != null);
-        assert (p1.getIncomeInUSD() > -1);
+        assert (p1.getDoB() != null);
+        assert (p1.getIncomeUSD() > -1);
         assert (p1.getCreditScore() > -1);
         assert (p1.getHeight() > -1);
         assert (p1.getWeight() > -1);

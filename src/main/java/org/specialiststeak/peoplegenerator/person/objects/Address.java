@@ -18,18 +18,16 @@ public class Address {
     //state
     private String country;
     //country
-    private String zipCode;
+    private String zip;
     //zip
-    private int geonameID;
+    private int geonameId;
     //geonameId
     private String phoneNumber;
     //phone
-    private String IPAddress;
+    private String ipAddress;
     //ipAddr
     private String countryCode;
     //countryCode
-    @Deprecated(forRemoval = true) private String nationality;
-    // to be removed
 
     public Address() {
         generateLine2();
@@ -38,19 +36,18 @@ public class Address {
         this.state = generateState();
         this.country = generateCountry();
         if (!this.country.equals("United States")) {
-            this.zipCode = generateZipCode().substring(0, 4);
+            this.zip = generateZipCode().substring(0, 4);
         } else {
             try {
-                this.zipCode = USfaker.address().zipCodeByState(this.state);
+                this.zip = USfaker.address().zipCodeByState(this.state);
             } catch (Exception e) {
-                this.zipCode = USfaker.address().zipCode();
+                this.zip = USfaker.address().zipCode();
             }
         }
-//        this.nationality = country; TODO: remove
         this.countryCode = generateCountryCode();
         this.phoneNumber = generatePhoneNumber();
-        this.IPAddress = generateIPAddress();
-        this.geonameID = generateGeonameID();
+        this.ipAddress = generateIPAddress();
+        this.geonameId = generateGeonameID();
     }
 
     private static void timeTest(){

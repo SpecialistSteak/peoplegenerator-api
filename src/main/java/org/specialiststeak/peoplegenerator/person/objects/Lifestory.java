@@ -51,7 +51,7 @@ public class Lifestory {
             }
         }
         return person.getName() + " is a " + person.getAge() + "-year-old who was born on " +
-                person.getDateOfBirth() + ". " + person.getName().substring(0, person.getName().indexOf(" "))
+                person.getDoB() + ". " + person.getName().substring(0, person.getName().indexOf(" "))
                 + " works as a " + person.getJob().toLowerCase() + " and lives in " +
                 person.getAddress().getCity() + ", " + person.getAddress().getState() +
                 ", " + person.getAddress().getCountry() + ". " +
@@ -64,19 +64,19 @@ public class Lifestory {
                 person.getBloodType() + ". " +
                 genderPronoun + " has a GPA of " + person.getGPA() +
                 ", and " + (person.isHasDegree() ? "has" : "doesn't have")+ " a degree. " + genderPronoun2 + " income is $" +
-                person.getIncomeInUSD() +
+                person.getIncomeUSD() +
                 ", and " + genderPronoun.toLowerCase() + " has a credit score of " + person.getCreditScore() + ". " +
-                (person.getCreditCardNumber() == null ? "" :
-                        genderPronoun2 + " credit card number is " + person.getCreditCardNumber()) +
+                (person.getCcNumber() == null ? "" :
+                        genderPronoun2 + " credit card number is " + person.getCcNumber()) +
                 ". " + genderPronoun + " uses " + person.getEmail() + " for " + genderPronoun2.toLowerCase()
                 + " email address and " + person.getUsername() + " for " + genderPronoun2 +
                 " username on various websites. " + genderPronoun + " follows " +
                 person.getReligion() + " and " + genderPronoun2.toLowerCase() +
                 " political leaning is " + person.getPoliticalLeaning() + ". " +
-                genderPronoun + " has a geonameid of " + person.getAddress().getGeonameID() +
+                genderPronoun + " has a geonameid of " + person.getAddress().getGeonameId() +
                 " and " + genderPronoun2.toLowerCase() + " phone number is " +
                 person.getAddress().getPhoneNumber() + ", and " + genderPronoun2.toLowerCase()
-                + " IP address is " + person.getAddress().getIPAddress();
+                + " IP address is " + person.getAddress().getIpAddress();
     }
 
     public String toString() {

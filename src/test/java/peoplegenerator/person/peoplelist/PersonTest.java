@@ -41,7 +41,7 @@ public class PersonTest {
     @Test
     @DisplayName("Test that the income is within expected range")
     public void testIncomeRange() {
-        Assertions.assertTrue(person.getIncomeInUSD() >= 0);
+        Assertions.assertTrue(person.getIncomeUSD() >= 0);
     }
 
     @Test
