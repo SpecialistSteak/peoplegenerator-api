@@ -2,15 +2,15 @@ package org.specialiststeak.peoplegenerator.person.utils;
 
 import lombok.experimental.UtilityClass;
 
+import java.awt.*;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 @UtilityClass
 public class WriteToFile {
-    private static final File FILE_NAME = new File("ip.log");
     private static final BufferedWriter WRITER;
+    private static final String FILE_NAME = "ip.log";
 
     static {
         try {
@@ -22,8 +22,8 @@ public class WriteToFile {
 
     public static synchronized void writeToFile(String data) {
         try {
-            WRITER.write(data);
-            WRITER.newLine();
+            WRITER.append(data);
+            WRITER.append("\n");
             WRITER.flush();
         } catch (IOException e) {
             e.printStackTrace();
