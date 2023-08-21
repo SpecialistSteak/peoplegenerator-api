@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @SpringBootApplication
 @Controller
 @EnableWebMvc
+@CrossOrigin(origins = "*")
 public class PeoplegeneratorapiApplication implements Runnable {
 
     @Override
@@ -151,7 +153,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @GetMapping({"/api/person/income/", "/api/person/income"})
     @ResponseBody
     public int income(HttpServletRequest request) {
-        rateLimitRequest(request, .05 , "/api/person/income/");
+        rateLimitRequest(request, .05, "/api/person/income/");
         return new Person().getIncomeUSD();
     }
 

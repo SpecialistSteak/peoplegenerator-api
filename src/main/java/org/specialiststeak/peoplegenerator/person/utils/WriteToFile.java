@@ -14,7 +14,7 @@ public class WriteToFile {
 
     static {
         try {
-            WRITER = new BufferedWriter(new FileWriter(FILE_NAME));
+            WRITER = new BufferedWriter(new FileWriter(FILE_NAME, true));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

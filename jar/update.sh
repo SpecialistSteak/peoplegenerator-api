@@ -1,5 +1,5 @@
 #!/bin/bash
-JAR_VERSION='1.1.3'
+JAR_VERSION='1.2.0'
 OLD_JAR_VERSION=$(grep -oP '(?<=peoplegeneratorapi-).*(?=\.jar)' peoplegeneratorapi-*.jar)
 killall screen
 echo "Updating to version $JAR_VERSION from $OLD_JAR_VERSION"

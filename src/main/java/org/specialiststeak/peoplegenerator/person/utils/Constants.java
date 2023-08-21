@@ -139,7 +139,7 @@ public final class Constants {
     /**
      * Array of probabilities for each age range
      */
-    public static final int[] ageDistribution = {32, 30, 23, 12, 2, 1};
+    public static final int[] ageDistribution = {28, 26, 23, 16, 5, 2};
 
     /**
      * Array of possible age ranges
