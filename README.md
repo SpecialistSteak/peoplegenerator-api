@@ -11,7 +11,3 @@ The People Generator API is a Java-based API built using **Spring Boot**. It gen
 ### NOTE: If you request a large amount of people from the /api/person/ endpoint, the data will be in a compressed Gzip format.
 
 If you have any suggestions, issues, or feature requests, please let me know, and I'll do my best to fix them.
-
-Here's the referral badge for DigitalOcean:
-
-[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=a4b65cb3fce5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
