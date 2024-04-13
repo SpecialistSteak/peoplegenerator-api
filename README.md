@@ -6,7 +6,7 @@
 
 ---
 
-The People Generator API is a Java-based API built using **Spring Boot**. It generates fake user data for testing purposes. The data includes name, address, phone number, email, and more. You can find a live site with more details at: [peoplegeneratorapi.live](http://peoplegeneratorapi.live).
+The People Generator API is a Java-based API built using **Spring Boot**. It generates fake user data for testing purposes. The data includes name, address, phone number, email, and more. You can find a live site with more details at: [peoplegeneratorapi.me](http://peoplegeneratorapi.me).
 
 ### NOTE: If you request a large amount of people from the /api/person/ endpoint, the data will be in a compressed Gzip format.
 
