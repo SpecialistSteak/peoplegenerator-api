@@ -13,12 +13,12 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static org.specialiststeak.peoplegenerator.person.feedback.FeedbackService.SALT;
 import static org.specialiststeak.peoplegenerator.person.utils.WriteToFile.writeToFile;
 
 @UtilityClass
 public class RateLimit {
     private static final Map<String, Instant> personRequestHistory = new ConcurrentHashMap<>();
+    private static final String SALT = "QIOEUF@#*Y@HFUHUQWHR(P#YUIFHQELRQ*RYPEFHO@#$OR@$R5344ewf7wea";
 
     public static void main(String[] args) {
         final String ip = "127.0.0.1";
