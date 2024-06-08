@@ -8,6 +8,10 @@
         <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+    </properties>
     <groupId>org.specialiststeak</groupId>
     <artifactId>peoplegeneratorapi</artifactId>
     <version>1.2.0</version>
@@ -61,17 +65,14 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.graalvm.buildtools</groupId>-->
+<!--                <artifactId>native-maven-plugin</artifactId>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-<!--                    <processTypes>-->
-<!--                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* org.specialiststeak.peoplegenerator.PeoplegeneratorapiApplication</web>-->
-<!--                    </processTypes>-->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -82,34 +83,4 @@
             </plugin>
         </plugins>
     </build>
-    <!--    <profiles>-->
-<!--        <profile>-->
-<!--            <id>native</id>-->
-<!--            <build>-->
-<!--                <plugins>-->
-<!--                    <plugin>-->
-<!--                        <groupId>org.graalvm.buildtools</groupId>-->
-<!--                        <artifactId>native-maven-plugin</artifactId>-->
-<!--                    </plugin>-->
-<!--                    <plugin>-->
-<!--                        <groupId>org.springframework.boot</groupId>-->
-<!--                        <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                    </plugin>-->
-<!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <groupId>org.graalvm.buildtools</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <artifactId>native-maven-plugin</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <id>build-native</id>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <goal>compile-no-fork</goal>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
-<!--                </plugins>-->
-<!--            </build>-->
-<!--        </profile>-->
-<!--    </profiles>-->
 </project>
