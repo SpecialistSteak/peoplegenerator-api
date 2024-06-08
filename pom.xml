@@ -50,7 +50,12 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.0.0</version>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>3.0.7</version>
         </dependency>
     </dependencies>
 
@@ -64,6 +69,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+<!--                    <processTypes>-->
+<!--                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* org.specialiststeak.peoplegenerator.PeoplegeneratorapiApplication</web>-->
+<!--                    </processTypes>-->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
