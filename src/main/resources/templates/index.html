@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          content="Generate random people profiles with realistic data for program testing and more. Get mock data for personal information without an account using our public API.">
-    <meta name="keywords"
-          content="people generator, people generator api, fake people, random profiles, fake profiles, mock data, API, no account, public api, program testing, random people generator, fake people generator, people generator, generate person, generate fake person">
+    <title>People Generator API</title>
+    <meta name="description" content="Generate random people profiles with realistic data for program testing and more.">
     <meta name="author" content="[SpecialistSteak]">
-    <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <meta name="language" content="English">
-    <meta name="generator" content="0.1.2-BETA">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta property="og:title"
-          content="[People Generator API - Generate Random People Profiles with Realistic Data]">
-    <title>People Generator API - Generate Random People Profiles with Realistic Data</title>
-    <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <link rel="icon" href="../static/Logo.svg">
+    <link rel="stylesheet" type="text/css" href="../static/indexstyle.css">
 </head>
 <body class="fullpage">
 <header>
-    <nav style="font: 15px Roboto sans-serif">
-        <ul>
+    <nav>
+        <div class="logo">
+            <a href="https://peoplegeneratorapi.me/">People Generator API</a>
+        </div>
+        <ul class="nav-links">
             <li><a href="https://peoplegeneratorapi.me/">Overview</a></li>
             <li><a href="https://peoplegeneratorapi.me/get-started">Get Started</a></li>
             <li><a href="https://peoplegeneratorapi.me/endpoints">Endpoints</a></li>
@@ -33,46 +25,98 @@
     </nav>
 </header>
 <main>
-    <h1 class="title">Welcome to the People Generator API!</h1>
-    <a href="https://github.com/specialiststeak"><h2 class="author">SpecialistSteak @ GitHub</h2></a>
-    <p class="version">Version 1.2.0</p>
-    <hr class="separator">
-    <section id="overview">
-        <h2>Overview</h2>
-        <p class="body">
-            This API is designed to create large (or small) amounts of realistic and believable profiles of fictitious
-            people, primarily intended for testing purposes. It can be a helpful resource for developers who need to
-            quickly generate sample user data in both small and large quantities. Moreover, the data from this API is
-            skewed towards the global and country averages, making it a fairly accurate representation of what real
-            people might look like.
-        </p>
+    <section class="hero">
+        <h1>Welcome to the People Generator API!</h1>
+        <p class="tagline">Generate Random People Profiles with Realistic Data</p>
+        <a href="https://github.com/specialiststeak" class="github-link">SpecialistSteak @ GitHub</a>
+        <p class="version">Version 1.2.0</p>
+        <button class="button" onclick="fetchExample()">See an Example</button>
+        <!-- Moved response-section here -->
+        <section class="response-section" style="display: none;">
+            <h2>API Response</h2>
+            <details class="info-box">
+                <summary>Personal Information</summary>
+                <p>Name: <span id="name"></span></p>
+                <p>Age: <span id="age"></span></p>
+                <p>Job: <span id="job"></span></p>
+                <p>Income (USD): <span id="incomeUSD"></span></p>
+                <p>Credit Score: <span id="creditScore"></span></p>
+                <p>Credit Card Number: <span id="ccNumber"></span></p>
+                <p>Married: <span id="married"></span></p>
+                <p>Has Children: <span id="hasChildren"></span></p>
+                <p>Height: <span id="height"></span></p>
+                <p>Weight: <span id="weight"></span></p>
+                <p>Eye Color: <span id="eyeColor"></span></p>
+                <p>Email: <span id="email"></span></p>
+                <p>Gender: <span id="gender"></span></p>
+                <p>Has Degree: <span id="hasDegree"></span></p>
+                <p>Blood Type: <span id="bloodType"></span></p>
+                <p>Username: <span id="username"></span></p>
+                <p>Political Leaning: <span id="politicalLeaning"></span></p>
+                <p>Religion: <span id="religion"></span></p>
+                <p>Date of Birth: <span id="doB"></span></p>
+                <p>GPA: <span id="gpa"></span></p>
+            </details>
+            <details class="info-box">
+                <summary>Address</summary>
+                <p>Street Address: <span id="streetAddress"></span></p>
+                <p>City: <span id="city"></span></p>
+                <p>State: <span id="state"></span></p>
+                <p>Country: <span id="country"></span></p>
+                <p>Zip: <span id="zip"></span></p>
+                <p>Geoname ID: <span id="geonameId"></span></p>
+                <p>Phone Number: <span id="phoneNumber"></span></p>
+                <p>IP Address: <span id="ipAddress"></span></p>
+                <p>Country Code: <span id="countryCode"></span></p>
+            </details>
+            <button id="show-raw">Show Raw Response</button>
+            <!-- Modal for raw response -->
+            <div id="raw-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close modal-close">&times;</span>
+                    <pre id="raw-response"></pre>
+                </div>
+            </div>
+        </section>
     </section>
-    <br>
-    <section id="features">
+    <section class="features">
         <h2>Features</h2>
-        <ul style="padding-left: 40px">
-            <li>Generate random people profiles with realistic data, including names, ages, jobs, addresses, and more.
-            </li>
-            <li>Generate up to 50,000 profiles at once.</li>
-            <li>Generate individual pieces of information, such as names, birthdays, realistic addresses, etc.</li>
-            <li>The service is completely free and requires no signup</li>
-        </ul>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="icon">&#128100;</span>
+                <p>Generate realistic profiles with names, ages, jobs, and addresses.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">&#128293;</span>
+                <p>Generate up to 50,000 profiles at once.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">&#128202;</span>
+                <p>Generate individual pieces of information like names or addresses.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">&#128172;</span>
+                <p>Completely free with no signup required.</p>
+            </div>
+        </div>
     </section>
-    <br>
-    <section>
-        <button id="ex" onclick="fetch('https://peoplegeneratorapi.me/api/person/')
-            .then(response => response.json())
-            .then(data => document.getElementById('RESPONSE').innerHTML = `${JSON.stringify(data, null, 2).replace(/\\n/g, '<br>')}`)">
-            Click me to see an example person!
-        </button>
-        <br><br>
-        <code class="codeblock" id="RESPONSE"></code>
+    <section class="overview">
+        <h2>Overview</h2>
+        <p>This API generates realistic and believable profiles of fictitious people for testing purposes.</p>
+        <ul>
+            <li>Designed for developers needing sample user data.</li>
+            <li>Generates data skewed towards global and country averages.</li>
+            <li>Free to use with no signup required.</li>
+        </ul>
     </section>
 </main>
 <footer>
-    <p><span>&copy;</span> 2024 SpecialistSteak</p>
-    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
-    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+    <p>&copy; 2024 SpecialistSteak</p>
+    <div class="footer-links">
+        <a href="https://github.com/specialiststeak">GitHub</a>
+        <a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a>
+    </div>
 </footer>
+<script src="../static/indexscript.js"></script>
 </body>
 </html>
