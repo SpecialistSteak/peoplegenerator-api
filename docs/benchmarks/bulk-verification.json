@@ -1,0 +1,283 @@
+{
+  "single": {
+    "status": 200,
+    "milliseconds": 30.299666000000002,
+    "retryAfter": null,
+    "people": 1,
+    "countryMismatches": 0
+  },
+  "batch": {
+    "status": 200,
+    "milliseconds": 2741.6152079999997,
+    "retryAfter": null,
+    "people": 50000,
+    "countryMismatches": 0
+  },
+  "overload": [
+    {
+      "status": 200,
+      "milliseconds": 6877.663666,
+      "retryAfter": null,
+      "people": 50000,
+      "countryMismatches": 0
+    },
+    {
+      "status": 503,
+      "milliseconds": 16.869457999999668,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 16.843207999999777,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 15.602542000000085,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 16.06012499999997,
+      "retryAfter": "10"
+    },
+    {
+      "status": 200,
+      "milliseconds": 6762.996583,
+      "retryAfter": null,
+      "people": 50000,
+      "countryMismatches": 0
+    },
+    {
+      "status": 200,
+      "milliseconds": 6654.695709,
+      "retryAfter": null,
+      "people": 50000,
+      "countryMismatches": 0
+    },
+    {
+      "status": 200,
+      "milliseconds": 6524.715875,
+      "retryAfter": null,
+      "people": 50000,
+      "countryMismatches": 0
+    },
+    {
+      "status": 503,
+      "milliseconds": 14.867375000000266,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 20.381624999999985,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 20.224917000000005,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 20.0021670000001,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.32574999999997,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 20.25887499999999,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 22.034624999999778,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 20.272041000000172,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.57462499999974,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 19.83174999999983,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.88929199999984,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.114458999999897,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 24.03120799999988,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.528833000000304,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 18.760541999999987,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 19.175666000000092,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 18.368291000000227,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 18.91329199999973,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.263582999999926,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.137917000000016,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 22.767667000000074,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 19.6667080000002,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 25.303249999999935,
+      "retryAfter": "10"
+    },
+    {
+      "status": 503,
+      "milliseconds": 24.79266699999971,
+      "retryAfter": "10"
+    }
+  ],
+  "sameClient": [
+    {
+      "status": 429,
+      "milliseconds": 55.49987499999952,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.80912499999977,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.804291000000376,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.834249999999884,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 55.103791999999885,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 55.167458000001716,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.857207999999446,
+      "retryAfter": null
+    },
+    {
+      "status": 200,
+      "milliseconds": 28.025041999999303,
+      "retryAfter": null,
+      "people": 1,
+      "countryMismatches": 0
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.55066700000134,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.096041999999215,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.85791699999936,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.57350000000042,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.13562499999898,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.18333299999904,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 55.91579199999978,
+      "retryAfter": null
+    },
+    {
+      "status": 429,
+      "milliseconds": 54.79512500000055,
+      "retryAfter": null
+    }
+  ],
+  "recovery": {
+    "status": 200,
+    "milliseconds": 69.37516599999981,
+    "retryAfter": null,
+    "people": 1000,
+    "countryMismatches": 0
+  },
+  "summary": {
+    "accepted": 4,
+    "rejected": 28,
+    "validatedPeople": 251002,
+    "countryMismatches": 0
+  }
+}

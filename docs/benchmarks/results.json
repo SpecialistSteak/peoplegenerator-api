@@ -1,0 +1,166 @@
+{
+  "run": "mv17a02p",
+  "results": [
+    {
+      "name": "warm-up",
+      "path": "/api/person/",
+      "concurrency": 32,
+      "seconds": 15.002412791000001,
+      "startedAt": 1791564552672.4229,
+      "endedAt": 1791564568741,
+      "total": 129226,
+      "statuses": {
+        "200": 129226
+      },
+      "successfulPerSecond": 8613.68113251244,
+      "profilesPerSecond": 8613.68113251244,
+      "p50": 1.3,
+      "p95": 9.4,
+      "p99": 61.6,
+      "max": 204.953125,
+      "bytes": 80393229,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 1,
+      "seconds": 20.000118417,
+      "startedAt": 1791564568743.0042,
+      "endedAt": 1791564589828,
+      "total": 75472,
+      "statuses": {
+        "200": 75472
+      },
+      "successfulPerSecond": 3773.5776572127284,
+      "profilesPerSecond": 3773.5776572127284,
+      "p50": 0.2,
+      "p95": 0.4,
+      "p99": 1,
+      "max": 32.086584,
+      "bytes": 46947587,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 8,
+      "seconds": 20.001397375,
+      "startedAt": 1791564589827.7932,
+      "endedAt": 1791564610919,
+      "total": 282173,
+      "statuses": {
+        "200": 282173
+      },
+      "successfulPerSecond": 14107.664315128883,
+      "profilesPerSecond": 14107.664315128883,
+      "p50": 0.5,
+      "p95": 1.1,
+      "p99": 1.7,
+      "max": 60.765958999999995,
+      "bytes": 175524875,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 16,
+      "seconds": 20.000541749999996,
+      "startedAt": 1791564610919.3225,
+      "endedAt": 1791564632013,
+      "total": 415861,
+      "statuses": {
+        "200": 415861
+      },
+      "successfulPerSecond": 20792.486783514254,
+      "profilesPerSecond": 20792.486783514254,
+      "p50": 0.6,
+      "p95": 1.4,
+      "p99": 2.7,
+      "max": 57.189375,
+      "bytes": 258700076,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 32,
+      "seconds": 20.017149458,
+      "startedAt": 1791564632013.6584,
+      "endedAt": 1791564653119,
+      "total": 473401,
+      "statuses": {
+        "200": 473401
+      },
+      "successfulPerSecond": 23649.770962308616,
+      "profilesPerSecond": 23649.770962308616,
+      "p50": 0.9,
+      "p95": 2.2,
+      "p99": 18.7,
+      "max": 1002.9732089999998,
+      "bytes": 294476305,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 64,
+      "seconds": 21.172910792,
+      "startedAt": 1791564653119.861,
+      "endedAt": 1791564675381,
+      "total": 455500,
+      "statuses": {
+        "200": 455500
+      },
+      "successfulPerSecond": 21513.338646479668,
+      "profilesPerSecond": 21513.338646479668,
+      "p50": 1.2,
+      "p95": 4.7,
+      "p99": 34.7,
+      "max": 3517.077083,
+      "bytes": 283339483,
+      "invalid": []
+    },
+    {
+      "name": "single person",
+      "path": "/api/person/",
+      "concurrency": 128,
+      "seconds": 21.887081583,
+      "startedAt": 1791564675381.088,
+      "endedAt": 1791564698379,
+      "total": 405353,
+      "statuses": {
+        "200": 405337,
+        "429": 16
+      },
+      "successfulPerSecond": 18519.46311173943,
+      "profilesPerSecond": 18519.46311173943,
+      "p50": 1.6,
+      "p95": 18.2,
+      "p99": 201.4,
+      "max": 4005.429791999999,
+      "bytes": 252159296,
+      "invalid": []
+    },
+    {
+      "name": "sustained single person",
+      "path": "/api/person/",
+      "concurrency": 32,
+      "seconds": 60.002739708,
+      "startedAt": 1791564698379.9514,
+      "endedAt": 1791564759650,
+      "total": 1157452,
+      "statuses": {
+        "200": 1157452
+      },
+      "successfulPerSecond": 19289.985851190726,
+      "profilesPerSecond": 19289.985851190726,
+      "p50": 1,
+      "p95": 2.9,
+      "p99": 25.9,
+      "max": 1001.7808749999999,
+      "bytes": 719991803,
+      "invalid": []
+    }
+  ]
+}

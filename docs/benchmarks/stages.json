@@ -1,0 +1,50 @@
+[
+  {
+    "name": "warm-up",
+    "path": "/api/person/",
+    "concurrency": 32,
+    "seconds": 15
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 1,
+    "seconds": 20
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 8,
+    "seconds": 20
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 16,
+    "seconds": 20
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 32,
+    "seconds": 20
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 64,
+    "seconds": 20
+  },
+  {
+    "name": "single person",
+    "path": "/api/person/",
+    "concurrency": 128,
+    "seconds": 20
+  },
+  {
+    "name": "sustained single person",
+    "path": "/api/person/",
+    "concurrency": 32,
+    "seconds": 60
+  }
+]

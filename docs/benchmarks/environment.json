@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-09",
+  "host": "Apple M4 Pro, 12 logical CPUs, 24 GiB RAM",
+  "os": "macOS 27.0.1",
+  "javaImage": "eclipse-temurin:22-jre",
+  "javaImageDigest": "sha256:a94532aaca0997d728c6f88927f2209d383a185fbbf7398c8dc41bf4ffd21118",
+  "node": "22.23.2",
+  "cpuLimit": 2,
+  "memoryLimitBytes": 2147483648,
+  "heapInitialMiB": 256,
+  "heapMaximumMiB": 1536,
+  "containerPeakMemoryBytes": 1240399872,
+  "oomEvents": 0,
+  "runningAfterTest": true,
+  "jarSha256": "7f9fb2aa533eb74f199e3fefb83adfd77cd259175f363819c812fd8b203f7bd0"
+}
