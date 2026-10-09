@@ -1,5 +1,6 @@
 package org.specialiststeak.peoplegenerator.person.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
@@ -19,6 +20,8 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 @Data
 @Accessors(chain = true)
 public class Person {
+    @JsonIgnore
+    private final int jobIndex = random.nextInt(jobs.length);
     private String name;
     private int age;
     private String job;
@@ -85,8 +88,6 @@ public class Person {
     private static final String FEMALE = "Female";
 
     public Person() {
-        generateLine();
-        generateLine2();
         this.address = new Address();
         this.gender = generateGender();
         this.name = generateName();
@@ -189,11 +190,11 @@ public class Person {
         } else if (getAge() > 69) {
             return "Retired";
         }
-        return jobs[selectedLine];
+        return jobs[jobIndex];
     }
 
     public int generateIncome() {
-        return (getAge() < 18 || getAge() > 69) ? 0 : salaries[selectedLine] + random.nextInt(10000);
+        return (getAge() < 18 || getAge() > 69) ? 0 : salaries[jobIndex] + random.nextInt(10000);
     }
 
     public int generateCreditScore() {

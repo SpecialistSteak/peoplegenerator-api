@@ -12,11 +12,14 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static org.specialiststeak.peoplegenerator.person.utils.WriteToFile.writeToFile;
 
 @UtilityClass
 public class RateLimit {
+    private static final long HISTORY_RETENTION_SECONDS = 60;
+    private static final AtomicLong lastHistoryCleanup = new AtomicLong();
     private static final Map<String, Instant> personRequestHistory = new ConcurrentHashMap<>();
     private static final String SALT = "QIOEUF@#*Y@HFUHUQWHR(P#YUIFHQELRQ*RYPEFHO@#$OR@$R5344ewf7wea";
 
@@ -35,17 +38,7 @@ public class RateLimit {
     }
 
     public static void rateLimit(HttpServletRequest request, final long RATE_LIMIT_TIME_IN_SECONDS, final String WHERE) {
-        String clientIp = request.getHeader("X-Forwarded-For");
-        if (clientIp == null) {
-            clientIp = request.getRemoteAddr();
-        }
-
-        Instant lastRequestTime = personRequestHistory.get(clientIp);
-        if (lastRequestTime != null && lastRequestTime.plusSeconds(RATE_LIMIT_TIME_IN_SECONDS).isAfter(Instant.now())) {
-            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again later.");
-        }
-        personRequestHistory.put(clientIp, Instant.now());
-        logIPToDatabase(clientIp, WHERE);
+        rateLimitRequest(request, RATE_LIMIT_TIME_IN_SECONDS, WHERE);
     }
 
     public static void rateLimitRequest(HttpServletRequest request, final double RATE_LIMIT_TIME_IN_SECONDS, final String WHERE) {
@@ -54,13 +47,20 @@ public class RateLimit {
             clientIp = request.getRemoteAddr();
         }
 
-        Instant lastRequestTime = personRequestHistory.get(clientIp);
-        Instant currentTime = Instant.now();
-        if (lastRequestTime != null && lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000)).isAfter(currentTime)) {
-            double timeRemaining = Duration.between(currentTime, lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000))).toMillis() / 1000.0;
-            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again in " + timeRemaining + " seconds.");
+        long cleanupTime = Instant.now().getEpochSecond();
+        long lastCleanup = lastHistoryCleanup.get();
+        if (cleanupTime - lastCleanup >= HISTORY_RETENTION_SECONDS && lastHistoryCleanup.compareAndSet(lastCleanup, cleanupTime)) {
+            Instant cutoff = Instant.ofEpochSecond(cleanupTime - HISTORY_RETENTION_SECONDS);
+            personRequestHistory.entrySet().removeIf(entry -> entry.getValue().isBefore(cutoff));
         }
-        personRequestHistory.put(clientIp, currentTime);
+        personRequestHistory.compute(clientIp, (ip, lastRequestTime) -> {
+            Instant currentTime = Instant.now();
+            if (lastRequestTime != null && lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000)).isAfter(currentTime)) {
+                double timeRemaining = Duration.between(currentTime, lastRequestTime.plusMillis((long) (RATE_LIMIT_TIME_IN_SECONDS * 1000))).toMillis() / 1000.0;
+                throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests from this IP address. Please try again in " + timeRemaining + " seconds.");
+            }
+            return currentTime;
+        });
         logIPToDatabase(clientIp, WHERE);
     }
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
+import java.util.concurrent.Semaphore;
 
 import static org.specialiststeak.peoplegenerator.person.objects.Lifestory.lifestoryFactory;
 import static org.specialiststeak.peoplegenerator.person.objects.Person.*;
@@ -32,6 +33,7 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.startup;
 @EnableWebMvc
 @CrossOrigin(origins = "*")
 public class PeoplegeneratorapiApplication implements Runnable {
+    private static final Semaphore bulkRequests = new Semaphore(4);
 
     @Override
     public void run() {
@@ -93,7 +95,15 @@ public class PeoplegeneratorapiApplication implements Runnable {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(null);
         }
 
-        byte[] compressedData = compressByteArray(new ObjectMapper().writeValueAsBytes(createPeople(number)));
+        if (!bulkRequests.tryAcquire()) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).header(HttpHeaders.RETRY_AFTER, "10").build();
+        }
+        byte[] compressedData;
+        try {
+            compressedData = compressByteArray(new ObjectMapper().writeValueAsBytes(createPeople(number)));
+        } finally {
+            bulkRequests.release();
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setContentLength(compressedData.length);

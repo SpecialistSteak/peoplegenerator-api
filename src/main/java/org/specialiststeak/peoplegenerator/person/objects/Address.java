@@ -1,5 +1,6 @@
 package org.specialiststeak.peoplegenerator.person.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Data;
@@ -10,6 +11,8 @@ import static org.specialiststeak.peoplegenerator.person.utils.Utils.*;
 
 @Data
 public class Address {
+    @JsonIgnore
+    private final int countryIndex = random.nextInt(countries.length);
     private String streetAddress;
     //streetAddr
     private String city;
@@ -30,7 +33,6 @@ public class Address {
     //countryCode
 
     public Address() {
-        generateLine2();
         this.streetAddress = generateStreetAddress();
         this.city = generateCity();
         this.state = generateState();
@@ -71,22 +73,22 @@ public class Address {
     }
 
     private int generateGeonameID() {
-        if (GEONAMEID[selectedLine2] == null || GEONAMEID[selectedLine2].isEmpty()) {
+        if (GEONAMEID[countryIndex] == null || GEONAMEID[countryIndex].isEmpty()) {
             return -1;
         }
-        Integer gn = randomIntItemFromList(GEONAMEID[selectedLine2]);
+        Integer gn = randomIntItemFromList(GEONAMEID[countryIndex]);
         return gn != null ? gn : -1;
     }
 
     public String generateCountryCode() {
-        return countryCodes[selectedLine2];
+        return countryCodes[countryIndex];
     }
 
     public String generatePhoneNumber() {
         StringBuilder pn = new StringBuilder();
-        pn.append("+").append(countryNumber[selectedLine2]).append(" ");
+        pn.append("+").append(countryNumber[countryIndex]).append(" ");
 
-        for (int i = 0; i < countryNumberLength[selectedLine2]; i++) {
+        for (int i = 0; i < countryNumberLength[countryIndex]; i++) {
             pn.append(random.nextInt(10));
         }
 
@@ -103,25 +105,25 @@ public class Address {
     }
 
     private String generateStreetAddress() {
-        return fakers[selectedLine2].address().streetAddress();
+        return fakers[countryIndex].address().streetAddress();
     }
 
     private String generateCity() {
-        return randomItemFromList(CITY[selectedLine2] != null ?
-                CITY[selectedLine2] : EMPTY_LIST);
+        return randomItemFromList(CITY[countryIndex] != null ?
+                CITY[countryIndex] : EMPTY_LIST);
     }
 
     private String generateState() {
-        return randomItemFromList(SUBCOUNTRY[selectedLine2] != null ?
-                SUBCOUNTRY[selectedLine2] : EMPTY_LIST);
+        return randomItemFromList(SUBCOUNTRY[countryIndex] != null ?
+                SUBCOUNTRY[countryIndex] : EMPTY_LIST);
     }
 
     private String generateCountry() {
-        return countries[selectedLine2];
+        return countries[countryIndex];
     }
 
     private String generateZipCode() {
-        return fakers[selectedLine2].address().zipCode();
+        return fakers[countryIndex].address().zipCode();
     }
 
     @Override
