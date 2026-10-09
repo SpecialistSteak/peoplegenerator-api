@@ -1,67 +1,63 @@
-function fetchExample() {
-    fetch('https://peoplegeneratorapi.me/api/person/')
-        .then(response => response.json())
-        .then(data => {
-            // Populate personal info
-            document.getElementById('name').textContent = data.name;
-            document.getElementById('age').textContent = data.age;
-            document.getElementById('job').textContent = data.job;
-            document.getElementById('incomeUSD').textContent = data.incomeUSD;
-            document.getElementById('creditScore').textContent = data.creditScore;
-            document.getElementById('ccNumber').textContent = data.ccNumber;
-            document.getElementById('married').textContent = data.married ? 'Yes' : 'No';
-            document.getElementById('hasChildren').textContent = data.hasChildren ? 'Yes' : 'No';
-            document.getElementById('height').textContent = data.height;
-            document.getElementById('weight').textContent = data.weight;
-            document.getElementById('eyeColor').textContent = data.eyeColor;
-            document.getElementById('email').textContent = data.email;
-            document.getElementById('gender').textContent = data.gender;
-            document.getElementById('hasDegree').textContent = data.hasDegree ? 'Yes' : 'No';
-            document.getElementById('bloodType').textContent = data.bloodType;
-            document.getElementById('username').textContent = data.username;
-            document.getElementById('politicalLeaning').textContent = data.politicalLeaning;
-            document.getElementById('religion').textContent = data.religion;
-            document.getElementById('doB').textContent = data.doB;
-            document.getElementById('gpa').textContent = data.gpa;
+const generateButton = document.getElementById('generate-person');
+const requestStatus = document.getElementById('request-status');
+const responseSection = document.querySelector('.response-section');
+const rawModal = document.getElementById('raw-modal');
+const rawResponse = document.getElementById('raw-response');
+const copyStatus = document.getElementById('copy-status');
+let responseText = '';
 
-            // Populate address info
-            document.getElementById('streetAddress').textContent = data.address.streetAddress;
-            document.getElementById('city').textContent = data.address.city;
-            document.getElementById('state').textContent = data.address.state;
-            document.getElementById('country').textContent = data.address.country;
-            document.getElementById('zip').textContent = data.address.zip;
-            document.getElementById('geonameId').textContent = data.address.geonameId;
-            document.getElementById('phoneNumber').textContent = data.address.phoneNumber;
-            document.getElementById('ipAddress').textContent = data.address.ipAddress;
-            document.getElementById('countryCode').textContent = data.address.countryCode;
-
-            // Store raw response for modal
-            window.rawResponse = JSON.stringify(data, null, 2);
-            // Display response-section after fetching data
-            document.querySelector('.response-section').style.display = 'block';
-        })
-        .catch(error => console.error('Error fetching data:', error));
+async function fetchExample() {
+    generateButton.disabled = true;
+    requestStatus.textContent = 'Requesting a person...';
+    requestStatus.classList.remove('error');
+    const started = performance.now();
+    try {
+        const response = await fetch('/api/person/', { signal: AbortSignal.timeout(15000) });
+        if (!response.ok) {
+            throw new Error(response.status === 429
+                ? 'Too many requests. Wait a moment and try again.'
+                : `The API returned HTTP ${response.status}. Try again in a moment.`);
+        }
+        const person = await response.json();
+        for (const [field, value] of Object.entries({ ...person, ...person.address })) {
+            const target = document.getElementById(field);
+            if (target) {
+                target.textContent = value === null ? 'None' : typeof value === 'boolean' ? (value ? 'Yes' : 'No') : String(value);
+            }
+        }
+        responseText = JSON.stringify(person, null, 2);
+        rawResponse.textContent = responseText;
+        responseSection.style.display = 'block';
+        requestStatus.textContent = `${response.status} OK · ${Math.round(performance.now() - started)} ms · application/json`;
+        generateButton.textContent = 'Generate another person';
+    } catch (error) {
+        requestStatus.textContent = error.name === 'TimeoutError'
+            ? 'The request timed out. Try again in a moment.'
+            : error instanceof TypeError ? 'Could not reach the API. Try again in a moment.' : error.message;
+        requestStatus.classList.add('error');
+    } finally {
+        generateButton.disabled = false;
+    }
 }
 
-// Modal functionality
-var modal = document.getElementById("raw-modal");
-var showRawBtn = document.getElementById("show-raw");
-var closeBtn = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-showRawBtn.addEventListener('click', function() {
-    modal.style.display = "block";
-    document.getElementById('raw-response').textContent = window.rawResponse || 'No data available.';
+generateButton.addEventListener('click', fetchExample);
+document.getElementById('show-raw').addEventListener('click', () => {
+    copyStatus.textContent = '';
+    rawModal.showModal();
+    rawResponse.scrollTop = 0;
 });
-
-// When the user clicks on <span> (x), close the modal
-closeBtn.addEventListener('click', function() {
-    modal.style.display = "none";
+document.getElementById('close-json').addEventListener('click', () => rawModal.close());
+rawModal.addEventListener('click', event => {
+    if (event.target === rawModal) {
+        const bounds = rawModal.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) rawModal.close();
+    }
 });
-
-// When the user clicks anywhere outside of the modal, close it
-window.addEventListener('click', function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+document.getElementById('copy-json').addEventListener('click', async () => {
+    try {
+        await navigator.clipboard.writeText(responseText);
+        copyStatus.textContent = 'Copied to clipboard.';
+    } catch {
+        copyStatus.textContent = 'Could not copy. You can select and copy the JSON below.';
     }
 });

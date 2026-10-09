@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Objects & Fields</title>
-    <link rel="stylesheet" type="text/css" href="../static/styles2.css">
-    <link rel="icon" href="../static/Logo.svg">
+    <link rel="stylesheet" type="text/css" href="/static/styles2.css">
+    <link rel="icon" href="/static/Logo.svg">
 </head>
 <body class="fullpage">
 <header>
     <nav>
         <ul>
-            <li><a href="https://peoplegeneratorapi.me/">Overview</a></li>
-            <li><a href="https://peoplegeneratorapi.me/get-started">Get Started</a></li>
-            <li><a href="https://peoplegeneratorapi.me/endpoints">Endpoints</a></li>
-            <li><a href="https://peoplegeneratorapi.me/fields">Fields</a></li>
-            <li><a href="https://peoplegeneratorapi.me/about">About</a></li>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/get-started">Get started</a></li>
+            <li><a href="/endpoints">Endpoints</a></li>
+            <li><a href="/fields" aria-current="page">Fields</a></li>
+            <li><a href="/about">About</a></li>
         </ul>
     </nav>
 </header>
@@ -23,187 +25,15 @@
         <p>Below are the different types of objects this API can return.</p>
         <hr class="separator">
         <br>
-        <h3>Person:</h3>
-        <table class="content-table">
-            <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Return Type</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Name</td>
-                <td>The person's name. It may contain a middle name.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Age</td>
-                <td>The person's age in years.</td>
-                <td>integer</td>
-            </tr>
-            <tr>
-                <td>Job</td>
-                <td>The person's job title.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Date of Birth</td>
-                <td>The person's date of birth in the standard date format.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Income in USD</td>
-                <td>The person's income in US dollars.</td>
-                <td>integer</td>
-            </tr>
-            <tr>
-                <td>Credit score</td>
-                <td>The person's credit score as a number.</td>
-                <td>integer</td>
-            </tr>
-            <tr>
-                <td>Credit Card Number</td>
-                <td>The person's credit card number.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>The person's email address.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>The person's gender, can be "Male", "Female", or "Other".</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Has Degree</td>
-                <td>Whether or not the person has a degree.</td>
-                <td>boolean</td>
-            </tr>
-            <tr>
-                <td><a href="#address">Address</a></td>
-                <td>The person's address (as an object).</td>
-                <td>Address</td>
-            </tr>
-            <tr>
-                <td>Blood Type</td>
-                <td>The person's blood type.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Username</td>
-                <td>The person's username.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Religion</td>
-                <td>The person's religion.</td>
-                <td>string</td>
-            </tr>
-            <tr>
-                <td>Political Leaning</td>
-                <td>The person's leaning, with -1 being 100% left leaning, and 1 being 100% right leaning.</td>
-                <td>double</td>
-            </tr>
-            <tr>
-                <td>GPA (Grade Point Average)</td>
-                <td>The person's GPA on a 4 point scale.</td>
-                <td>double</td>
-            </tr>
-            </tbody>
-        </table>
-        <section id="address">
-            <h3>Address (Object):</h3>
-            <table class="content-table">
-                <thead>
-                <tr>
-                    <th>Field</th>
-                    <th>Description</th>
-                    <th>Return Type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Street Address</td>
-                    <td>The street address of the location.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>City</td>
-                    <td>The city of the location.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>State</td>
-                    <td>The state or province of the location.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>Zip Code</td>
-                    <td>The zip code or postal code of the location.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>Country</td>
-                    <td>The name of the country the location is in.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>Geoname ID</td>
-                    <td>The geoname ID of the location.</td>
-                    <td>int</td>
-                </tr>
-                <tr>
-                    <td>Phone Number</td>
-                    <td>The phone number of the location.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>Country Code</td>
-                    <td>The ISO 3166-1 alpha-2 country code of the country the location is in.</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>IPv4 Address</td>
-                    <td>The IPv4 address of the location.</td>
-                    <td>string</td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
-        <section id="lifestory">
-            <h3>Life Story (Object):</h3>
-            <table class="content-table">
-                <thead>
-                <tr>
-                    <th>Field</th>
-                    <th>Description</th>
-                    <th>Return Type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Person</td>
-                    <td>The Person object.</td>
-                    <td><a href="https://peoplegeneratorapi.live/fields">Person Object</a></td>
-                </tr>
-                <tr>
-                    <td>Life Story</td>
-                    <td>The life story of the person.</td>
-                    <td>string</td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
+        <section id="person"><h3>Person</h3><table class="content-table"><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>string</td><td>The person&#x27;s full name.</td></tr><tr><td><code>age</code></td><td>integer</td><td>Age in years.</td></tr><tr><td><code>job</code></td><td>string</td><td>Job title, Student, or Retired.</td></tr><tr><td><code>doB</code></td><td>string</td><td>A Java Date.toString() value, including the server time zone. It is not ISO 8601.</td></tr><tr><td><code>incomeUSD</code></td><td>integer</td><td>Generated income in US dollars.</td></tr><tr><td><code>creditScore</code></td><td>integer</td><td>Generated credit score; 0 for people under 18.</td></tr><tr><td><code>ccNumber</code></td><td>string or null</td><td>Generated credit card number; null for people under 18.</td></tr><tr><td><code>married</code></td><td>boolean</td><td>Whether the person is married.</td></tr><tr><td><code>hasChildren</code></td><td>boolean</td><td>Whether the person has children.</td></tr><tr><td><code>height</code></td><td>number</td><td>Height in centimeters.</td></tr><tr><td><code>weight</code></td><td>number</td><td>Weight in kilograms.</td></tr><tr><td><code>eyeColor</code></td><td>string</td><td>Eye color in uppercase.</td></tr><tr><td><code>email</code></td><td>string</td><td>Generated email address.</td></tr><tr><td><code>gender</code></td><td>string</td><td>Male, Female, or Other.</td></tr><tr><td><code>hasDegree</code></td><td>boolean</td><td>Whether the person has a degree.</td></tr><tr><td><code>gpa</code></td><td>number</td><td>Grade point average from 0 to 4.</td></tr><tr><td><code>bloodType</code></td><td>string</td><td>Blood type, including the Rh factor.</td></tr><tr><td><code>username</code></td><td>string</td><td>Generated username.</td></tr><tr><td><code>politicalLeaning</code></td><td>number</td><td>Generated position on a scale from -1 (left) to 1 (right).</td></tr><tr><td><code>religion</code></td><td>string</td><td>Generated religious affiliation.</td></tr><tr><td><code>address</code></td><td>object</td><td>The address object described below.</td></tr></tbody></table></section>
+<section id="address"><h3>Address</h3><table class="content-table"><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>streetAddress</code></td><td>string</td><td>Generated street address.</td></tr><tr><td><code>city</code></td><td>string</td><td>City selected from the bundled world-cities data.</td></tr><tr><td><code>state</code></td><td>string</td><td>State or province selected within the country.</td></tr><tr><td><code>country</code></td><td>string</td><td>Country name.</td></tr><tr><td><code>zip</code></td><td>string</td><td>Generated postal code.</td></tr><tr><td><code>geonameId</code></td><td>integer</td><td>GeoNames ID selected within the country, or -1 if unavailable.</td></tr><tr><td><code>phoneNumber</code></td><td>string</td><td>Country calling code and generated digits.</td></tr><tr><td><code>ipAddress</code></td><td>string</td><td>Generated IPv4 address.</td></tr><tr><td><code>countryCode</code></td><td>string</td><td>Two-letter country code.</td></tr></tbody></table></section>
+<section id="lifestory"><h3>Life story</h3><table class="content-table"><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>person</code></td><td>object</td><td>A complete person object.</td></tr><tr><td><code>lifestory</code></td><td>string</td><td>A paragraph assembled from the person&#x27;s fields.</td></tr></tbody></table></section>
     </section>
 </main>
 <footer>
     <p><span>&copy;</span> 2024 SpecialistSteak</p>
-    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
-    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+    <p class="middleelement"><a href="https://github.com/ltmerletti">GitHub</a></p>
+    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email me</a></p>
 </footer>
 </body>
 </html>

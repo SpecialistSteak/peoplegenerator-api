@@ -368,3 +368,44 @@ h3{
     padding-left: 1em;
     padding-bottom: 1em;
 }
+/* Shared spacing and responsive documentation layout. */
+:root { color-scheme: dark; }
+* { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+body.fullpage { height: auto; min-height: 100vh; }
+header { width: min(1100px, 100%); margin: 0 auto 28px; padding: 20px; }
+nav { border: 1px solid #36364c; background: #1d1d2c; border-radius: 9px; }
+nav ul { display: flex; flex-wrap: wrap; }
+nav li { float: none; }
+nav li a { font-size: 14px; }
+nav li a[aria-current] { color: var(--lavender); background: #272737; }
+main { width: min(1060px, 100%); margin: auto; padding: 0 20px 48px; }
+#fields, #endpoints { margin: 0; }
+#get-started { padding-left: 0 !important; }
+p { font-size: 16px; }
+h1.title { font-size: 36px; letter-spacing: -1px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+.separator { background: #36364c; margin-top: 24px; }
+.content-table { width: 100%; min-width: 0; font-size: 14px; box-shadow: none; }
+.content-table td, .content-table th { overflow-wrap: anywhere; border-bottom: 1px solid #36364c; }
+.content-table tbody tr:nth-of-type(even) { background: #1d1d2c; }
+code, pre, .codeblock, .tabcontent { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.65; }
+.codeblock { max-width: 100%; padding: 20px; background: #1d1d2c; border-color: #36364c; border-radius: 9px; overflow-wrap: anywhere; }
+.tab { width: 100%; border-color: #36364c; border-radius: 9px 9px 0 0; }
+.tab button { text-align: center; font-size: 14px; font-weight: 500; }
+.tab button.active { color: var(--lavender); background: #313244; }
+.tabcontent { width: 100%; max-width: 100%; margin: 0; padding: 20px; border-color: #36364c; border-radius: 0 0 9px 9px; background: #1d1d2c; overflow-wrap: anywhere; }
+.content { margin: 32px auto; padding: 0; max-width: 720px; }
+.logo { max-height: 180px; margin: 24px auto; }
+.logo img { max-height: 180px; width: auto; }
+.about-p { font-size: 17px; }
+footer { flex-wrap: wrap; gap: 16px; border-top: 1px solid #36364c; padding: 24px; }
+.middleelement { position: static; transform: none; }
+a { text-underline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--lavender); outline-offset: 4px; }
+@media (max-width: 600px) {
+    header { padding: 16px; }
+    main { padding: 0 16px 32px; }
+    nav li a { padding: 12px; }
+    .content-table td, .content-table th { padding: 10px 8px; font-size: 12px; }
+}

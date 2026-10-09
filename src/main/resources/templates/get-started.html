@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Get Started</title>
-    <link rel="stylesheet" type="text/css" href="../static/styles2.css">
-    <link rel="icon" href="../static/Logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get started</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles2.css">
+    <link rel="icon" href="/static/Logo.svg">
     <script>
         function openCity(evt, cityName) {
             let i, tabcontent, tablinks;
@@ -24,23 +26,23 @@
 <header style="padding-bottom: 20px">
     <nav>
         <ul>
-            <li><a href="https://peoplegeneratorapi.me/">Overview</a></li>
-            <li><a href="https://peoplegeneratorapi.me/get-started">Get Started</a></li>
-            <li><a href="https://peoplegeneratorapi.me/endpoints">Endpoints</a></li>
-            <li><a href="https://peoplegeneratorapi.me/fields">Fields</a></li>
-            <li><a href="https://peoplegeneratorapi.me/about">About</a></li>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/get-started" aria-current="page">Get started</a></li>
+            <li><a href="/endpoints">Endpoints</a></li>
+            <li><a href="/fields">Fields</a></li>
+            <li><a href="/about">About</a></li>
         </ul>
     </nav>
 </header>
 <main>
     <section id="get-started" style="padding-left: 20px">
-        <h1 style="text-align: left;" class="title">Get-Started</h1>
-        <p>Below are the first steps you can take to access and start using the API.</p>
+        <h1 style="text-align: left;" class="title">Get started</h1>
+        <p>Run the server locally, then try <code>GET /api/person/</code> for one profile. No API key is required. Every request generates new data.</p>
         <hr class="separator">
         <br>
         <section>
-            <h2>Requesting 100 People:</h2>
-            <p>Each of the tabs show example code for how to request 100 people in different languages:</p>
+            <h2>Requesting 100 people</h2>
+            <p>These examples use the local server. Bulk responses always use gzip. Browsers and Python requests decompress them automatically; Java HttpClient needs a GZIPInputStream.</p>
 
             <div class="tab">
                 <button class="tablinks active" onclick="openCity(event, 'JavaScript')">JavaScript</button>
@@ -48,57 +50,48 @@
                 <button class="tablinks" onclick="openCity(event, 'Python')">Python</button>
             </div>
 
-            <div id="JavaScript" class="tabcontent" style="display: block;">
-console.log(
-    fetch('https://peoplegeneratorapi.me/api/person/100')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
-);</div>
+            <div id="JavaScript" class="tabcontent" style="display: block;">const response = await fetch(&#x27;/api/person/100&#x27;);
+if (!response.ok) throw new Error(`HTTP ${response.status}`);
+const people = await response.json();
+console.log(people);</div>
 
-            <div id="Java" class="tabcontent" style="display: none;">
+            <div id="Java" class="tabcontent" style="display: none;">import java.net.URI;
 import java.net.http.*;
-import java.net.URI;
-import java.io.*;
+import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 
 public class Main {
-    private static String decompressGzip(byte[] compressedData) {
-        try (GZIPInputStream gis = new GZIPInputStream(
-                new ByteArrayInputStream(compressedData))) {
-            return new String(gis.readAllBytes(), StandardCharsets.UTF_8);
-        } catch (IOException e) { return null; }
-    }
-    public static void main(String[] args) throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(
-                    "https://peoplegeneratorapi.me/api/person/501"))
-                .GET()
-                .build();
-        HttpResponse&#60;byte[]> response = client.send(request,
-                HttpResponse.BodyHandlers.ofByteArray());
-        System.out.println(decompressGzip(response.body()));
+    public static void main(String[] args) throws Exception {
+        var request = HttpRequest.newBuilder()
+            .uri(URI.create(&quot;http://localhost:8080/api/person/100&quot;))
+            .GET().build();
+        var response = HttpClient.newHttpClient().send(
+            request, HttpResponse.BodyHandlers.ofByteArray());
+        if (response.statusCode() != 200) {
+            throw new IllegalStateException(&quot;HTTP &quot; + response.statusCode());
+        }
+        try (var gzip = new GZIPInputStream(new ByteArrayInputStream(response.body()))) {
+            System.out.println(new String(gzip.readAllBytes(), StandardCharsets.UTF_8));
+        }
     }
 }</div>
 
-            <div id="Python" class="tabcontent" style="display: none;">
+            <div id="Python" class="tabcontent" style="display: none;">import json
 import requests
 
-response = requests.get('https://peoplegeneratorapi.me/api/person/100')
-response = response.json()
-encoded_response = str(response).encode('utf-8').replace(b"'", b'"')
-print(encoded_response)</div>
+response = requests.get(&#x27;http://localhost:8080/api/person/100&#x27;, timeout=30)
+response.raise_for_status()
+print(json.dumps(response.json(), indent=2))</div>
         </section>
         <br>
-        <h3>Example API Response:</h3>
+        <h3>Example responses</h3>
         <p style="padding-bottom:5px">
             Below are some examples you might see when requesting a response from the API.
             If there are multiple people, it will instead come as an array of people objects.
         </p>
         <br>
-        <h3>Person Object:</h3>
+        <h3>Person object</h3>
 <code class="codeblock">{
     "name": "Minh Legros",
     "age": 30,
@@ -133,7 +126,7 @@ print(encoded_response)</div>
     "gpa": 2.2
 }</code>
         <br>
-        <h3>Address Object:</h3>
+        <h3>Address object</h3>
         <br>
 <code class="codeblock">{
     "streetAddress": "39975 Joesph Garden",
@@ -147,27 +140,15 @@ print(encoded_response)</div>
     "countryCode": "BG"
 }</code>
         <br>
-        <h3>Lifestory Object:</h3>
-        <br>
-        <code class="codeblock">{
-    "person": {
-        ...Person object, details ommitted for brevity...
-    },
-    "lifestory": "Harvey Krajcik is a 43-year-old who was born on Sun Mar 22 13:05:47 IST 1981. Harvey works as
-    a geologist and lives in Shymkent, AtyraÅ«, Kazakhstan. He is married and has children. He is 160.0cm tall
-    and weighs 69.2 kg, and has brown eyes and a blood type of A-. He has a GPA of 3.0, and doesn't have a
-    degree. His income is $70830, and he has a credit score of 437. His credit card number is 3441-081071-67187.
-    He uses harvey_krajcik@gmail.com for Hisemail address and harvey30 for His username on various websites. He
-    follows Buddhism and his political leaning is -0.82. He has a geonameid of 609123 and his phone number is +7
-    4144872266. He is from Kazakhstan and his IP address is 244.16.7.60"
-}</code>
+        <h3>Life story</h3>
+        <p><code>GET /api/lifestory/</code> returns an object with a full <code>person</code> object and a <code>lifestory</code> string. The story is assembled from that person's fields using a text template.</p>
     </section>
     <br>
 </main>
 <footer>
     <p><span>&copy;</span> 2024 SpecialistSteak</p>
-    <p class="middleelement"><a href="https://github.com/specialiststeak">GitHub</a></p>
-    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email Me</a></p>
+    <p class="middleelement"><a href="https://github.com/ltmerletti">GitHub</a></p>
+    <p><a href="mailto:30266b22-69ee-4995-a77b-f510cc66ed54@anonaddy.me">Email me</a></p>
 </footer>
 </body>
 </html>
