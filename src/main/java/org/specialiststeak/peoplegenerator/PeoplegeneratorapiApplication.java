@@ -154,6 +154,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
 
     // returns a persons date of birth as a String
     @GetMapping({"/api/person/dateofbirth/", "/api/person/dateofbirth"})
+    @ResponseBody
     public String dateofbirth(HttpServletRequest request) {
         rateLimitRequest(request, .05, "/api/person/dateofbirth/");
         return new Person().getDoB();
@@ -188,7 +189,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @ResponseBody
     public boolean maritalstatus(HttpServletRequest request) {
         rateLimitRequest(request, .05, "/api/person/maritalstatus/");
-        return new Person().isHasChildren();
+        return new Person().isMarried();
     }
 
     // returns a person's has children as a boolean
@@ -196,7 +197,7 @@ public class PeoplegeneratorapiApplication implements Runnable {
     @ResponseBody
     public boolean haschildren(HttpServletRequest request) {
         rateLimitRequest(request, .05, "/api/person/haschildren/");
-        return new Person().isMarried();
+        return new Person().isHasChildren();
     }
 
     // returns a person's height as a double
